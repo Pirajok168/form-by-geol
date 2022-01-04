@@ -1,3 +1,9 @@
+import javax.print.attribute.HashPrintRequestAttributeSet;
+import javax.print.attribute.PrintRequestAttributeSet;
+import javax.print.attribute.Size2DSyntax;
+import javax.print.attribute.standard.MediaPrintableArea;
+import javax.print.attribute.standard.MediaSize;
+import javax.print.attribute.standard.MediaSizeName;
 import java.awt.*;
 import java.awt.geom.Line2D;
 import java.awt.image.BufferedImage;
@@ -8,14 +14,13 @@ import java.awt.print.PrinterJob;
 import java.util.*;
 import java.util.List;
 
-
+//15 12
 public class Main {
     private static int linesPerPage = 20;
     private static List<String> data = new ArrayList<>();
-
+    private static List<String> data2 = new ArrayList<>();
 
     public static void init(){
-
         data.add("Долина реки ___________ правого (левого) притока ___________ в системе ___________________");
         data.add("_____________ ручья");
         data.add("Тип россыпи (русловая, долинная, террасовая, увальная и др.) _______________________________");
@@ -36,6 +41,15 @@ public class Main {
         data.add("Диаметр бурения на глубину ____________________ м __________________________________ мм");
         data.add("Буровой станок ____________________: промывка ___________ лотком ______________________");
         data.add("Геолог ________________________________, маркшейдер __________________________________");
+
+        data2.add("Глубина выемки");
+        data2.add("(мощность массы)");
+        data2.add("Мощность торфов");
+        data2.add("Мощность песков (пласта)");
+        data2.add("Среднее содержание Au");
+        data2.add("Вертикальный запас Au");
+        data2.add("Лимитность по кондициям");
+        data2.add("________ года");
     }
 
     public static void main(String[] args) throws PrinterException {
@@ -52,35 +66,59 @@ public class Main {
                 g2d.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
 
                 g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-                g2d.drawString("Участок ____________", 50, 50);
+                g2d.drawString("Участок ____________", 10, 10);
 
                 g2d.setFont(new Font("Times New Roman", Font.BOLD, 14));
 
-                g2d.drawString("ЖУРНАЛ",240,  90);
-                g2d.drawString("ДОКУМЕНТАЦИИ СКВАЖИН",180,  110);
-
+                g2d.drawString("ЖУРНАЛ",200,  30);
+                g2d.drawString("ДОКУМЕНТАЦИИ СКВАЖИН",140,  50);
 
                 g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-
-                int y = 150;
+                int y = 70;
                 for (int i = linesPerPage * pageIndex; i < data.size()
                         && i < linesPerPage * (pageIndex + 1); i++) {
                     //System.out.println(data.get(i) + " " + data.get(i).length());
                     if (Objects.equals(data.get(i), "Линия № _______ ")
                             ||  Objects.equals(data.get(i), "Скважина № __________")){
-                        g2d.setFont(new Font("Times New Roman", Font.BOLD, 14));
-                        g2d.drawString(data.get(i),240,  y);
+                        g2d.setFont(new Font("Times New Roman", Font.BOLD, 12));
+                        g2d.drawString(data.get(i),200,  y);
                         g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+                        y += 23;
                     }else{
-                        g2d.drawString(data.get(i),50, y );
+                        g2d.drawString(data.get(i),10, y );
+                        y += 18;
                     }
-                    y += 20;
+                }
+                g2d.drawString("Результаты подсчета по скважине", 140, y + 30);
+                y = y + 40;
+                g2d.drawLine(10, y,  (int)pageFormat.getImageableWidth(), y );
+                g2d.setFont(new Font("Times New Roman", Font.PLAIN, 10));
+                g2d.drawString("Проба Au _______", 30, y+20);
+                g2d.drawString("Борт. содержание Au x.ч _______ м???", 11, y+28);
+                g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+                g2d.drawLine(10, y,  10, (int)pageFormat.getImageableHeight()-12 );
+                g2d.drawLine((int)pageFormat.getImageableWidth(), y,  (int)pageFormat.getImageableWidth(), (int)pageFormat.getImageableHeight()-12 );
+
+                g2d.drawLine(10, y+35, 170, y+35);
+                g2d.drawLine(10, y+35+25, (int)pageFormat.getImageableWidth(), y+35+25);
+                int y2 = y+35+25+35;
+                int it = 0;
+                for (int i = 0; i < 6; i++) {
+                    g2d.drawLine(10, y2, (int)pageFormat.getImageableWidth(), y2);
+                    g2d.drawString(data2.get(it), 30, y2-20);
+                    if (it==0 || it==6){
+                        it++;
+                        g2d.drawString(data2.get(it), 30, y2-10);
+                    }
+                    it++;
+                    y2 += 35;
                 }
 
-                g2d.drawLine(50, y,  (int)pageFormat.getImageableWidth()-40, y );
-                g2d.drawLine(50, y,  50, y+250 );
-                g2d.drawLine((int)pageFormat.getImageableWidth()-40, y,  (int)pageFormat.getImageableWidth()-40, y+250 );
-                g2d.drawLine(50, y+250,  (int)pageFormat.getImageableWidth()-40, y+250 );
+
+                g2d.drawLine(170, y, 170, (int)pageFormat.getImageableHeight()-12);
+                g2d.drawLine(210, y, 210, (int)pageFormat.getImageableHeight()-12);
+                g2d.drawLine(310, y, 310, (int)pageFormat.getImageableHeight()-12);
+                g2d.drawLine(410, y, 410, (int)pageFormat.getImageableHeight()-12);
 
 
                 return PAGE_EXISTS;
@@ -89,9 +127,20 @@ public class Main {
         PrinterJob printerJob = PrinterJob.getPrinterJob();
         /*PageFormat pageFormat = printerJob.defaultPage();
         pageFormat = printerJob.pageDialog(pageFormat);*/
+
+        PrintRequestAttributeSet attrs = new HashPrintRequestAttributeSet();
+        attrs.add(MediaSizeName.ISO_A3);
+        attrs.add(new MediaPrintableArea(
+                20,
+                20,
+                MediaSize.ISO.A3.getX( Size2DSyntax.MM ) - 28,
+                MediaSize.ISO.A3.getY( Size2DSyntax.MM ) - 28,
+                Size2DSyntax.MM
+        ));
+
         printerJob.setPrintable(printable);
         if (printerJob.printDialog()){
-            printerJob.print();
+            printerJob.print(attrs);
         }
     }
 

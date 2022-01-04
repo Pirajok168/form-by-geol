@@ -4,6 +4,7 @@ import javax.print.attribute.Size2DSyntax;
 import javax.print.attribute.standard.MediaPrintableArea;
 import javax.print.attribute.standard.MediaSize;
 import javax.print.attribute.standard.MediaSizeName;
+import javax.print.attribute.standard.OrientationRequested;
 import java.awt.*;
 import java.awt.geom.Line2D;
 import java.awt.image.BufferedImage;
@@ -95,13 +96,24 @@ public class Main {
                 g2d.setFont(new Font("Times New Roman", Font.PLAIN, 10));
                 g2d.drawString("Проба Au _______", 30, y+20);
                 g2d.drawString("Борт. содержание Au x.ч _______ м???", 11, y+28);
+                g2d.drawString("Един", 180, y+28);
+                g2d.drawString("Измер", 175, y+38);
                 g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
                 g2d.drawLine(10, y,  10, (int)pageFormat.getImageableHeight()-12 );
                 g2d.drawLine((int)pageFormat.getImageableWidth(), y,  (int)pageFormat.getImageableWidth(), (int)pageFormat.getImageableHeight()-12 );
 
                 g2d.drawLine(10, y+35, 170, y+35);
+                g2d.drawLine(210, y+35, (int)pageFormat.getImageableHeight()-12, y+35);
+                g2d.drawString("Наименование показателей", 20, y+50);
                 g2d.drawLine(10, y+35+25, (int)pageFormat.getImageableWidth(), y+35+25);
+                g2d.drawString("м", 185, y+35+25+20);
+
                 int y2 = y+35+25+35;
+                g2d.drawString("м", 185, y2+20);
+                g2d.drawString("м", 185, y2+55);
+                g2d.drawString("м", 185, y2+55);
+                g2d.drawString("мг/м?", 175, y2+90);
+                g2d.drawString("мг/м?", 175, y2+125);
                 int it = 0;
                 for (int i = 0; i < 6; i++) {
                     g2d.drawLine(10, y2, (int)pageFormat.getImageableWidth(), y2);
@@ -114,12 +126,27 @@ public class Main {
                     y2 += 35;
                 }
 
-
+                int y3 =  y+35+15;
                 g2d.drawLine(170, y, 170, (int)pageFormat.getImageableHeight()-12);
-                g2d.drawLine(210, y, 210, (int)pageFormat.getImageableHeight()-12);
-                g2d.drawLine(310, y, 310, (int)pageFormat.getImageableHeight()-12);
-                g2d.drawLine(410, y, 410, (int)pageFormat.getImageableHeight()-12);
 
+                g2d.drawLine(210, y, 210, (int)pageFormat.getImageableHeight()-12);
+                g2d.drawString("Для раздельной", 220, y3-35);
+                g2d.drawString("добычи (на ?)", 220, y3-20);
+                g2d.drawString("шлих", 220, y3);
+                g2d.drawLine(260, y+35, 260, (int)pageFormat.getImageableHeight()-12);
+                g2d.drawString("х.ч", 275, y3);
+                g2d.drawLine(310, y, 310, (int)pageFormat.getImageableHeight()-12);
+                g2d.drawString("Для сплошной", 320, y3-35);
+                g2d.drawString("выемки (на массу)", 315, y3-20);
+                g2d.drawString("шлих", 320, y3);
+                g2d.drawLine(360, y+35, 360, (int)pageFormat.getImageableHeight()-12);
+                g2d.drawString("х.ч", 375, y3);
+                g2d.drawLine(410, y, 410, (int)pageFormat.getImageableHeight()-12);
+                g2d.drawString("Для сплошной", 420, y3-35);
+                g2d.drawString("выемки (на массу)", 420, y3-20);
+                g2d.drawString("шлих", 420, y3);
+                g2d.drawLine(460, y+35, 460, (int)pageFormat.getImageableHeight()-12);
+                g2d.drawString("х.ч", 475, y3);
 
                 return PAGE_EXISTS;
             }
@@ -129,12 +156,16 @@ public class Main {
         pageFormat = printerJob.pageDialog(pageFormat);*/
 
         PrintRequestAttributeSet attrs = new HashPrintRequestAttributeSet();
-        attrs.add(MediaSizeName.ISO_A3);
+        attrs.add(MediaSizeName.ISO_A4);
+
+        //Ориентация
+        //attrs.add(OrientationRequested.LANDSCAPE);
+
         attrs.add(new MediaPrintableArea(
                 20,
                 20,
-                MediaSize.ISO.A3.getX( Size2DSyntax.MM ) - 28,
-                MediaSize.ISO.A3.getY( Size2DSyntax.MM ) - 28,
+                MediaSize.ISO.A4.getX( Size2DSyntax.MM ) - 28,
+                MediaSize.ISO.A4.getY( Size2DSyntax.MM ) - 28,
                 Size2DSyntax.MM
         ));
 

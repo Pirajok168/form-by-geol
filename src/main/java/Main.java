@@ -6,6 +6,8 @@ import javax.print.attribute.standard.MediaSize;
 import javax.print.attribute.standard.MediaSizeName;
 import javax.print.attribute.standard.OrientationRequested;
 import java.awt.*;
+import java.awt.font.TextAttribute;
+import java.awt.geom.AffineTransform;
 import java.awt.geom.Line2D;
 import java.awt.image.BufferedImage;
 import java.awt.print.PageFormat;
@@ -67,7 +69,8 @@ public class Main {
                 g2d.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
 
                 g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-                g2d.drawString("Участок ____________", 10, 10);
+                /**тут первая страница*/
+                /*g2d.drawString("Участок ____________", 10, 10);
 
                 g2d.setFont(new Font("Times New Roman", Font.BOLD, 14));
 
@@ -146,7 +149,48 @@ public class Main {
                 g2d.drawString("выемки (на массу)", 420, y3-20);
                 g2d.drawString("шлих", 420, y3);
                 g2d.drawLine(460, y+35, 460, (int)pageFormat.getImageableHeight()-12);
-                g2d.drawString("х.ч", 475, y3);
+                g2d.drawString("х.ч", 475, y3);*/
+
+                /**тут вторая страница*/
+                /*int start = 10;
+                int retreat = 10;
+                g2d.drawString("Геолог______________", start, retreat);
+                g2d.drawString("Дата______________", 200, retreat);
+                retreat += 15;
+                g2d.drawString("Линия № ____________ Скважина № ________ ", start, retreat);
+                retreat += 10;
+                g2d.drawLine(start,  retreat, (int) pageFormat.getImageableWidth(), retreat);
+                retreat = 95;
+                g2d.drawLine(start,  retreat, (int) pageFormat.getImageableWidth(), retreat);
+                retreat += 15;
+                g2d.drawLine(start,  retreat, (int) pageFormat.getImageableWidth(), retreat);
+                retreat += 20;
+                for (int i = 0; i < 31; i++) {
+                    g2d.drawLine(start,  retreat, (int) pageFormat.getImageableWidth(), retreat);
+                    retreat += 20;
+                }
+                start += 70;
+                int startC = start-35;
+                for (int i = 0; i < 6; i++) {
+                    if (i==1){
+                        g2d.drawString(i+1 + "", startC, 40 +65);
+                        startC +=45;
+                        g2d.drawLine(start,  55, start, (int) pageFormat.getImageableHeight());
+                        g2d.drawLine(start-40, 55, start+40, 55);
+                    }else if(i==5){
+                        startC +=85;
+                        g2d.drawString(i+1 + "", startC, 40 +65);
+                        g2d.drawLine(start +180,  35, start +180, (int) pageFormat.getImageableHeight());
+                        g2d.drawString(7 + "", start +210, 40 +65);
+                    }else {
+                        g2d.drawString(i+1 + "", startC, 40+65);
+                        startC +=45;
+                        g2d.drawLine(start,  35, start, (int) pageFormat.getImageableHeight());
+                    }
+                    start += 40;
+                }
+                g2d.drawString("Линия № ____________ Скважина № ________ ", 10, retreat);*/
+
 
                 return PAGE_EXISTS;
             }

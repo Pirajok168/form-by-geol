@@ -1,11 +1,16 @@
 import java.awt.print.PrinterException;
+import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
@@ -18,19 +23,13 @@ public class Controller {
     private URL location;
 
     @FXML
-    private Pane list;
+    private VBox container;
 
     @FXML
-    private AnchorPane MainView;
+    private Pane firstList;
 
     @FXML
-    private Button print;
-
-    @FXML
-    private Font x1;
-
-    @FXML
-    private Color x2;
+    private TextField region;
 
     @FXML
     private Font x3;
@@ -39,21 +38,17 @@ public class Controller {
     private Color x4;
 
     @FXML
-    void onPrinting(ActionEvent event) throws PrinterException {
+    void onPrinting(ActionEvent event) throws PrinterException, IOException {
         System.out.println("Клик");
-        Main main = new Main();
-        main.printList();
-
+        //Second second = new Second();
+        firstList.setVisible(false);
+        Parent newRoot = FXMLLoader.load(getClass().getResource("second.fxml"));
+        container.getScene().setRoot(newRoot);
     }
 
     @FXML
     void initialize() {
-        assert MainView != null : "fx:id=\"MainView\" was not injected: check your FXML file 'Untitled'.";
-        assert print != null : "fx:id=\"print\" was not injected: check your FXML file 'Untitled'.";
-        assert x1 != null : "fx:id=\"x1\" was not injected: check your FXML file 'Untitled'.";
-        assert x2 != null : "fx:id=\"x2\" was not injected: check your FXML file 'Untitled'.";
-        assert x3 != null : "fx:id=\"x3\" was not injected: check your FXML file 'Untitled'.";
-        assert x4 != null : "fx:id=\"x4\" was not injected: check your FXML file 'Untitled'.";
+
 
 
     }

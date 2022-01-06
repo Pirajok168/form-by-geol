@@ -55,7 +55,7 @@ public class Main {
         data2.add("________ года");
     }
 
-    public void printList() throws PrinterException {
+    public void printList(String text) throws PrinterException {
         init();
         Printable printable = new Printable() {
             @Override
@@ -68,7 +68,7 @@ public class Main {
 
                 g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
                 /**тут первая страница*/
-                g2d.drawString("Участок ____________", 10, 10);
+                g2d.drawString("Участок "+ text, 10, 10);
                 System.out.println( (int) pageFormat.getImageableWidth());
                 System.out.println((int)pageFormat.getImageableHeight());
                 g2d.setFont(new Font("Times New Roman", Font.BOLD, 14));

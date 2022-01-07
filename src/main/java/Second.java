@@ -1,6 +1,8 @@
 import java.io.IOException;
 import java.net.URL;
 import java.util.ResourceBundle;
+
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -18,12 +20,16 @@ public class Second {
     @FXML
     private AnchorPane listTwo;
 
-    public Second() throws IOException {
-        root2 = FXMLLoader.load(getClass().getResource("second.fxml"));
-    }
+
 
     public Parent get(){
         return root2;
+    }
+
+
+    @FXML
+    void onKk(ActionEvent event) {
+        System.out.println("qwe");
     }
 
     @FXML

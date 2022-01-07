@@ -19,31 +19,32 @@ import java.util.List;
 
 //15 12
 public class Main {
-    private static int linesPerPage = 20;
-    private static List<String> data = new ArrayList<>();
-    private static List<String> data2 = new ArrayList<>();
+    private  int linesPerPage = 20;
+    private  List<String> data = new ArrayList<>();
+    private  List<String> data2 = new ArrayList<>();
+    private  ModelFirstList modelFirstList = Single.getInstance().getModelFirstList();
+    public  void init(){
 
-    public static void init(){
-        data.add("Долина реки ___________ правого (левого) притока ___________ в системе ___________________");
-        data.add("_____________ ручья");
-        data.add("Тип россыпи (русловая, долинная, террасовая, увальная и др.) _______________________________");
-        data.add("Линия № _______ ");
-        data.add("На расстоянии от устья ____________ м, от линии № ___________ (вниз, вверх) ______________ м");
-        data.add("Азимут буровой линии (магнитный, истинный) ___________________________________________");
-        data.add("Скважина № __________");
-        data.add("Расположена на правой (левой) стороне от русла на расстоянии от него _____________________ м,");
-        data.add("От скважины № ________ вправо (влево) _____________________ м _________________________");
-        data.add("Скважина начала ___________________________________ Окончена  _________________________");
-        data.add("Высотная отметка устья скважины ________________, координаты: х-, у- _____________________");
-        data.add("Пройдено в мерзлоте от ____________ до ____________, от ____________ до __________________");
-        data.add("Пройдено в талом грунте от ________ до ____________ , от ____________ до __________________");
-        data.add("Общая глубина скважины _________ м, глубина обсада __________________________________ м.");
-        data.add("Состав пород плотика ________________________________, пройдено по ним _______________ м");
-        data.add("Скважина пройдена (добита), остановлена (недобита) на глубине __________________________ м.");
-        data.add("Уровень воды в скважине (от поверхности): встречный _________ м, установившийся ________  м");
-        data.add("Диаметр бурения на глубину ____________________ м __________________________________ мм");
-        data.add("Буровой станок ____________________: промывка ___________ лотком ______________________");
-        data.add("Геолог ________________________________, маркшейдер __________________________________");
+        data.add("Долина реки#правого (левого) притока#в системе#");
+        data.add("ручья");
+        data.add("Тип россыпи (русловая, долинная, террасовая, увальная и др.)#");
+        data.add("Линия № #");
+        data.add("На расстоянии от устья#м, от линии №#(вниз, вверх)#м");
+        data.add("Азимут буровой линии (магнитный, истинный)#");
+        data.add("Скважина № #");
+        data.add("Расположена на правой (левой) стороне от русла на расстоянии от него#м,");
+        data.add("От скважины № #вправо (влево)#м#");
+        data.add("Скважина начала#Окончена #");
+        data.add("Высотная отметка устья скважины#, координаты: х-, у-#");
+        data.add("Пройдено в мерзлоте от#до#, от#до#");
+        data.add("Пройдено в талом грунте от#до#, от#до#");
+        data.add("Общая глубина скважины#м, глубина обсада#м.");
+        data.add("Состав пород плотика#, пройдено по ним#м");
+        data.add("Скважина пройдена (добита), остановлена (недобита) на глубине#м.");
+        data.add("Уровень воды в скважине (от поверхности): встречный#м, установившийся#м");
+        data.add("Диаметр бурения на глубину#м#мм");
+        data.add("Буровой станок#: промывка#лотком#");
+        data.add("Геолог#, маркшейдер#");
 
         data2.add("Глубина выемки");
         data2.add("(мощность массы)");
@@ -53,6 +54,68 @@ public class Main {
         data2.add("Вертикальный запас Au");
         data2.add("Лимитность по кондициям");
         data2.add("________ года");
+    }
+    private  int countLine = 0;
+    private int length2 = 10;
+
+    public  void replace(String str, int x, int y,Graphics2D g2d, PageFormat pageFormat, int flag ){
+
+        Map<TextAttribute, Integer> fontAttributes = new HashMap<TextAttribute, Integer>();
+        fontAttributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
+
+        String nS[] = str.split("#");
+        List<String> list = modelFirstList.list;
+        for (int i = 0; i < nS.length; i++) {
+            String n = "";
+            switch (flag){
+                case 0:
+                    if (nS[i].equals("м")|| nS[i].equals("мм") || nS[i].equals("м.") || nS[i].equals("м,")){
+                        g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+                        g2d.drawString(nS[i],  length2,  y);
+
+                        break;
+                    }
+                    try {
+                        n = list.get(countLine) + " ";
+                        g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+                        g2d.drawString(nS[i],  length2,  y);
+
+                        int length = nS[i].length() * 6;
+                        this.length2 += length;
+
+                        g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12).deriveFont(fontAttributes));
+                        g2d.drawString(n ,  length2,  y);
+                        this.length2 += n.length() * 6;
+                        countLine++;
+                    } catch (Exception e) {
+                        System.out.println(nS[i]);
+                    }
+                    break;
+                case 1:
+                    if (nS[i].equals("м")|| nS[i].equals("мм") || nS[i].equals("м.") || nS[i].equals("м,")){
+                        g2d.setFont(new Font("Times New Roman", Font.BOLD, 14));
+                        g2d.drawString(nS[i],  length2,  y);
+                        break;
+                    }
+                    try {
+                        n = list.get(countLine) + " ";
+                        g2d.setFont(new Font("Times New Roman", Font.BOLD, 14));
+                        g2d.drawString(nS[i],  x,  y);
+                        int length = nS[i].length() * 8;
+                        g2d.setFont(new Font("Times New Roman", Font.BOLD, 14).deriveFont(fontAttributes));
+                        g2d.drawString(n ,  length+x,  y);
+                        countLine++;
+                    } catch (Exception e) {
+                        System.out.println(nS[i]);
+                    }
+                    break;
+            }
+
+
+
+
+        }
+        length2 = 10;
     }
 
     public void printList(String text) throws PrinterException {
@@ -81,14 +144,24 @@ public class Main {
                 for (int i = linesPerPage * pageIndex; i < data.size()
                         && i < linesPerPage * (pageIndex + 1); i++) {
                     //System.out.println(data.get(i) + " " + data.get(i).length());
-                    if (Objects.equals(data.get(i), "Линия № _______ ")
-                            ||  Objects.equals(data.get(i), "Скважина № __________")){
-                        g2d.setFont(new Font("Times New Roman", Font.BOLD, 12));
-                        g2d.drawString(data.get(i),200,  y);
-                        g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+                   
+                    if (Objects.equals(data.get(i), "Линия № #")
+                            ||  Objects.equals(data.get(i), "Скважина № #")){
+
+                        if(data.get(i).contains("#")){
+                            replace(data.get(i), 200, y, g2d, pageFormat, 1);
+                        }else {
+                            g2d.drawString(data.get(i),200,  y);
+                        }
                         y += 23;
                     }else{
-                        g2d.drawString(data.get(i),10, y );
+                        if(data.get(i).contains("#")){
+                            replace(data.get(i), 10, y, g2d, pageFormat, 0);
+                        }else {
+                            g2d.drawString(data.get(i),10,  y);
+                        }
+
+                        //g2d.drawString(data.get(i),10, y );
                         y += 18;
                     }
                 }
@@ -190,7 +263,8 @@ public class Main {
                 }
                 g2d.drawString("Линия № ____________ Скважина № ________ ", 10, retreat);*/
 
-
+                length2 = 10;
+                countLine = 0;
                 return PAGE_EXISTS;
             }
         };
@@ -218,7 +292,7 @@ public class Main {
         }
     }
 
-    public static void main(String[] args) throws PrinterException {
+    public  void main(String[] args) throws PrinterException {
         init();
         Printable printable = new Printable() {
             @Override

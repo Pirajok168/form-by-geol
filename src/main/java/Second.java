@@ -7,7 +7,9 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
+import javafx.scene.layout.VBox;
 
 public class Second {
 
@@ -19,6 +21,8 @@ public class Second {
     Parent root2;
     @FXML
     private AnchorPane listTwo;
+    @FXML
+    private VBox container;
 
 
 
@@ -27,9 +31,12 @@ public class Second {
     }
 
 
+
+
     @FXML
-    void onKk(ActionEvent event) {
-        System.out.println("qwe");
+    void onClickToFirstList(MouseEvent event) throws IOException {
+        Parent newRoot = FXMLLoader.load(getClass().getResource("sample.fxml"));
+        container.getScene().setRoot(newRoot);
     }
 
     @FXML

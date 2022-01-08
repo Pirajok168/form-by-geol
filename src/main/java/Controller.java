@@ -8,6 +8,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -149,6 +150,14 @@ public class Controller {
     private Color x4;
 
     private ModelFirstList modelFirstList = Single.getInstance().getModelFirstList();
+
+
+
+    @FXML
+    void onClickToSecondList(MouseEvent event) throws IOException {
+        Parent newRoot = FXMLLoader.load(getClass().getResource("second.fxml"));
+        container.getScene().setRoot(newRoot);
+    }
 
     @FXML
     void onPrinting(ActionEvent event) throws PrinterException, IOException {

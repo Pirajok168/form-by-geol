@@ -31,9 +31,9 @@ public class Main {
         data.add("Линия № #");
         data.add("На расстоянии от устья#м, от линии №#(вниз, вверх)#м");
         data.add("Азимут буровой линии (магнитный, истинный)#");
-        data.add("Скважина № #");
+        data.add("Скважина №#");
         data.add("Расположена на правой (левой) стороне от русла на расстоянии от него#м,");
-        data.add("От скважины № #вправо (влево)#м#");
+        data.add("От скважины №#вправо (влево)#м#");
         data.add("Скважина начала#Окончена #");
         data.add("Высотная отметка устья скважины#, координаты: х-, у-#");
         data.add("Пройдено в мерзлоте от#до#, от#до#");
@@ -62,7 +62,7 @@ public class Main {
 
         Map<TextAttribute, Integer> fontAttributes = new HashMap<TextAttribute, Integer>();
         fontAttributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
-
+        FontMetrics metrics = g2d.getFontMetrics(new Font("Times New Roman", Font.PLAIN, 12));
         String nS[] = str.split("#");
         List<String> list = modelFirstList.list;
         for (int i = 0; i < nS.length; i++) {
@@ -72,7 +72,6 @@ public class Main {
                     if (nS[i].equals("м")|| nS[i].equals("мм") || nS[i].equals("м.") || nS[i].equals("м,")){
                         g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
                         g2d.drawString(nS[i],  length2,  y);
-
                         break;
                     }
                     try {
@@ -80,12 +79,10 @@ public class Main {
                         g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
                         g2d.drawString(nS[i],  length2,  y);
 
-                        int length = nS[i].length() * 6;
-                        this.length2 += length;
-
+                        this.length2 += metrics.stringWidth(nS[i]);
                         g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12).deriveFont(fontAttributes));
-                        g2d.drawString(n ,  length2,  y);
-                        this.length2 += n.length() * 6;
+                        g2d.drawString(n ,  length2 + 2,  y);
+                        this.length2 += metrics.stringWidth(n);
                         countLine++;
                     } catch (Exception e) {
                         System.out.println(nS[i]);
@@ -146,7 +143,7 @@ public class Main {
                     //System.out.println(data.get(i) + " " + data.get(i).length());
                    
                     if (Objects.equals(data.get(i), "Линия № #")
-                            ||  Objects.equals(data.get(i), "Скважина № #")){
+                            ||  Objects.equals(data.get(i), "Скважина №#")){
 
                         if(data.get(i).contains("#")){
                             replace(data.get(i), 200, y, g2d, pageFormat, 1);

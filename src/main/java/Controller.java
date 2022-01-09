@@ -1,7 +1,9 @@
 import java.awt.print.PrinterException;
 import java.io.IOException;
-import java.net.URL;
-import java.util.ResourceBundle;
+
+import View.ModelFirstList;
+import View.Single;
+import printing.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -9,7 +11,6 @@ import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
@@ -164,7 +165,7 @@ public class Controller {
 
 
         /*Thread t = new Thread(new Runnable() { public void run() {
-            modelFirstList = new ModelFirstList( altitudeMark.getText(),  azimuth.getText(),  borehole.getText(),  casingDepth.getText(),
+            modelFirstList = new View.ModelFirstList( altitudeMark.getText(),  azimuth.getText(),  borehole.getText(),  casingDepth.getText(),
                     compositionRocks.getText(),  coordinates.getText(),  distanceFromTheMouth.getText(),
                     distanceFromTheRiverbed.getText(),  downUp.getText(),
                     drillingDiameterM.getText(),  drillingDiameterMM.getText(),  drillingRig.getText(),  end.getText(),

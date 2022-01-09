@@ -1,15 +1,16 @@
+package printing;
+
+import View.ModelFirstList;
+import View.Single;
+
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
 import javax.print.attribute.Size2DSyntax;
 import javax.print.attribute.standard.MediaPrintableArea;
 import javax.print.attribute.standard.MediaSize;
 import javax.print.attribute.standard.MediaSizeName;
-import javax.print.attribute.standard.OrientationRequested;
 import java.awt.*;
 import java.awt.font.TextAttribute;
-import java.awt.geom.AffineTransform;
-import java.awt.geom.Line2D;
-import java.awt.image.BufferedImage;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
@@ -22,7 +23,7 @@ public class Main {
     private  int linesPerPage = 20;
     private  List<String> data = new ArrayList<>();
     private  List<String> data2 = new ArrayList<>();
-    private  ModelFirstList modelFirstList = Single.getInstance().getModelFirstList();
+    private ModelFirstList modelFirstList = Single.getInstance().getModelFirstList();
     public  void init(){
 
         data.add("Долина реки#правого (левого) притока#в системе#");

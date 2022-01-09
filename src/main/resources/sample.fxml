@@ -205,7 +205,7 @@
                                     <TextField fx:id="azimuth" layoutX="325.0" layoutY="261.0" text="PLAIN" />
                                     <Text layoutX="12.0" layoutY="339.0" lineSpacing="10.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Расположена на правой (левой) стороне от русла на расстоянии от него                       м, От скважины №                 вправо (влево)                       м                                                  Скважина начата                                     Окончена                                                             Высотная отметка устья скважины                                   , координаты: х-, у-                      Пройдено в мерзлоте от                        до                        , от                        до                   Пройдено в талом грунте от                        до                        , от                      до                   Общая глубина скважины                       м, глубина обсада                                      м Состав пород плотика                                  , пройдено по ним                                м Скважина пройдена (добита), остановлена (недобита) на глубине                            м Уровень воды в скважине (от поверхности): встречный                        м, установившийся                                 м.                                                                         Диаметр бурения на глубину                          м                                    мм                    Буровой станок                     : промывка                          лотком                       Геолог                                                                            , маркшейдер                                   " wrappingWidth="574.0">
                                        <font>
-                                          <Font size="14.0" />
+                                          <Font name="Segoe UI" size="14.0" />
                                        </font>
                                     </Text>
                                     <TextField fx:id="distanceFromTheRiverbed" layoutX="482.0" layoutY="324.0" prefHeight="25.0" prefWidth="80.0" text="PLAIN" />
@@ -217,7 +217,7 @@
                                     <TextField fx:id="start" layoutX="127.0" layoutY="379.0" prefHeight="25.0" prefWidth="131.0" text="PLAIN" />
                                     <TextField fx:id="end" layoutX="340.0" layoutY="379.0" text="PLAIN" />
                                     <TextField fx:id="altitudeMark" layoutX="237.0" layoutY="408.0" prefHeight="25.0" prefWidth="126.0" text="PLAIN" />
-                                    <TextField fx:id="coordinates" layoutX="494.0" layoutY="408.0" prefHeight="25.0" prefWidth="115.0" text="PLAIN" />
+                                    <TextField fx:id="coordinates" layoutX="494.0" layoutY="408.0" maxHeight="25.0" maxWidth="115.0" minHeight="25.0" minWidth="115.0" prefHeight="25.0" prefWidth="115.0" text="PLAIN" />
                                     <TextField fx:id="permafrostFrom" layoutX="175.0" layoutY="438.0" prefHeight="25.0" prefWidth="84.0" text="PLAIN" />
                                     <TextField fx:id="permafrostTo" layoutX="283.0" layoutY="438.0" prefHeight="25.0" prefWidth="84.0" text="PLAIN" />
                                     <TextField fx:id="permafrostFrom2" layoutX="397.0" layoutY="438.0" prefHeight="25.0" prefWidth="84.0" text="PLAIN" />

@@ -17,13 +17,13 @@ public class CellContoller extends ListCell<LeftTabs> {
             String path = "";
             switch (leftTabs){
                 case Result -> {
-                    path="tabsPrev\\resultPrevItem.fxml";
+                    path="tabsPrev/resultPrevItem.fxml";
                 }
                 case Documentation -> {
-                    path="tabsPrev\\documentPrevItem.fxml";
+                    path="tabsPrev/documentPrevItem.fxml";
                 }
                 default -> {
-                    path="tabsPrev\\documentPrevItem.fxml";
+                    path="tabsPrev/documentPrevItem.fxml";
                 }
             }
             try {

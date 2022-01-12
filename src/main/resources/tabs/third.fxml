@@ -56,7 +56,7 @@
                            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                         </VBox.margin>
                         <children>
-                           <ScrollPane fitToHeight="true" prefHeight="200.0" prefWidth="1200.0">
+                           <ScrollPane fitToHeight="true" prefHeight="200.0" prefWidth="1158.0" maxWidth="1200.0">
                               <content>
                                  <GridPane>
                                    <columnConstraints>
@@ -82,31 +82,31 @@
                                        <RowConstraints />
                                    </rowConstraints>
                                     <children>
-                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" />
+                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" fx:id="1" />
                                        <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                           <children>
-                                             <TextArea prefHeight="200.0" prefWidth="200.0" promptText="от" />
-                                             <TextArea prefHeight="200.0" prefWidth="200.0" promptText="до" />
+                                             <TextArea prefHeight="200.0" prefWidth="200.0" promptText="от" fx:id="2"/>
+                                             <TextArea prefHeight="200.0" prefWidth="200.0" promptText="до" fx:id="3"/>
                                           </children>
                                        </HBox>
-                                       <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" />
-                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" />
-                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                       <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" fx:id="4" />
+                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" fx:id="5" />
+                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" fx:id="6" />
+                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" fx:id="7" />
                                        <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="1">
                                           <children>
-                                              <TextArea prefHeight="200.0" prefWidth="200.0" promptText="от" />
-                                             <TextArea prefHeight="200.0" prefWidth="200.0" promptText="до" />
+                                              <TextArea prefHeight="200.0" prefWidth="200.0" promptText="от" fx:id="8" />
+                                             <TextArea prefHeight="200.0" prefWidth="200.0" promptText="до " fx:id="9" />
                                           </children>
                                        </HBox>
-                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="1" />
-                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="8" GridPane.rowIndex="1" />
-                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="9" GridPane.rowIndex="1" />
-                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="10" GridPane.rowIndex="1" />
-                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="11" GridPane.rowIndex="1" />
-                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="12" GridPane.rowIndex="1" />
-                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="13" GridPane.rowIndex="1" />
-                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="14" GridPane.rowIndex="1" />
+                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="1" fx:id="10"/>
+                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="8" GridPane.rowIndex="1" fx:id="11" />
+                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="9" GridPane.rowIndex="1" fx:id="12"/>
+                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="10" GridPane.rowIndex="1" fx:id="13"/>
+                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="11" GridPane.rowIndex="1" fx:id="14" />
+                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="12" GridPane.rowIndex="1" fx:id="15"/>
+                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="13" GridPane.rowIndex="1" fx:id="16"/>
+                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="14" GridPane.rowIndex="1" fx:id="17"/>
                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Месяц, число, смена, бурильщик, прромывальщик, геолог" textAlignment="CENTER" wrappingWidth="97.69140625" />
                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Пройдено, м" textAlignment="CENTER" wrappingWidth="100.72265625" GridPane.columnIndex="1" />
                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Диаметр бурения. мм Длина оейса. м" textAlignment="CENTER" wrappingWidth="97.5859375" GridPane.columnIndex="2" />

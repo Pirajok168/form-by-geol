@@ -17,7 +17,7 @@ public class TestFx extends Application{
 
     @Override
     public void start(Stage stage) throws IOException {
-        Single single = Single.getInstance();
+        Single.getInstance();
         Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
         stage.setTitle("My app");
         stage.setScene(new Scene(root, 700,700));

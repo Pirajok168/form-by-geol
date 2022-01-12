@@ -10,6 +10,7 @@ import controller.Second;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
+
 import printing.Main;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -160,7 +161,7 @@ public class MainController {
 
     private ModelFirstList modelFirstList = Single.getInstance().getModelFirstList();
 
-    private ObservableList<LeftTabs> leftTabsList = FXCollections.observableArrayList(Arrays.asList(LeftTabs.Documentation, LeftTabs.Result ));
+    private ObservableList<LeftTabs> leftTabsList = FXCollections.observableArrayList(Arrays.asList(LeftTabs.Documentation, LeftTabs.Result, LeftTabs.Table ));
 
     @FXML
     private ListView<LeftTabs> listView;
@@ -174,7 +175,8 @@ public class MainController {
 
     @FXML
     void onPrinting(ActionEvent event) throws PrinterException, IOException {
-
+      
+        
 
         /*Thread t = new Thread(new Runnable() { public void run() {
             modelFirstList = new View.ModelFirstList( altitudeMark.getText(),  azimuth.getText(),  borehole.getText(),  casingDepth.getText(),
@@ -213,8 +215,8 @@ public class MainController {
     }
 
     @FXML
-    void initialize() {
-
+    void initialize(){
+        
 
         listView.setCellFactory((a)-> new CellContoller());
 
@@ -223,12 +225,15 @@ public class MainController {
         listView.getSelectionModel().selectedItemProperty().addListener((observableValue, oldVal, newVal) -> {
             String path = "";
             switch (newVal){
-                case Result -> {
+                case Result:
                     path="tabs\\second.fxml";
-                }
-                case Documentation -> {
+                    break;
+                case Documentation:
                     path="tabs\\sample.fxml";
-                }
+                    break;
+                case Table:
+                    path="tabs\\third.fxml";
+                    break;
             }
             Parent newRoot = null;
             try {

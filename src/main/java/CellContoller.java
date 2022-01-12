@@ -22,7 +22,9 @@ public class CellContoller extends ListCell<LeftTabs> {
                 case Documentation -> {
                     path="tabsPrev\\documentPrevItem.fxml";
                 }
-
+                default -> {
+                    path="tabsPrev\\documentPrevItem.fxml";
+                }
             }
             try {
                 if (node==null){

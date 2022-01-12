@@ -4,16 +4,11 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<HBox alignment="CENTER" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
+<HBox alignment="TOP_CENTER" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <Pane maxHeight="300.0" maxWidth="200.0" prefHeight="300.0" prefWidth="200.0" style="-fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0); -fx-background-color: ffffff;">
          <children>
-            <Label layoutX="69.0" layoutY="14.0" text="ЖУРНАЛ" textFill="#000000">
-               <font>
-                  <Font name="System Bold" size="10.0" />
-               </font>
-            </Label>
-            <Label layoutX="20.0" layoutY="29.0" text="ДОКУМЕНТАЦИИ СКВАЖИН" textFill="#000000">
+            <Label layoutX="16.0" layoutY="14.0" text="Результаты подсчета по скважине" textFill="#000000">
                <font>
                   <Font name="System Bold" size="10.0" />
                </font>

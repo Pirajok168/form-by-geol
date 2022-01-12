@@ -1,24 +1,15 @@
 package controller;
 
-import View.ModelFirstList;
+import View.Model;
 import View.Single;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.ListView;
-import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextField;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import printing.Main;
-
-import java.awt.print.PrinterException;
-import java.io.IOException;
-import java.util.Arrays;
 
 public class FirstListController {
     @FXML
@@ -153,28 +144,10 @@ public class FirstListController {
     @FXML
     private Color x4;
 
-    private ModelFirstList modelFirstList = Single.getInstance().getModelFirstList();
+    private Model model = Single.getInstance().getModelFirstList();
     @FXML
-    void onPrinting(ActionEvent event) throws PrinterException, IOException {
-
-
-
-        /*Thread t = new Thread(new Runnable() { public void run() {
-            modelFirstList = new View.ModelFirstList( altitudeMark.getText(),  azimuth.getText(),  borehole.getText(),  casingDepth.getText(),
-                    compositionRocks.getText(),  coordinates.getText(),  distanceFromTheMouth.getText(),
-                    distanceFromTheRiverbed.getText(),  downUp.getText(),
-                    drillingDiameterM.getText(),  drillingDiameterMM.getText(),  drillingRig.getText(),  end.getText(),
-                    flushing.getText(),  fromTheLine.getText(),  fromTheWell.getText(),  geologist.getText(),  groundFrom.getText(),
-                    groundFrom2.getText(),  groundTo.getText(),  groundTo2.getText(),  line.getText(),  passed.getText(),
-                    passedOrStopped.getText(),  permafrostFrom.getText(),  permafrostFrom2.getText(),  permafrostTo.getText(),
-                    permafrostTo2.getText(),  region.getText(),  rightLeft.getText(),  riverValley.getText(),  start.getText(),
-                    surveyor.getText(),  system.getText(),  totalDepth.getText(),  tributary.getText(),  typeOfPlacer.getText(),
-                    waterLevel.getText(),  waterLevelStop.getText());
-        }});*/
-
-
-
-        modelFirstList.setData(altitudeMark.getText(),  azimuth.getText(),  borehole.getText(),  casingDepth.getText(),
+    void onCllck(MouseEvent event) {
+        model.setDataFirstList(altitudeMark.getText(),  azimuth.getText(),  borehole.getText(),  casingDepth.getText(),
                 compositionRocks.getText(),  coordinates.getText(),  distanceFromTheMouth.getText(),
                 distanceFromTheRiverbed.getText(),  downUp.getText(),
                 drillingDiameterM.getText(),  drillingDiameterMM.getText(),  drillingRig.getText(),  end.getText(),
@@ -184,15 +157,26 @@ public class FirstListController {
                 permafrostTo2.getText(),  region.getText(),  rightLeft.getText(),  riverValley.getText(),  start.getText(),
                 surveyor.getText(),  system.getText(),  totalDepth.getText(),  tributary.getText(),  typeOfPlacer.getText(),
                 waterLevel.getText(),  waterLevelStop.getText());
+    }
 
-        Main main = new Main();
-        main.printList("3");
-        /*System.out.println("Клик");
-        //controller.Second second = new controller.Second();
-        firstList.setVisible(false);
-        Parent newRoot = FXMLLoader.load(getClass().getResource("second.fxml"));
-        container.getScene().setRoot(newRoot);*/
+    public void setData() {
+        String a = altitudeMark.getText();
+        model.setDataFirstList(altitudeMark.getText(),  azimuth.getText(),  borehole.getText(),  casingDepth.getText(),
+                compositionRocks.getText(),  coordinates.getText(),  distanceFromTheMouth.getText(),
+                distanceFromTheRiverbed.getText(),  downUp.getText(),
+                drillingDiameterM.getText(),  drillingDiameterMM.getText(),  drillingRig.getText(),  end.getText(),
+                flushing.getText(),  fromTheLine.getText(),  fromTheWell.getText(),  geologist.getText(),  groundFrom.getText(),
+                groundFrom2.getText(),  groundTo.getText(),  groundTo2.getText(),  line.getText(),  passed.getText(),
+                passedOrStopped.getText(),  permafrostFrom.getText(),  permafrostFrom2.getText(),  permafrostTo.getText(),
+                permafrostTo2.getText(),  region.getText(),  rightLeft.getText(),  riverValley.getText(),  start.getText(),
+                surveyor.getText(),  system.getText(),  totalDepth.getText(),  tributary.getText(),  typeOfPlacer.getText(),
+                waterLevel.getText(),  waterLevelStop.getText());
+    }
+    @FXML
+    void initialize(){
+        waterLevel.focusedProperty().addListener(( a ,b ,c)->{
 
+        });
     }
 
 }

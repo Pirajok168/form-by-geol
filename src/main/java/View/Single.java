@@ -2,10 +2,10 @@ package View;
 
 public class Single {
     private static Single instance;
-    private ModelFirstList modelFirstList = new ModelFirstList();
+    private Model model = new Model();
 
-    public ModelFirstList getModelFirstList() {
-        return modelFirstList;
+    public Model getModelFirstList() {
+        return model;
     }
 
     public static synchronized Single getInstance() {

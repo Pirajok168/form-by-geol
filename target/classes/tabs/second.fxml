@@ -1,15 +1,21 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.geometry.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.text.*?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Tab?>
+<?import javafx.scene.control.TabPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
 
-<VBox prefHeight="1100.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.Second">
-
-
-
-
+<VBox prefHeight="1100.0" prefWidth="1000.0" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
+      fx:controller="controller.SecondListController">
+   
    <BorderPane fx:id="contentPane">
       <center>
          <TabPane tabClosingPolicy="UNAVAILABLE" BorderPane.alignment="CENTER">
@@ -62,10 +68,10 @@
                                                    <Font size="14.0" />
                                                 </font>
                                              </Text>
-                                             <TextField layoutX="130.0" layoutY="146.0" />
-                                             <TextField layoutX="130.0" layoutY="180.0" />
-                                             <TextField layoutX="88.0" layoutY="14.0" />
-                                             <TextField layoutX="178.0" layoutY="47.0" />
+                                             <TextField fx:id="dressing" layoutX="130.0" layoutY="146.0" />
+                                             <TextField fx:id="h_сh" layoutX="130.0" layoutY="180.0" />
+                                             <TextField fx:id="probaAi" layoutX="88.0" layoutY="14.0" />
+                                             <TextField fx:id="content" layoutX="178.0" layoutY="47.0" />
                                              <Text layoutX="47.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Для сплошной выемки (на массу)" wrappingWidth="164.298828125">
                                                 <font>
                                                    <Font size="14.0" />
@@ -81,8 +87,8 @@
                                                    <Font size="14.0" />
                                                 </font>
                                              </Text>
-                                             <TextField layoutX="130.0" layoutY="256.0" />
-                                             <TextField layoutX="130.0" layoutY="290.0" />
+                                             <TextField fx:id="dressing2" layoutX="130.0" layoutY="256.0" />
+                                             <TextField fx:id="h_сh2" layoutX="130.0" layoutY="290.0" />
                                              <Text layoutX="46.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Для подземной добычи (на плвот)" wrappingWidth="164.298828125">
                                                 <font>
                                                    <Font size="14.0" />
@@ -98,8 +104,8 @@
                                                    <Font size="14.0" />
                                                 </font>
                                              </Text>
-                                             <TextField layoutX="129.0" layoutY="359.0" />
-                                             <TextField layoutX="129.0" layoutY="393.0" />
+                                             <TextField fx:id="dressing3" layoutX="129.0" layoutY="359.0" />
+                                             <TextField fx:id="h_сh3" layoutX="129.0" layoutY="393.0" />
                                              <Text layoutX="14.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Мощность торфов" wrappingWidth="231.6279296875">
                                                 <font>
                                                    <Font size="14.0" />
@@ -120,8 +126,8 @@
                                                    <Font size="14.0" />
                                                 </font>
                                              </Text>
-                                             <TextField layoutX="130.0" layoutY="506.0" />
-                                             <TextField layoutX="130.0" layoutY="543.0" />
+                                             <TextField fx:id="dressing4" layoutX="130.0" layoutY="506.0" />
+                                             <TextField fx:id="h_сh4" layoutX="130.0" layoutY="543.0" />
                                              <Text layoutX="47.0" layoutY="592.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Для сплошной выемки (на массу)" wrappingWidth="164.298828125">
                                                 <font>
                                                    <Font size="14.0" />
@@ -137,8 +143,8 @@
                                                    <Font size="14.0" />
                                                 </font>
                                              </Text>
-                                             <TextField layoutX="129.0" layoutY="628.0" />
-                                             <TextField layoutX="129.0" layoutY="662.0" />
+                                             <TextField fx:id="dressing5" layoutX="129.0" layoutY="628.0" />
+                                             <TextField fx:id="h_сh5" layoutX="129.0" layoutY="662.0" />
                                              <Text layoutX="47.0" layoutY="709.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Для подземной добычи (на плвот)" wrappingWidth="164.298828125">
                                                 <font>
                                                    <Font size="14.0" />
@@ -154,8 +160,8 @@
                                                    <Font size="14.0" />
                                                 </font>
                                              </Text>
-                                             <TextField layoutX="129.0" layoutY="745.0" />
-                                             <TextField layoutX="129.0" layoutY="779.0" />
+                                             <TextField fx:id="dressing6" layoutX="129.0" layoutY="745.0" />
+                                             <TextField fx:id="h_сh6" layoutX="129.0" layoutY="779.0" />
                                              <Text layoutX="373.0" layoutY="99.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Мощность песков (пласта)" wrappingWidth="231.6279296875">
                                                 <font>
                                                    <Font size="14.0" />
@@ -176,8 +182,8 @@
                                                    <Font size="14.0" />
                                                 </font>
                                              </Text>
-                                             <TextField layoutX="489.0" layoutY="146.0" />
-                                             <TextField layoutX="489.0" layoutY="180.0" />
+                                             <TextField fx:id="dressing7" layoutX="489.0" layoutY="146.0" />
+                                             <TextField fx:id="h_сh7" layoutX="489.0" layoutY="180.0" />
                                              <Text layoutX="406.0" layoutY="227.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Для сплошной выемки (на массу)" wrappingWidth="164.298828125">
                                                 <font>
                                                    <Font size="14.0" />
@@ -193,8 +199,8 @@
                                                    <Font size="14.0" />
                                                 </font>
                                              </Text>
-                                             <TextField layoutX="489.0" layoutY="256.0" />
-                                             <TextField layoutX="489.0" layoutY="290.0" />
+                                             <TextField fx:id="dressing8" layoutX="489.0" layoutY="256.0" />
+                                             <TextField fx:id="h_сh8" layoutX="489.0" layoutY="290.0" />
                                              <Text layoutX="405.0" layoutY="337.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Для подземной добычи (на плвот)" wrappingWidth="164.298828125">
                                                 <font>
                                                    <Font size="14.0" />
@@ -210,8 +216,8 @@
                                                    <Font size="14.0" />
                                                 </font>
                                              </Text>
-                                             <TextField layoutX="488.0" layoutY="359.0" />
-                                             <TextField layoutX="488.0" layoutY="393.0" />
+                                             <TextField fx:id="dressing9" layoutX="488.0" layoutY="359.0" />
+                                             <TextField fx:id="h_сh9" layoutX="488.0" layoutY="393.0" />
                                              <Text layoutX="373.0" layoutY="445.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Среднее содержание Au" wrappingWidth="231.6279296875">
                                                 <font>
                                                    <Font size="14.0" />
@@ -232,8 +238,8 @@
                                                    <Font size="14.0" />
                                                 </font>
                                              </Text>
-                                             <TextField layoutX="489.0" layoutY="506.0" />
-                                             <TextField layoutX="489.0" layoutY="543.0" />
+                                             <TextField fx:id="dressing10" layoutX="489.0" layoutY="506.0" />
+                                             <TextField fx:id="h_сh10" layoutX="489.0" layoutY="543.0" />
                                              <Text layoutX="406.0" layoutY="592.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Для сплошной выемки (на массу)" wrappingWidth="164.298828125">
                                                 <font>
                                                    <Font size="14.0" />
@@ -249,8 +255,8 @@
                                                    <Font size="14.0" />
                                                 </font>
                                              </Text>
-                                             <TextField layoutX="488.0" layoutY="628.0" />
-                                             <TextField layoutX="488.0" layoutY="662.0" />
+                                             <TextField fx:id="dressing11" layoutX="488.0" layoutY="628.0" />
+                                             <TextField fx:id="h_сh11" layoutX="488.0" layoutY="662.0" />
                                              <Text layoutX="406.0" layoutY="709.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Для подземной добычи (на плвот)" wrappingWidth="164.298828125">
                                                 <font>
                                                    <Font size="14.0" />
@@ -266,8 +272,8 @@
                                                    <Font size="14.0" />
                                                 </font>
                                              </Text>
-                                             <TextField layoutX="488.0" layoutY="745.0" />
-                                             <TextField layoutX="488.0" layoutY="779.0" />
+                                             <TextField fx:id="dressing12" layoutX="488.0" layoutY="745.0" />
+                                             <TextField fx:id="h_сh12" layoutX="488.0" layoutY="779.0" />
                                           </children>
                                        </Pane>
                                     </children>
@@ -311,8 +317,8 @@
                                                    <Font size="14.0" />
                                                 </font>
                                              </Text>
-                                             <TextField layoutX="130.0" layoutY="85.0" />
-                                             <TextField layoutX="130.0" layoutY="119.0" />
+                                             <TextField fx:id="dressing13" layoutX="130.0" layoutY="85.0" />
+                                             <TextField fx:id="h_сh13" layoutX="130.0" layoutY="119.0" />
                                              <Text layoutX="47.0" layoutY="166.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Для сплошной выемки (на массу)" wrappingWidth="164.298828125">
                                                 <font>
                                                    <Font size="14.0" />
@@ -328,8 +334,8 @@
                                                    <Font size="14.0" />
                                                 </font>
                                              </Text>
-                                             <TextField layoutX="130.0" layoutY="195.0" />
-                                             <TextField layoutX="130.0" layoutY="229.0" />
+                                             <TextField fx:id="dressing14" layoutX="130.0" layoutY="195.0" />
+                                             <TextField fx:id="h_сh14" layoutX="130.0" layoutY="229.0" />
                                              <Text layoutX="46.0" layoutY="276.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Для подземной добычи (на плвот)" wrappingWidth="164.298828125">
                                                 <font>
                                                    <Font size="14.0" />
@@ -346,7 +352,7 @@
                                                 </font>
                                              </Text>
                                              <TextField layoutX="129.0" layoutY="298.0" />
-                                             <TextField layoutX="129.0" layoutY="332.0" />
+                                             <TextField fx:id="h_сh15" layoutX="129.0" layoutY="332.0" />
                                              <Text layoutX="14.0" layoutY="384.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Лимитность по кондициям  года" wrappingWidth="231.6279296875">
                                                 <font>
                                                    <Font size="14.0" />
@@ -367,8 +373,8 @@
                                                    <Font size="14.0" />
                                                 </font>
                                              </Text>
-                                             <TextField layoutX="130.0" layoutY="445.0" />
-                                             <TextField layoutX="130.0" layoutY="482.0" />
+                                             <TextField fx:id="dressing15" layoutX="130.0" layoutY="445.0" />
+                                             <TextField fx:id="h_сh16" layoutX="130.0" layoutY="482.0" />
                                              <Text layoutX="47.0" layoutY="531.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Для сплошной выемки (на массу)" wrappingWidth="164.298828125">
                                                 <font>
                                                    <Font size="14.0" />
@@ -384,8 +390,8 @@
                                                    <Font size="14.0" />
                                                 </font>
                                              </Text>
-                                             <TextField layoutX="129.0" layoutY="567.0" />
-                                             <TextField layoutX="129.0" layoutY="601.0" />
+                                             <TextField fx:id="dressing16" layoutX="129.0" layoutY="567.0" />
+                                             <TextField fx:id="h_сh17" layoutX="129.0" layoutY="601.0" />
                                              <Text layoutX="47.0" layoutY="648.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Для подземной добычи (на плвот)" wrappingWidth="164.298828125">
                                                 <font>
                                                    <Font size="14.0" />
@@ -401,9 +407,9 @@
                                                    <Font size="14.0" />
                                                 </font>
                                              </Text>
-                                             <TextField layoutX="129.0" layoutY="684.0" />
-                                             <TextField layoutX="129.0" layoutY="718.0" />
-                                             <TextField layoutX="230.0" layoutY="365.0" prefHeight="26.0" prefWidth="120.0" />
+                                             <TextField fx:id="dressing17" layoutX="129.0" layoutY="684.0" />
+                                             <TextField fx:id="h_сh18" layoutX="129.0" layoutY="718.0" />
+                                             <TextField fx:id="limit" layoutX="230.0" layoutY="365.0" prefHeight="26.0" prefWidth="120.0" />
                                           </children>
                                        </Pane>
                                     </children>

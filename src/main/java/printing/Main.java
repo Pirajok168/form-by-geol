@@ -1,6 +1,6 @@
 package printing;
 
-import View.ModelFirstList;
+import View.Model;
 import View.Single;
 
 import javax.print.attribute.HashPrintRequestAttributeSet;
@@ -23,7 +23,7 @@ public class Main {
     private  int linesPerPage = 20;
     private  List<String> data = new ArrayList<>();
     private  List<String> data2 = new ArrayList<>();
-    private ModelFirstList modelFirstList = Single.getInstance().getModelFirstList();
+    private Model model = Single.getInstance().getModelFirstList();
     public  void init(){
 
         data.add("Долина реки#правого (левого) притока#в системе#");
@@ -65,7 +65,7 @@ public class Main {
         fontAttributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
         FontMetrics metrics = g2d.getFontMetrics(new Font("Times New Roman", Font.PLAIN, 12));
         String nS[] = str.split("#");
-        List<String> list = modelFirstList.list;
+        List<String> list = model.firstList;
         for (int i = 0; i < nS.length; i++) {
             String n = "";
             switch (flag){

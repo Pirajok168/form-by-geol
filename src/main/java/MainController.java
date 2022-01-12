@@ -1,48 +1,34 @@
-import java.awt.print.PrinterException;
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.List;
 
-import View.ModelFirstList;
+import View.Model;
 import View.Single;
-import controller.Second;
+import controller.FirstListController;
+import controller.SecondListController;
+import controller.ThirdController;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.scene.control.*;
 
-import printing.Main;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
-import javafx.scene.layout.VBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Font;
 
 public class MainController {
 
 
     @FXML
     private ScrollPane contentPane;
-
-
-
-    private ModelFirstList modelFirstList = Single.getInstance().getModelFirstList();
-
-    private ObservableList<LeftTabs> leftTabsList = FXCollections.observableArrayList(Arrays.asList(LeftTabs.Documentation, LeftTabs.Result, LeftTabs.Table ));
-
     @FXML
     private ListView<LeftTabs> listView;
 
-    @FXML
-    void onClickToSecondList(MouseEvent event) throws IOException {
-        Parent newRoot = FXMLLoader.load(getClass().getResource("second.fxml"));
-        //container.getScene().setRoot(newRoot);
-        contentPane.setContent(newRoot);
-    }
+
+    private Model model = Single.getInstance().getModelFirstList();
+    private FirstListController firstListController = new FirstListController();
+    private SecondListController secondListController = new SecondListController();
+    private ThirdController thirdController = new ThirdController();
+
+    private ObservableList<LeftTabs> leftTabsList = FXCollections.observableArrayList(Arrays.asList(LeftTabs.Documentation, LeftTabs.Result, LeftTabs.Table ));
 
 
 
@@ -56,6 +42,19 @@ public class MainController {
 
         listView.getSelectionModel().selectedItemProperty().addListener((observableValue, oldVal, newVal) -> {
             String path = "";
+            if (oldVal != null) {
+                switch (oldVal) {
+                    case Documentation:
+                        //firstListController.setData();
+                        break;
+                    case Result:
+                        //secondListController.setDataSecondList();
+                        break;
+                    case Table:
+                        //thirdController.setDataThirdList();
+                        break;
+                }
+            }
             switch (newVal){
                 case Result:
                     path="tabs/second.fxml";
@@ -78,5 +77,8 @@ public class MainController {
         listView.getSelectionModel().select(0);
 
     }
+
+
+
 
 }

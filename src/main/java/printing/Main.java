@@ -2,6 +2,7 @@ package printing;
 
 import View.Model;
 import View.Single;
+import data.FirstList;
 
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
@@ -23,8 +24,9 @@ public class Main {
     private  int linesPerPage = 20;
     private  List<String> data = new ArrayList<>();
     private  List<String> data2 = new ArrayList<>();
-    private Model model = Single.getInstance().getModelFirstList();
-    public  void init(){
+    private  FirstList firstList =  Single.getFirstList();
+    private FirstList table = Single.getFirstList();
+    private void init(){
 
         data.add("Долина реки#правого (левого) притока#в системе#");
         data.add("ручья");
@@ -56,16 +58,18 @@ public class Main {
         data2.add("Лимитность по кондициям");
         data2.add("________ года");
     }
-    private  int countLine = 0;
+    private int countLine = 0;
     private int length2 = 10;
+    private int cellCnt = 0;
+    private Map<TextAttribute, Integer> fontAttributes = new HashMap<TextAttribute, Integer>();
 
-    public  void replace(String str, int x, int y,Graphics2D g2d, PageFormat pageFormat, int flag ){
 
-        Map<TextAttribute, Integer> fontAttributes = new HashMap<TextAttribute, Integer>();
+    private  void replace(String str, int x, int y,Graphics2D g2d, PageFormat pageFormat, int flag ){
+
         fontAttributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
         FontMetrics metrics = g2d.getFontMetrics(new Font("Times New Roman", Font.PLAIN, 12));
         String nS[] = str.split("#");
-        List<String> list = model.firstList;
+        List<String> list = firstList.getFirstList();
         for (int i = 0; i < nS.length; i++) {
             String n = "";
             switch (flag){
@@ -76,7 +80,7 @@ public class Main {
                         break;
                     }
                     try {
-                        n = list.get(countLine) + " ";
+                        n = list.get(countLine+1) + " ";
                         g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
                         g2d.drawString(nS[i],  length2,  y);
 
@@ -96,7 +100,7 @@ public class Main {
                         break;
                     }
                     try {
-                        n = list.get(countLine) + " ";
+                        n = list.get(countLine+1) + " ";
                         g2d.setFont(new Font("Times New Roman", Font.BOLD, 14));
                         g2d.drawString(nS[i],  x,  y);
                         int length = nS[i].length() * 8;
@@ -116,7 +120,23 @@ public class Main {
         length2 = 10;
     }
 
-    public void printList(String text) throws PrinterException {
+    private void replaceTable(int x, int y, Graphics2D g2d){
+        List<String> list = table.getFirstListTable();
+        int x2 = 220;
+        int y2 = y;
+        for (int i = 0; i <= 5; i++) {
+            for (int j = 0; j <= 5; j++) {
+                String val = list.get(cellCnt) +" ";
+                g2d.drawString( val, x2, y2);
+                x2 += 50;
+                cellCnt++;
+            }
+            x2 = 220;
+            y2 += 35;
+        }
+    }
+
+    public void printList() throws PrinterException {
         init();
         Printable printable = new Printable() {
             @Override
@@ -129,7 +149,7 @@ public class Main {
 
                 g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
                 /**тут первая страница*/
-                g2d.drawString("Участок "+ text, 10, 10);
+                g2d.drawString("Участок "+ firstList.getFirstList().get(0) + " ", 10, 10);
                 System.out.println( (int) pageFormat.getImageableWidth());
                 System.out.println((int)pageFormat.getImageableHeight());
                 g2d.setFont(new Font("Times New Roman", Font.BOLD, 14));
@@ -163,12 +183,25 @@ public class Main {
                         y += 18;
                     }
                 }
+                fontAttributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
                 g2d.drawString("Результаты подсчета по скважине", 140, y + 30);
                 y = y + 40;
                 g2d.drawLine(10, y,  (int)pageFormat.getImageableWidth(), y );
                 g2d.setFont(new Font("Times New Roman", Font.PLAIN, 10));
-                g2d.drawString("Проба Au _______", 30, y+20);
-                g2d.drawString("Борт. содержание Au x.ч _______ м???", 11, y+28);
+                g2d.drawString("Проба Au ", 30, y+20);
+                FontMetrics metrics = g2d.getFontMetrics(new Font("Times New Roman", Font.PLAIN, 10));
+                int lenght = metrics.stringWidth("Проба Au");
+                g2d.setFont(new Font("Times New Roman", Font.PLAIN, 10).deriveFont(fontAttributes));
+                String val = table.getProbaAi() + " ";
+                g2d.drawString(val,lenght+35, y+20);
+                //"мг/м^2""
+                g2d.setFont(new Font("Times New Roman", Font.PLAIN, 10));
+                g2d.drawString("Борт. содержание Au x.ч ", 11, y+28);
+                lenght =  metrics.stringWidth("Борт. содержание Au x.ч ");
+                g2d.setFont(new Font("Times New Roman", Font.PLAIN, 10).deriveFont(fontAttributes));
+                val =table.getContent() + " ";
+                g2d.drawString(val, lenght+13, y+28);
+                g2d.setFont(new Font("Times New Roman", Font.PLAIN, 10));
                 g2d.drawString("Един", 180, y+28);
                 g2d.drawString("Измер", 175, y+38);
                 g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
@@ -203,9 +236,11 @@ public class Main {
                 g2d.drawLine(170, y, 170, (int)pageFormat.getImageableHeight()-12);
 
                 g2d.drawLine(210, y, 210, (int)pageFormat.getImageableHeight()-12);
+
                 g2d.drawString("Для раздельной", 220, y3-35);
                 g2d.drawString("добычи (на ?)", 220, y3-20);
                 g2d.drawString("шлих", 220, y3);
+                replaceTable(210, y3+35, g2d);
                 g2d.drawLine(260, y+35, 260, (int)pageFormat.getImageableHeight()-12);
                 g2d.drawString("х.ч", 275, y3);
                 g2d.drawLine(310, y, 310, (int)pageFormat.getImageableHeight()-12);
@@ -263,6 +298,7 @@ public class Main {
 
                 length2 = 10;
                 countLine = 0;
+                cellCnt = 0;
                 return PAGE_EXISTS;
             }
         };

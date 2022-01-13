@@ -1,3 +1,4 @@
+import java.awt.print.PrinterException;
 import java.io.IOException;
 import java.util.Arrays;
 
@@ -6,13 +7,19 @@ import View.Single;
 import controller.FirstListController;
 import controller.SecondListController;
 import controller.ThirdController;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.scene.control.*;
 
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.input.MouseEvent;
+import printing.Main;
 
 public class MainController {
 
@@ -21,6 +28,9 @@ public class MainController {
     private ScrollPane contentPane;
     @FXML
     private ListView<LeftTabs> listView;
+
+    @FXML
+    private MenuItem printing;
 
 
     private Model model = Single.getInstance().getModelFirstList();
@@ -34,7 +44,17 @@ public class MainController {
 
     @FXML
     void initialize(){
-        
+        printing.setOnAction(new EventHandler<ActionEvent>() {
+            @Override
+            public void handle(ActionEvent actionEvent) {
+                Main main = new Main();
+                try {
+                    main.printList();
+                } catch (PrinterException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
         listView.setCellFactory((a)-> new CellContoller());
 

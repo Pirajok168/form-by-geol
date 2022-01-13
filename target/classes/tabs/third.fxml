@@ -32,19 +32,12 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.geometry.Insets?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Text?>
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="controller.ThirdController">
+<VBox xmlns="http://javafx.com/javafx/11.0.2" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThirdController">
 
    <ScrollPane fx:id="contentPane" fitToHeight="true" fitToWidth="true">
       <content>
@@ -52,12 +45,9 @@
             <children>
                <VBox fx:id="container" alignment="CENTER">
                   <children>
-                     <Pane fx:id="firstList" minHeight="700.0" minWidth="900.0" prefHeight="700.0" prefWidth="1200.0" style="-fx-background-color: ffffff; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
-                        <VBox.margin>
-                           <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
-                        </VBox.margin>
+                     <Pane maxHeight="200.0" maxWidth="1200.0" minHeight="200.0" minWidth="1200.0" prefHeight="200.0" prefWidth="1200.0" style="-fx-background-color: ffffff; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
                         <children>
-                           <ScrollPane fitToHeight="true" prefHeight="200.0" prefWidth="1158.0" maxWidth="1200.0">
+                           <ScrollPane fitToHeight="true" maxWidth="1200.0" prefHeight="200.0">
                               <content>
                                  <GridPane>
                                    <columnConstraints>
@@ -83,31 +73,31 @@
                                        <RowConstraints />
                                    </rowConstraints>
                                     <children>
-                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.rowIndex="1" fx:id="_1" />
+                                        <TextArea fx:id="_1" prefHeight="200.0" prefWidth="200.0" text="1" GridPane.rowIndex="1" />
                                        <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                           <children>
-                                             <TextArea prefHeight="200.0" prefWidth="200.0" promptText="от" fx:id="_2"/>
-                                             <TextArea prefHeight="200.0" prefWidth="200.0" promptText="до" fx:id="_3"/>
+                                             <TextArea fx:id="_2" prefHeight="200.0" prefWidth="200.0" promptText="от" text="2" />
+                                             <TextArea fx:id="_3" prefHeight="200.0" prefWidth="200.0" promptText="до" text="3" />
                                           </children>
                                        </HBox>
-                                       <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="2" GridPane.rowIndex="1" fx:id="_4" />
-                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="3" GridPane.rowIndex="1" fx:id="_5" />
-                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="4" GridPane.rowIndex="1" fx:id="_6" />
-                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="5" GridPane.rowIndex="1" fx:id="_7" />
+                                       <TextArea fx:id="_4" prefHeight="200.0" prefWidth="200.0" text="4" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                        <TextArea fx:id="_5" prefHeight="200.0" prefWidth="200.0" text="5" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                        <TextArea fx:id="_6" prefHeight="200.0" prefWidth="200.0" text="6" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                        <TextArea fx:id="_7" prefHeight="200.0" prefWidth="200.0" text="7" GridPane.columnIndex="5" GridPane.rowIndex="1" />
                                        <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="1">
                                           <children>
-                                              <TextArea prefHeight="200.0" prefWidth="200.0" promptText="от" fx:id="_8" />
-                                             <TextArea prefHeight="200.0" prefWidth="200.0" promptText="до " fx:id="_9" />
+                                              <TextArea fx:id="_8" prefHeight="200.0" prefWidth="200.0" promptText="от" text="8" />
+                                             <TextArea fx:id="_9" prefHeight="200.0" prefWidth="200.0" promptText="до " text="9" />
                                           </children>
                                        </HBox>
-                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="7" GridPane.rowIndex="1" fx:id="_10"/>
-                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="8" GridPane.rowIndex="1" fx:id="_11" />
-                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="9" GridPane.rowIndex="1" fx:id="_12"/>
-                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="10" GridPane.rowIndex="1" fx:id="_13"/>
-                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="11" GridPane.rowIndex="1" fx:id="_14" />
-                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="12" GridPane.rowIndex="1" fx:id="_15"/>
-                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="13" GridPane.rowIndex="1" fx:id="_16"/>
-                                        <TextArea prefHeight="200.0" prefWidth="200.0" GridPane.columnIndex="14" GridPane.rowIndex="1" fx:id="_17"/>
+                                        <TextArea fx:id="_10" prefHeight="200.0" prefWidth="200.0" text="10" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+                                        <TextArea fx:id="_11" prefHeight="200.0" prefWidth="200.0" text="11" GridPane.columnIndex="8" GridPane.rowIndex="1" />
+                                        <TextArea fx:id="_12" prefHeight="200.0" prefWidth="200.0" text="12" GridPane.columnIndex="9" GridPane.rowIndex="1" />
+                                        <TextArea fx:id="_13" prefHeight="200.0" prefWidth="200.0" text="13" GridPane.columnIndex="10" GridPane.rowIndex="1" />
+                                        <TextArea fx:id="_14" prefHeight="200.0" prefWidth="200.0" text="14" GridPane.columnIndex="11" GridPane.rowIndex="1" />
+                                        <TextArea fx:id="_15" prefHeight="200.0" prefWidth="200.0" text="15" GridPane.columnIndex="12" GridPane.rowIndex="1" />
+                                        <TextArea fx:id="_16" prefHeight="200.0" prefWidth="200.0" text="16" GridPane.columnIndex="13" GridPane.rowIndex="1" />
+                                        <TextArea fx:id="_17" prefHeight="200.0" prefWidth="200.0" text="17" GridPane.columnIndex="14" GridPane.rowIndex="1" />
                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Месяц, число, смена, бурильщик, прромывальщик, геолог" textAlignment="CENTER" wrappingWidth="97.69140625" />
                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Пройдено, м" textAlignment="CENTER" wrappingWidth="100.72265625" GridPane.columnIndex="1" />
                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Диаметр бурения. мм Длина оейса. м" textAlignment="CENTER" wrappingWidth="97.5859375" GridPane.columnIndex="2" />
@@ -125,6 +115,75 @@
                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Расчет Средних показателей по пласту. Мощность интервалы, м. Верт запас по интервалу, мг/м^3. Срежнезвеш. содержание по пласту, мг/м^3. Вертик. запас по пласа, мг/м^3" textAlignment="CENTER" wrappingWidth="231.3671875" GridPane.columnIndex="14" />
 
                                     </children>
+                                 </GridPane>
+                              </content>
+                           </ScrollPane>
+                        </children>
+                        <VBox.margin>
+                           <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+                        </VBox.margin>
+                     </Pane>
+                     <Button mnemonicParsing="false" onAction="#addRow" text="Добавить " />
+                     <Pane fx:id="firstList" maxHeight="700.0" maxWidth="1400.0" minHeight="700.0" minWidth="1400.0" prefHeight="700.0" prefWidth="1400.0" style="-fx-background-color: ffffff; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
+                        <VBox.margin>
+                           <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                        </VBox.margin>
+                        <children>
+                           <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="700.0" minHeight="700.0" prefHeight="700.0" prefWidth="1400.0">
+                              <content>
+                                 <GridPane fx:id="table" gridLinesVisible="true">
+                                   <columnConstraints>
+                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                     <ColumnConstraints hgrow="SOMETIMES" minWidth="5.0" percentWidth="3.0" prefWidth="100.0" />
+                                       <ColumnConstraints hgrow="SOMETIMES" minWidth="5.0" percentWidth="3.0" prefWidth="100.0" />
+                                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" percentWidth="20.0" prefWidth="100.0" />
+                                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       <ColumnConstraints hgrow="SOMETIMES" minWidth="5.0" percentWidth="3.0" prefWidth="100.0" />
+                                       <ColumnConstraints hgrow="SOMETIMES" minWidth="5.0" percentWidth="3.0" prefWidth="100.0" />
+                                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       <ColumnConstraints hgrow="SOMETIMES" minWidth="20.0" percentWidth="8.0" prefWidth="100.0" />
+                                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                       <ColumnConstraints hgrow="SOMETIMES" minWidth="20.0" percentWidth="10.0" prefWidth="100.0" />
+                                   </columnConstraints>
+                                   <rowConstraints>
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                       <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                   </rowConstraints>
                                  </GridPane>
                               </content>
                            </ScrollPane>

@@ -109,16 +109,49 @@ public class ThirdController {
             table.add(textArea ,i ,row);
         }
         row++;
+    }
 
+    private List<String> transformationToString(TableRow item){
+        List<String> list = new ArrayList<>(Arrays.asList(item.get_1(), item.get_2(),item.get_3(),item.get_4(),item.get_5()
+                ,item.get_6(),item.get_7(),item.get_8(),item.get_9(),item.get_10(),item.get_11(),item.get_12(),item.get_13()
+                ,item.get_14(),item.get_15(),item.get_16(),item.get_17()));
+        return list;
+    }
 
+    private void downloadRow(){
+       List<TableRow> rows = secondList.getTableRows();
+
+       if (rows.size() == 0){
+           return;
+       }
+        for (int i = 0; i < rows.size(); i++) {
+            List<String> items = transformationToString(rows.get(i));
+            for (int j = 0; j < 17; j++) {
+                TextArea textArea = new TextArea();
+                String str =items.get(j);
+                textArea.setText(str);
+                textArea.setEditable(false);
+                table.add(textArea ,j ,row);
+            }
+            row++;
+        }
+        System.out.println("2");
     }
 
     @FXML
     void initialize() {
-
         list = new ArrayList<>(Arrays.asList(_1,_2 ,_3
                 ,_4,_5,_6,_7,_8,_9,_10
                 ,_11,_12,_13,_14,_15,_16,_17));
+
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                downloadRow();
+            }
+        });
+        thread.start();
+        System.out.println("1");
     }
 
 }

@@ -136,18 +136,7 @@ public class SecondListController {
     private Model model = Single.getInstance().getModelFirstList();
     private FirstList firstList = Single.getInstance().getFirstList();
 
-    public void setDataSecondList() {
 
-        model.setDataSecondList( dressing.getText(),  dressing10.getText(),  dressing11.getText(),
-                 dressing12.getText(),  dressing13.getText(),  dressing14.getText(),  dressing15.getText(),
-                 dressing16.getText(),  dressing17.getText(),  dressing2.getText(),  dressing3.getText(),
-                 dressing4.getText(),  dressing5.getText(),  dressing6.getText(),  dressing7.getText(),
-                 dressing8.getText(),  dressing9.getText(),  h_сh.getText(),
-                 h_сh10.getText(),  h_сh11.getText(),  h_сh12.getText(),  h_сh13.getText(),
-                 h_сh14.getText(),  h_сh15.getText(),  h_сh16.getText(),  h_сh17.getText(),  h_сh18.getText(),
-                 h_сh2.getText(),  h_сh3.getText(),  h_сh4.getText(),  h_сh5.getText(),  h_сh6.getText(),
-                 h_сh7.getText(),  h_сh8.getText(),  h_сh9.getText(),  limit.getText(),  probaAi.getText());
-    }
 
     private void initModel(){
         String value = "";

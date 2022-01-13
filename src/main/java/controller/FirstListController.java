@@ -144,8 +144,8 @@ public class FirstListController {
     @FXML
     private Color x4;
 
-    private Model model = Single.getInstance().getModelFirstList();
-    private FirstList firstList = Single.getInstance().getFirstList();
+    private Model model = Single.getModelFirstList();
+    private FirstList firstList = Single.getFirstList();
     @FXML
     void onCllck(MouseEvent event) {
         model.setDataFirstList(altitudeMark.getText(),  azimuth.getText(),  borehole.getText(),  casingDepth.getText(),

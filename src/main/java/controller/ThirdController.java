@@ -1,11 +1,30 @@
 package controller;
 
-import View.Model;
+import java.net.URL;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+import java.util.ResourceBundle;
+
 import View.Single;
+import data.SecondList;
+import data.TableRow;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
+import javafx.scene.layout.GridPane;
+import javafx.scene.layout.Pane;
+import javafx.scene.layout.VBox;
 
 public class ThirdController {
+
+    @FXML
+    private ResourceBundle resources;
+
+    @FXML
+    private URL location;
+
     @FXML
     private TextArea _1;
 
@@ -57,14 +76,49 @@ public class ThirdController {
     @FXML
     private TextArea _9;
 
-    private Model model = Single.getInstance().getModelFirstList();
+    @FXML
+    private VBox container;
+
+    @FXML
+    private ScrollPane contentPane;
+
+    @FXML
+    private Pane firstList;
+
+    @FXML
+    private GridPane table;
+
+    private SecondList secondList = Single.getSecondList();
+
+    private int row = 0;
+
+    private List<TextArea> list;
+
+    @FXML
+    void addRow(ActionEvent event) {
+        TableRow tableRow = new TableRow(row,  _1.getText(),  _2.getText(),  _3.getText(),  _4.getText(),  _5.getText(),  _6.getText(),
+                 _7.getText(),  _8.getText(),  _9.getText(),  _10.getText(),  _11.getText(),  _12.getText(),  _13.getText(),
+                 _14.getText(),  _15.getText(),  _16.getText(),  _17.getText()
+        );
+        secondList.addItemRow(tableRow);
+        for (int i = 0; i < 17; i++) {
+            TextArea textArea = new TextArea();
+            String str =list.get(i).getText();
+            textArea.setText(str);
+            textArea.setEditable(false);
+            table.add(textArea ,i ,row);
+        }
+        row++;
 
 
-    public void setDataThirdController(TextArea _1, TextArea _10, TextArea _11, TextArea _12, TextArea _13, TextArea _14,
-                           TextArea _15, TextArea _16, TextArea _17, TextArea _2, TextArea _3, TextArea _4, TextArea _5,
-                           TextArea _6, TextArea _7, TextArea _8, TextArea _9) {
-        model.setDataThirdController( _1.getText(),  _10.getText(),  _11.getText(),  _12.getText(),  _13.getText(),  _14.getText(),
-                 _15.getText(),  _16.getText(),  _17.getText(),  _2.getText(),  _3.getText(),  _4.getText(),  _5.getText(),
-                 _6.getText(),  _7.getText(),  _8.getText(),  _9.getText());
     }
+
+    @FXML
+    void initialize() {
+
+        list = new ArrayList<>(Arrays.asList(_1,_2 ,_3
+                ,_4,_5,_6,_7,_8,_9,_10
+                ,_11,_12,_13,_14,_15,_16,_17));
+    }
+
 }

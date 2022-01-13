@@ -3,6 +3,8 @@ package printing;
 import View.Model;
 import View.Single;
 import data.FirstList;
+import data.SecondList;
+import data.TableRow;
 
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
@@ -25,7 +27,9 @@ public class Main {
     private  List<String> data = new ArrayList<>();
     private  List<String> data2 = new ArrayList<>();
     private  FirstList firstList =  Single.getFirstList();
-    private FirstList table = Single.getFirstList();
+    private  FirstList table = Single.getFirstList();
+    private SecondList secondList = Single.getSecondList();
+
     private void init(){
 
         data.add("Долина реки#правого (левого) притока#в системе#");
@@ -64,7 +68,7 @@ public class Main {
     private Map<TextAttribute, Integer> fontAttributes = new HashMap<TextAttribute, Integer>();
 
 
-    private  void replace(String str, int x, int y,Graphics2D g2d, PageFormat pageFormat, int flag ){
+    private void replace(String str, int x, int y,Graphics2D g2d, PageFormat pageFormat, int flag ){
 
         fontAttributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
         FontMetrics metrics = g2d.getFontMetrics(new Font("Times New Roman", Font.PLAIN, 12));
@@ -136,6 +140,46 @@ public class Main {
         }
     }
 
+    private List<String> transformationToString(TableRow item){
+        List<String> list = new ArrayList<>(Arrays.asList(item.get_1(), item.get_2(),item.get_3(),item.get_4(),item.get_5()
+                ,item.get_6(),item.get_7(),item.get_8(),item.get_9(),item.get_10(),item.get_11(),item.get_12(),item.get_13()
+                ,item.get_14(),item.get_15(),item.get_16(),item.get_17()));
+        return list;
+    }
+
+    private void bigTable(int x, int y, Graphics2D g2d){
+        List<TableRow> rows = secondList.getTableRows();
+        int x2 = x-30;
+        int y2 = y+5;
+        for (int i = 0; i < rows.size() ; i++) {
+            List<String> items = transformationToString(rows.get(i));
+            for (int j = 0; j < 7; j++) {
+                if (j==0){
+                    String val = items.get(j) + " ";
+                    g2d.drawString(val, x2, y2);
+                    x2+=65;
+                }else if (j==1){
+                    String val = items.get(j) + " ";
+                    g2d.drawString(val, x2+2, y2);
+                    x2 += 41;
+                }else if(j==5){
+                    String val = items.get(j) + " ";
+                    g2d.drawString(val, x2, y2);
+                    x2 += 220;
+                }else{
+                    String val = items.get(j) + " ";
+                    g2d.drawString(val, x2, y2);
+                    x2+=41;
+                }
+            }
+            y2+=21;
+            x2 = x-30;
+        }
+
+    }
+
+
+
     public void printList() throws PrinterException {
         init();
         Printable printable = new Printable() {
@@ -149,7 +193,7 @@ public class Main {
 
                 g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
                 /**тут первая страница*/
-                g2d.drawString("Участок "+ firstList.getFirstList().get(0) + " ", 10, 10);
+                /*g2d.drawString("Участок "+ firstList.getFirstList().get(0) + " ", 10, 10);
                 System.out.println( (int) pageFormat.getImageableWidth());
                 System.out.println((int)pageFormat.getImageableHeight());
                 g2d.setFont(new Font("Times New Roman", Font.BOLD, 14));
@@ -254,10 +298,10 @@ public class Main {
                 g2d.drawString("выемки (на массу)", 420, y3-20);
                 g2d.drawString("шлих", 420, y3);
                 g2d.drawLine(460, y+35, 460, (int)pageFormat.getImageableHeight()-12);
-                g2d.drawString("х.ч", 475, y3);
+                g2d.drawString("х.ч", 475, y3);*/
 
                 /**тут вторая страница*/
-                /*int start = 10;
+                int start = 10;
                 int retreat = 10;
                 g2d.drawString("Геолог______________", start, retreat);
                 g2d.drawString("Дата______________", 200, retreat);
@@ -269,13 +313,14 @@ public class Main {
                 g2d.drawLine(start,  retreat, (int) pageFormat.getImageableWidth(), retreat);
                 retreat += 15;
                 g2d.drawLine(start,  retreat, (int) pageFormat.getImageableWidth(), retreat);
-                retreat += 20;
+                retreat += 21;
                 for (int i = 0; i < 31; i++) {
                     g2d.drawLine(start,  retreat, (int) pageFormat.getImageableWidth(), retreat);
-                    retreat += 20;
+                    retreat += 21;
                 }
                 start += 70;
                 int startC = start-35;
+                bigTable(startC,40+65+10, g2d);
                 for (int i = 0; i < 6; i++) {
                     if (i==1){
                         g2d.drawString(i+1 + "", startC, 40 +65);
@@ -291,10 +336,11 @@ public class Main {
                         g2d.drawString(i+1 + "", startC, 40+65);
                         startC +=45;
                         g2d.drawLine(start,  35, start, (int) pageFormat.getImageableHeight());
+
                     }
                     start += 40;
                 }
-                g2d.drawString("Линия № ____________ Скважина № ________ ", 10, retreat);*/
+                g2d.drawString("Линия № ____________ Скважина № ________ ", 10, retreat);
 
                 length2 = 10;
                 countLine = 0;
@@ -312,11 +358,13 @@ public class Main {
         //Ориентация
         //attrs.add(OrientationRequested.LANDSCAPE);
 
+
+        //было - 28 и 20 20
         attrs.add(new MediaPrintableArea(
                 20,
                 20,
-                MediaSize.ISO.A4.getX( Size2DSyntax.MM ) - 28,
-                MediaSize.ISO.A4.getY( Size2DSyntax.MM ) - 28,
+                MediaSize.ISO.A4.getX( Size2DSyntax.MM )-10,
+                MediaSize.ISO.A4.getY( Size2DSyntax.MM ) -10,
                 Size2DSyntax.MM
         ));
 

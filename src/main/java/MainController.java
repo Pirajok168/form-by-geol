@@ -38,7 +38,8 @@ public class MainController {
     private SecondListController secondListController = new SecondListController();
     private ThirdController thirdController = new ThirdController();
 
-    private ObservableList<LeftTabs> leftTabsList = FXCollections.observableArrayList(Arrays.asList(LeftTabs.Documentation, LeftTabs.Result, LeftTabs.Table ));
+    private ObservableList<LeftTabs> leftTabsList = FXCollections.observableArrayList(Arrays.asList(LeftTabs.Documentation
+            , LeftTabs.Result, LeftTabs.Table, LeftTabs.LastTable, LeftTabs.Akt ));
 
 
 
@@ -62,19 +63,7 @@ public class MainController {
 
         listView.getSelectionModel().selectedItemProperty().addListener((observableValue, oldVal, newVal) -> {
             String path = "";
-            if (oldVal != null) {
-                switch (oldVal) {
-                    case Documentation:
-                        //firstListController.setData();
-                        break;
-                    case Result:
-                        //secondListController.setDataSecondList();
-                        break;
-                    case Table:
-                        //thirdController.setDataThirdList();
-                        break;
-                }
-            }
+
             switch (newVal){
                 case Result:
                     path="tabs/second.fxml";
@@ -84,6 +73,12 @@ public class MainController {
                     break;
                 case Table:
                     path="tabs/third.fxml";
+                    break;
+                case Akt:
+                    path="tabs/fourth_akt_1.fxml";
+                    break;
+                case LastTable:
+                    path="tabs/fourth.fxml";
                     break;
             }
             Parent newRoot = null;

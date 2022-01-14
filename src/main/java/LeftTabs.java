@@ -1,5 +1,7 @@
 public enum LeftTabs {
     Documentation,
     Result,
-    Table
+    Table,
+    LastTable,
+    Akt
 }

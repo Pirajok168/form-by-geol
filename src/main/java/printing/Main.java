@@ -21,8 +21,11 @@ import java.awt.print.PrinterJob;
 import java.util.*;
 import java.util.List;
 
+
+
 //15 12
 public class Main {
+    private static final int MAX_LENGTH_TABLE_FIRST_CELLS = 80;
     private  int linesPerPage = 20;
     private  List<String> data = new ArrayList<>();
     private  List<String> data2 = new ArrayList<>();
@@ -147,16 +150,51 @@ public class Main {
         return list;
     }
 
+    private void drawString(String value, int x, int y, Graphics2D g2d){
+        FontMetrics metrics = g2d.getFontMetrics(new Font("Times New Roman", Font.PLAIN, 10));
+        int length = metrics.stringWidth(value);
+        g2d.setFont(new Font("Times New Roman", Font.PLAIN, 10));
+        String strs[] = value.split("\n| ");
+        int i = 0;
+        int _x = x;
+        int _y = y;
+        for (int j = 0; j < 3; j++) {
+            int lengthRow = _x-2;
+            do {
+                if (i>=strs.length) break;
+                String val = strs[i];
+                lengthRow += 2;
+                g2d.drawString(val, lengthRow, _y);
+                lengthRow += metrics.stringWidth(val);
+                i++;
+                if (i>=strs.length) break;
+            }while (metrics.stringWidth(strs[i]) + lengthRow < MAX_LENGTH_TABLE_FIRST_CELLS);
+
+            /*while (lengthRow < MAX_LENGTH_TABLE_FIRST_CELLS){
+                if (i>=strs.length) break;
+                String val = strs[i] + " ";
+                g2d.drawString(val, lengthRow, _y);
+                lengthRow += metrics.stringWidth(val);
+                _x += 5;
+                i++;
+            }*/
+            _y += 5;
+            lengthRow = _x;
+        }
+    }
+
     private void bigTable(int x, int y, Graphics2D g2d){
+        g2d.setFont(new Font("Times New Roman", Font.PLAIN, 10));
         List<TableRow> rows = secondList.getTableRows();
         int x2 = x-30;
-        int y2 = y+5;
+        int y2 = y+3;
         for (int i = 0; i < rows.size() ; i++) {
             List<String> items = transformationToString(rows.get(i));
             for (int j = 0; j < 7; j++) {
                 if (j==0){
                     String val = items.get(j) + " ";
-                    g2d.drawString(val, x2, y2);
+                    drawString(val, x2, y2, g2d);
+                    //g2d.drawString(val, x2, y2);
                     x2+=65;
                 }else if (j==1){
                     String val = items.get(j) + " ";
@@ -175,7 +213,7 @@ public class Main {
             y2+=21;
             x2 = x-30;
         }
-
+        g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
     }
 
 

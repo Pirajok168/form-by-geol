@@ -1,0 +1,8 @@
+package printing;
+
+public enum SizeCells {
+    MAX_LENGTH_TABLE_FIRST_CELLS,
+    MAX_LENGTH_TABLE_TWO_FIVE_CELLS,
+    MAX_LENGTH_TABLE_SIX_CELLS,
+    MAX_LENGTH_TABLE_SEVEN_CELLS
+}

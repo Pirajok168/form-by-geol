@@ -14,6 +14,7 @@ import javax.print.attribute.standard.MediaSize;
 import javax.print.attribute.standard.MediaSizeName;
 import java.awt.*;
 import java.awt.font.TextAttribute;
+import java.awt.geom.AffineTransform;
 import java.awt.print.PageFormat;
 import java.awt.print.Printable;
 import java.awt.print.PrinterException;
@@ -218,7 +219,7 @@ public class Main {
 
 
 
-    public void printList() throws PrinterException {
+    public  void printList() throws PrinterException {
         init();
         Printable printable = new Printable() {
             @Override
@@ -228,7 +229,7 @@ public class Main {
                 }
                 Graphics2D g2d = (Graphics2D)g;
                 g2d.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
-
+                AffineTransform defaultAt = g2d.getTransform();
                 g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
                 /**тут первая страница*/
                 /*g2d.drawString("Участок "+ firstList.getFirstList().get(0) + " ", 10, 10);
@@ -339,7 +340,7 @@ public class Main {
                 g2d.drawString("х.ч", 475, y3);*/
 
                 /**тут вторая страница*/
-                int start = 10;
+                /*int start = 10;
                 int retreat = 10;
                 g2d.drawString("Геолог______________", start, retreat);
                 g2d.drawString("Дата______________", 200, retreat);
@@ -358,6 +359,35 @@ public class Main {
                 }
                 start += 70;
                 int startC = start-35;
+                g2d.setFont(new Font("Times New Roman", Font.PLAIN, 8));
+                g2d.drawString("Месяц, число,", startC-30,50);
+                g2d.drawString("смена, ", startC-30,60);
+                g2d.drawString("бурильщик, ", startC-30,70);
+                g2d.drawString("промывальщик, ", startC-30,80);
+                g2d.drawString("геолог.", startC-30,90);
+
+                g2d.drawString("Пройдено, м.", startC+40,50);
+                g2d.drawString("от", startC+40,70);
+                g2d.drawString("до", startC+80,70);
+
+                g2d.drawString("Диаметр", startC+120, 50);
+                g2d.drawString("бур-я мм", startC+120, 60);
+                g2d.drawString("Длина", startC+120, 70);
+                g2d.drawString("рейса. м", startC+120, 80);
+
+                g2d.drawString("литологи-", startC + 160, 50);
+                g2d.drawString("ческий", startC + 160, 60);
+                g2d.drawString("разрез", startC + 160, 70);
+
+                g2d.drawString("Описание разреза (название пород, цвет, зернистость)", startC + 200, 50);
+                g2d.drawString("размеры, петрограф состав, <>, глинистость, ", startC + 200, 60);
+                g2d.drawString("каменистость, льдистость, характеристика шлихов, ", startC + 200, 70);
+                g2d.drawString("Отметка о мерзлоте, леденистости % галиках и водоносности", startC + 200, 80);
+                g2d.drawString("уровень воды", startC + 200, 90);
+
+                g2d.drawString("Категория пород по ", startC + 420, 50);
+                g2d.drawString("буримости, % валунистости ", startC + 420, 60);
+
                 bigTable(startC,40+65+10, g2d);
                 for (int i = 0; i < 6; i++) {
                     if (i==1){
@@ -378,7 +408,110 @@ public class Main {
                     }
                     start += 40;
                 }
-                g2d.drawString("Линия № ____________ Скважина № ________ ", 10, retreat);
+                g2d.drawString("Линия № ____________ Скважина № ________ ", 10, retreat);*/
+
+
+                /**Тут третья страница*/
+                /*int start = 10;
+                int retreat = 35;
+                g2d.setFont(new Font("Times New Roman", Font.PLAIN, 8));
+
+                g2d.drawString("Интервал", start, 50);
+                g2d.drawString("опробования", start, 60);
+                g2d.drawString("от", start, 90);
+                g2d.drawString("до", start+35, 90);
+
+                g2d.drawString("Номер", start+62, 50);
+                g2d.drawString("Пробы", start+62, 60);
+
+                g2d.drawString("Объём", start+102, 50);
+                g2d.drawString("Пробы", start+102, 60);
+                g2d.drawString("геор, м", start+102, 70);
+                g2d.drawString("факт", start+102, 80);
+
+                g2d.drawString("Полевое", start+142, 50);
+                g2d.drawString("определ.", start+142, 60);
+                g2d.drawString("(ПС ЗН)", start+142, 70);
+                g2d.drawString("вес Au)", start+142, 80);
+
+
+                g2d.drawString("Вес", start+182, 50);
+                g2d.drawString("мелкого", start+182, 60);
+                g2d.drawString("золота мг", start+182, 70);
+
+                g2d.drawString("Число и", start+222, 50);
+                g2d.drawString("вес само-", start+222, 60);
+                g2d.drawString("родков мг", start+222, 70);
+
+                g2d.drawString("Общий вес", start+262, 50);
+                g2d.drawString("золота в ", start+262, 60);
+                g2d.drawString("пробе мг", start+262, 70);
+
+                g2d.drawString("Характеристики", start+302, 50);
+                g2d.drawString("золота", start+302, 60);
+
+                g2d.drawString("Среднее", start+402, 40);
+                g2d.drawString("содержание", start+402, 50);
+                g2d.drawString("золота по", start+402, 60);
+                g2d.drawString("интегралу", start+402, 70);
+                g2d.drawString("опробования", start+402, 80);
+                g2d.drawString("мг/м^3 Шлик", start+402, 90);
+
+                g2d.drawString("Расчет средн. показат.", start+462, 40);
+                g2d.drawString("по пласту. Мощнст", start+462, 50);
+                g2d.drawString("интервалу м. Верт.запас", start+462, 60);
+                g2d.drawString("по интерву мг/м^3 Средне-", start+462, 70);
+                g2d.drawString("завыш.содержание по пла-", start+462, 80);
+                g2d.drawString("сту. Вертик запас по пласту", start+462, 90);
+
+                g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+                g2d.drawLine(start,  retreat, (int) pageFormat.getImageableWidth(), retreat);
+                retreat = 95;
+                g2d.drawLine(start,  retreat, (int) pageFormat.getImageableWidth(), retreat);
+                retreat += 15;
+                g2d.drawLine(start,  retreat, (int) pageFormat.getImageableWidth(), retreat);
+                g2d.drawLine(start,  retreat, (int) pageFormat.getImageableWidth(), retreat);
+                retreat += 21;
+                for (int i = 0; i < 31; i++) {
+                    g2d.drawLine(start,  retreat, (int) pageFormat.getImageableWidth(), retreat);
+                    retreat += 21;
+                }
+
+
+
+                g2d.drawLine(start+30,  75, start+30, (int) pageFormat.getImageableHeight());
+                g2d.drawLine(start, 75, start+60, 75);
+                g2d.drawLine(start+30,  75, start+30, (int) pageFormat.getImageableHeight());
+                g2d.drawString("8", start+15,105);
+                g2d.drawString("9", start+45,105);
+                start += 60;
+                int startC = start+15;
+                int index = 10;
+                for (int i = 0; i < 9; i++) {
+                    //g2d.drawString(i+1 + "", startC, 40+65);
+                    if (i==7){
+                        start += 60;
+                        g2d.drawLine(start,  35, start, (int) pageFormat.getImageableHeight());
+                        start += 40;
+                        startC += 60;
+                        g2d.drawString(index + "", startC,105);
+                    }else if(i==8){
+                        start += 20;
+                        g2d.drawLine(start,  35, start, (int) pageFormat.getImageableHeight());
+                        start += 40;
+                        startC += 80;
+                        g2d.drawString(index + "", startC,105);
+                    }else {
+                        g2d.drawLine(start,  35, start, (int) pageFormat.getImageableHeight());
+                        start += 40;
+
+                        g2d.drawString(index + "", startC,105);
+                        startC += 40;
+                    }
+                    index++;
+                }*/
+
+                /**Тут четвёртая страница */
 
                 length2 = 10;
                 countLine = 0;
@@ -412,181 +545,7 @@ public class Main {
         }
     }
 
-    public  void main(String[] args) throws PrinterException {
-        init();
-        Printable printable = new Printable() {
-            @Override
-            public int print(Graphics g, PageFormat pageFormat, int pageIndex) throws PrinterException {
-                if (pageIndex > 0) {
-                    return NO_SUCH_PAGE;
-                }
-                Graphics2D g2d = (Graphics2D)g;
-                g2d.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
-
-                g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-                /**тут первая страница*/
-                g2d.drawString("Участок ____________", 10, 10);
-                System.out.println( (int) pageFormat.getImageableWidth());
-                System.out.println((int)pageFormat.getImageableHeight());
-                g2d.setFont(new Font("Times New Roman", Font.BOLD, 14));
-
-                g2d.drawString("ЖУРНАЛ",200,  30);
-                g2d.drawString("ДОКУМЕНТАЦИИ СКВАЖИН",140,  50);
-
-                g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-                int y = 70;
-                for (int i = linesPerPage * pageIndex; i < data.size()
-                        && i < linesPerPage * (pageIndex + 1); i++) {
-                    //System.out.println(data.get(i) + " " + data.get(i).length());
-                    if (Objects.equals(data.get(i), "Линия № _______ ")
-                            ||  Objects.equals(data.get(i), "Скважина № __________")){
-                        g2d.setFont(new Font("Times New Roman", Font.BOLD, 12));
-                        g2d.drawString(data.get(i),200,  y);
-                        g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-                        y += 23;
-                    }else{
-                        g2d.drawString(data.get(i),10, y );
-                        y += 18;
-                    }
-                }
-                g2d.drawString("Результаты подсчета по скважине", 140, y + 30);
-                y = y + 40;
-                g2d.drawLine(10, y,  (int)pageFormat.getImageableWidth(), y );
-                g2d.setFont(new Font("Times New Roman", Font.PLAIN, 10));
-                g2d.drawString("Проба Au _______", 30, y+20);
-                g2d.drawString("Борт. содержание Au x.ч _______ м???", 11, y+28);
-                g2d.drawString("Един", 180, y+28);
-                g2d.drawString("Измер", 175, y+38);
-                g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-                g2d.drawLine(10, y,  10, (int)pageFormat.getImageableHeight()-12 );
-                g2d.drawLine((int)pageFormat.getImageableWidth(), y,  (int)pageFormat.getImageableWidth(), (int)pageFormat.getImageableHeight()-12 );
-
-                g2d.drawLine(10, y+35, 170, y+35);
-                g2d.drawLine(210, y+35, (int)pageFormat.getImageableHeight()-12, y+35);
-                g2d.drawString("Наименование показателей", 20, y+50);
-                g2d.drawLine(10, y+35+25, (int)pageFormat.getImageableWidth(), y+35+25);
-                g2d.drawString("м", 185, y+35+25+20);
-
-                int y2 = y+35+25+35;
-                g2d.drawString("м", 185, y2+20);
-                g2d.drawString("м", 185, y2+55);
-                g2d.drawString("м", 185, y2+55);
-                g2d.drawString("мг/м?", 175, y2+90);
-                g2d.drawString("мг/м?", 175, y2+125);
-                int it = 0;
-                for (int i = 0; i < 6; i++) {
-                    g2d.drawLine(10, y2, (int)pageFormat.getImageableWidth(), y2);
-                    g2d.drawString(data2.get(it), 30, y2-20);
-                    if (it==0 || it==6){
-                        it++;
-                        g2d.drawString(data2.get(it), 30, y2-10);
-                    }
-                    it++;
-                    y2 += 35;
-                }
-
-                int y3 =  y+35+15;
-                g2d.drawLine(170, y, 170, (int)pageFormat.getImageableHeight()-12);
-
-                g2d.drawLine(210, y, 210, (int)pageFormat.getImageableHeight()-12);
-                g2d.drawString("Для раздельной", 220, y3-35);
-                g2d.drawString("добычи (на ?)", 220, y3-20);
-                g2d.drawString("шлих", 220, y3);
-                g2d.drawLine(260, y+35, 260, (int)pageFormat.getImageableHeight()-12);
-                g2d.drawString("х.ч", 275, y3);
-                g2d.drawLine(310, y, 310, (int)pageFormat.getImageableHeight()-12);
-                g2d.drawString("Для сплошной", 320, y3-35);
-                g2d.drawString("выемки (на массу)", 315, y3-20);
-                g2d.drawString("шлих", 320, y3);
-                g2d.drawLine(360, y+35, 360, (int)pageFormat.getImageableHeight()-12);
-                g2d.drawString("х.ч", 375, y3);
-                g2d.drawLine(410, y, 410, (int)pageFormat.getImageableHeight()-12);
-                g2d.drawString("Для сплошной", 420, y3-35);
-                g2d.drawString("выемки (на массу)", 420, y3-20);
-                g2d.drawString("шлих", 420, y3);
-                g2d.drawLine(460, y+35, 460, (int)pageFormat.getImageableHeight()-12);
-                g2d.drawString("х.ч", 475, y3);
-
-                /**тут вторая страница*/
-                /*int start = 10;
-                int retreat = 10;
-                g2d.drawString("Геолог______________", start, retreat);
-                g2d.drawString("Дата______________", 200, retreat);
-                retreat += 15;
-                g2d.drawString("Линия № ____________ Скважина № ________ ", start, retreat);
-                retreat += 10;
-                g2d.drawLine(start,  retreat, (int) pageFormat.getImageableWidth(), retreat);
-                retreat = 95;
-                g2d.drawLine(start,  retreat, (int) pageFormat.getImageableWidth(), retreat);
-                retreat += 15;
-                g2d.drawLine(start,  retreat, (int) pageFormat.getImageableWidth(), retreat);
-                retreat += 20;
-                for (int i = 0; i < 31; i++) {
-                    g2d.drawLine(start,  retreat, (int) pageFormat.getImageableWidth(), retreat);
-                    retreat += 20;
-                }
-                start += 70;
-                int startC = start-35;
-                for (int i = 0; i < 6; i++) {
-                    if (i==1){
-                        g2d.drawString(i+1 + "", startC, 40 +65);
-                        startC +=45;
-                        g2d.drawLine(start,  55, start, (int) pageFormat.getImageableHeight());
-                        g2d.drawLine(start-40, 55, start+40, 55);
-                    }else if(i==5){
-                        startC +=85;
-                        g2d.drawString(i+1 + "", startC, 40 +65);
-                        g2d.drawLine(start +180,  35, start +180, (int) pageFormat.getImageableHeight());
-                        g2d.drawString(7 + "", start +210, 40 +65);
-                    }else {
-                        g2d.drawString(i+1 + "", startC, 40+65);
-                        startC +=45;
-                        g2d.drawLine(start,  35, start, (int) pageFormat.getImageableHeight());
-                    }
-                    start += 40;
-                }
-                g2d.drawString("Линия № ____________ Скважина № ________ ", 10, retreat);*/
 
 
-                return PAGE_EXISTS;
-            }
-        };
-        PrinterJob printerJob = PrinterJob.getPrinterJob();
-        /*PageFormat pageFormat = printerJob.defaultPage();
-        pageFormat = printerJob.pageDialog(pageFormat);*/
 
-        PrintRequestAttributeSet attrs = new HashPrintRequestAttributeSet();
-        attrs.add(MediaSizeName.ISO_A4);
-
-        //Ориентация
-        //attrs.add(OrientationRequested.LANDSCAPE);
-
-        attrs.add(new MediaPrintableArea(
-                20,
-                20,
-                MediaSize.ISO.A4.getX( Size2DSyntax.MM ) - 28,
-                MediaSize.ISO.A4.getY( Size2DSyntax.MM ) - 28,
-                Size2DSyntax.MM
-        ));
-
-        printerJob.setPrintable(printable);
-        if (printerJob.printDialog()){
-            printerJob.print(attrs);
-        }
-    }
-
-    /*public static void main(String[] args) {
-        MyPrintableTable mpt = new MyPrintableTable();
-        PrinterJob job = PrinterJob.getPrinterJob();
-        PageFormat pageFormat = job.defaultPage();
-        pageFormat = job.pageDialog(pageFormat);
-        job.setPrintable(mpt, pageFormat);
-        job.printDialog();
-        try {
-            job.print();
-        } catch (PrinterException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-    }*/
 }

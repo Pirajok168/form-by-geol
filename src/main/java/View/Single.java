@@ -1,6 +1,7 @@
 package View;
 
 import data.FirstList;
+import data.FourthList;
 import data.SecondList;
 
 public class Single {
@@ -8,9 +9,16 @@ public class Single {
     private static Model model = new Model();
     private static FirstList firstList = null;
     private static SecondList secondList = null;
+    private static FourthList fourthList = null;
 
     private Single(){ }
 
+    public static FourthList getFourthList() {
+        if (fourthList==null){
+            fourthList = new FourthList();
+        }
+        return fourthList;
+    }
 
     public static SecondList getSecondList(){
         if (secondList == null){

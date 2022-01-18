@@ -64,7 +64,8 @@ public class Main {
         data2.add("Среднее содержание Au");
         data2.add("Вертикальный запас Au");
         data2.add("Лимитность по кондициям");
-        data2.add("________ года");
+        String format = table.getLimit() + " года";
+        data2.add(format);
     }
     private int countLine = 0;
     private int length2 = 10;
@@ -409,10 +410,13 @@ public class Main {
         g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
         int start = 10;
         int retreat = 10;
-        g2d.drawString("Геолог______________", start, retreat);
-        g2d.drawString("Дата______________", 200, retreat);
+        String format = "Геолог " + secondList.getGeolog();
+        g2d.drawString(format, start, retreat);
+        format = "Дата " + secondList.getData();
+        g2d.drawString(format, 200, retreat);
         retreat += 15;
-        g2d.drawString("Линия № ____________ Скважина № ________ ", start, retreat);
+        format = "Линия № " + secondList.getLine() + " Скважина № " + secondList.getWell();
+        g2d.drawString(format, start, retreat);
         retreat += 10;
         g2d.drawLine(start,  retreat, (int) pageFormat.getImageableWidth(), retreat);
         retreat = 95;

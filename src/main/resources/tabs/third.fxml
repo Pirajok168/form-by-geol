@@ -36,6 +36,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ScrollPane?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
@@ -52,6 +53,25 @@
             <children>
                <VBox fx:id="container" alignment="CENTER">
                   <children>
+                     <Pane maxHeight="-Infinity" maxWidth="400.0" minHeight="-Infinity" minWidth="299.0" prefHeight="174.0" prefWidth="376.0" style="-fx-background-color: ffffff; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
+                        <VBox.margin>
+                           <Insets left="20.0" right="20.0" top="20.0" />
+                        </VBox.margin>
+                        <children>
+                           <VBox layoutX="3.0" prefHeight="200.0" prefWidth="258.0">
+                              <children>
+                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Геолог" />
+                                 <TextField fx:id="geolog" prefHeight="25.0" prefWidth="227.0" />
+                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Дата" />
+                                 <TextField fx:id="data" />
+                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Линия" />
+                                 <TextField fx:id="line" prefHeight="25.0" prefWidth="227.0" />
+                                 <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Скважина" />
+                                 <TextField fx:id="well" />
+                              </children>
+                           </VBox>
+                        </children>
+                     </Pane>
                      <Pane maxHeight="200.0" maxWidth="1200.0" minHeight="200.0" minWidth="1200.0" prefHeight="200.0" prefWidth="1200.0" style="-fx-background-color: ffffff; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
                         <children>
                            <ScrollPane fitToHeight="true" maxWidth="1200.0" prefHeight="200.0">
@@ -123,7 +143,7 @@
                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Среднее содержание золота по интервалу опробования мг/м^3 Шлих" textAlignment="CENTER" wrappingWidth="101.380859375" GridPane.columnIndex="14" />
                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Расчет Средних показателей по пласту. Мощность интервалы, м. Верт запас по интервалу, мг/м^3. Срежнезвеш. содержание по пласту, мг/м^3. Вертик. запас по пласа, мг/м^3" textAlignment="CENTER" wrappingWidth="231.3671875" GridPane.columnIndex="15" />
                                        <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Обём пробы" textAlignment="CENTER" wrappingWidth="100.13671875" GridPane.columnIndex="8" />
-
+      
                                     </children>
                                  </GridPane>
                               </content>

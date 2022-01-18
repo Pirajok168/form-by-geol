@@ -657,6 +657,10 @@ public class FirstList {
         this.limit = limit;
     }
 
+    public String getLimit() {
+        return limit;
+    }
+
     public void setProbaAi(String probaAi) {
         this.probaAi = probaAi;
     }

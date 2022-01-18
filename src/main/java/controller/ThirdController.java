@@ -9,10 +9,13 @@ import java.util.ResourceBundle;
 import View.Single;
 import data.SecondList;
 import data.TableRow;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
+import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
@@ -78,6 +81,19 @@ public class ThirdController {
 
     @FXML
     private TextArea _18;
+
+    @FXML
+    private TextField data;
+
+    @FXML
+    private TextField geolog;
+
+    @FXML
+    private TextField line;
+
+    @FXML
+    private TextField well;
+
 
 
     @FXML
@@ -156,6 +172,26 @@ public class ThirdController {
         });
         thread.start();
         System.out.println("1");
+
+        data.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+            String value = data.getText();
+            secondList.setData(value == null ? "" : value);
+        });
+
+        geolog.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+            String value = geolog.getText();
+            secondList.setGeolog(value == null ? "" : value);
+        });
+
+        line.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+            String value = line.getText();
+            secondList.setLine(value == null ? "" : value);
+        });
+
+        well.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+            String value = geolog.getText();
+            secondList.setWell(value == null ? "" : value);
+        });
     }
 
 }

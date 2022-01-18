@@ -4,6 +4,10 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
 public class FourthList {
     private String table1_1_0;
     private String table1_1_1;
@@ -40,6 +44,36 @@ public class FourthList {
     private String driller2;
     private String geolog;
     private String akt2;
+
+    public List<String> getSmallTable(){
+        List<String> list = new ArrayList<>(Arrays.asList(table1_1_0, table1_1_1, table1_1_2, table1_2_0, table1_2_1, table1_2_2));
+        return list;
+    }
+
+    public List<String> getSmallTableTwo(){
+        List<String> list = new ArrayList<>(Arrays.asList(
+                table2_1_0,
+        table2_1_1,
+        table2_1_2,
+        table2_1_3,
+        table2_1_4,
+        table2_2_0,
+        table2_2_1,
+        table2_2_2,
+        table2_2_3,
+        table2_2_4,
+        table2_3_0,
+        table2_3_1,
+        table2_3_2,
+        table2_3_3,
+        table2_3_4,
+        table2_4_0,
+        table2_4_1,
+        table2_4_2,
+        table2_4_3
+        ));
+        return list;
+    }
 
     public void setAkt2(String akt2) {
         this.akt2 = akt2;

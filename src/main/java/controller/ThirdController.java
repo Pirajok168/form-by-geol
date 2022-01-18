@@ -77,6 +77,10 @@ public class ThirdController {
     private TextArea _9;
 
     @FXML
+    private TextArea _18;
+
+
+    @FXML
     private VBox container;
 
     @FXML
@@ -98,7 +102,7 @@ public class ThirdController {
     void addRow(ActionEvent event) {
         TableRow tableRow = new TableRow(row,  _1.getText(),  _2.getText(),  _3.getText(),  _4.getText(),  _5.getText(),  _6.getText(),
                  _7.getText(),  _8.getText(),  _9.getText(),  _10.getText(),  _11.getText(),  _12.getText(),  _13.getText(),
-                 _14.getText(),  _15.getText(),  _16.getText(),  _17.getText()
+                 _14.getText(),  _15.getText(),  _16.getText(),  _17.getText(), _18.getText()
         );
         secondList.addItemRow(tableRow);
         for (int i = 0; i < 17; i++) {

@@ -24,6 +24,15 @@ public class TableRow {
     private String _15;
     private String _16;
     private String _17;
+    private String _18;
+
+    public String get_18() {
+        return _18;
+    }
+
+    public void set_18(String _18) {
+        this._18 = _18;
+    }
 
     public String get_1() {
         return _1;
@@ -95,7 +104,7 @@ public class TableRow {
 
     public TableRow(int id, String _1, String _2, String _3, String _4, String _5, String _6,
                     String _7, String _8, String _9, String _10, String _11, String _12, String _13,
-                    String _14, String _15, String _16, String _17) {
+                    String _14, String _15, String _16, String _17, String _18) {
         this.id = id;
         this._1 = _1;
         this._2 = _2;
@@ -114,6 +123,7 @@ public class TableRow {
         this._15 = _15;
         this._16 = _16;
         this._17 = _17;
+        this._18 = _18;
     }
 
     public int getId() {

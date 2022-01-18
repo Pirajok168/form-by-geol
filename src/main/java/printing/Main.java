@@ -2,6 +2,7 @@ package printing;
 
 import View.Single;
 import data.FirstList;
+import data.FourthList;
 import data.SecondList;
 import data.TableRow;
 
@@ -31,6 +32,7 @@ public class Main {
     private  FirstList firstList =  Single.getFirstList();
     private  FirstList table = Single.getFirstList();
     private SecondList secondList = Single.getSecondList();
+    private FourthList fourthList = Single.getFourthList();
 
     private void init(){
 
@@ -145,7 +147,7 @@ public class Main {
     private List<String> transformationToString(TableRow item){
         List<String> list = new ArrayList<>(Arrays.asList(item.get_1(), item.get_2(),item.get_3(),item.get_4(),item.get_5()
                 ,item.get_6(),item.get_7(),item.get_8(),item.get_9(),item.get_10(),item.get_11(),item.get_12(),item.get_13()
-                ,item.get_14(),item.get_15(),item.get_16(),item.get_17()));
+                ,item.get_14(),item.get_15(),item.get_16(),item.get_17(), item.get_18()));
         return list;
     }
 
@@ -155,7 +157,7 @@ public class Main {
         g2d.setFont(new Font("Times New Roman", Font.PLAIN, 8));
         String strs[] = value.split("\n| ");
         int i = 0;
-        int _x = x;
+        int _x = x-3;
         int _y = y-3;
         int maxLength = size.getSizeCells();
         for (int j = 0; j < 4; j++) {
@@ -198,6 +200,7 @@ public class Main {
                     drawString(val, x2, y2, g2d, new BigTableCells(220));
                     //g2d.drawString(val, x2, y2);
                     x2 += 220;
+                    val = items.get(j+1) + " ";
                     drawString(val, x2, y2, g2d, new BigTableCells(110));
                     break;
                 }else{
@@ -211,6 +214,77 @@ public class Main {
             x2 = x-30;
         }
         g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+    }
+
+    private void bigTable2(int x, int y, Graphics2D g2d){
+
+        g2d.setFont(new Font("Times New Roman", Font.PLAIN, 8));
+        List<TableRow> rows = secondList.getTableRows();
+        int x2 = x;
+        int y2 = y+85;
+        for (int i = 0; i < rows.size() ; i++) {
+            List<String> items = transformationToString(rows.get(i));
+            for (int j = 7; j < 18; j++) {
+                if (j==7){
+                    String val = items.get(j) + " ";
+                    drawString(val, x2, y2, g2d, new BigTableCells(30));
+                    x2+=33;
+                } else if(j==8) {
+                    String val = items.get(j) + " ";
+                    drawString(val, x2, y2, g2d, new BigTableCells(30));
+                    x2+=30;
+                }else  if(j==15){
+                    String val = items.get(j) + " ";
+                    drawString(val, x2, y2, g2d, new BigTableCells(100));
+                    x2+=100;
+                } else  if(j==16){
+                    String val = items.get(j) + " ";
+                    drawString(val, x2, y2, g2d, new BigTableCells(60));
+                    x2+=60;
+                    val = items.get(j+1) + " ";
+                    drawString(val, x2, y2, g2d, new BigTableCells(80));
+                }
+                else {
+                    String val = items.get(j) + " ";
+                    drawString(val, x2, y2, g2d, new BigTableCells(40));
+                    x2+=40;
+                }
+
+            }
+            y2+=21;
+            x2 = x;
+        }
+        g2d.setFont(new Font("Times New Roman", Font.PLAIN, 10));
+    }
+
+    private void smallTableOne(int x, int y, Graphics2D g2d){
+        List<String> table = fourthList.getSmallTable();
+        int _x = x;
+        int _y = y+28;
+        for (int i = 0; i < 2; i++) {
+            for (int j = 0; j < 3; j++) {
+                String val = table.get(j) + "1";
+                drawString(val, _x, _y, g2d, new BigTableCells(180));
+                _x += 183;
+            }
+            _y += 30;
+            _x = x;
+        }
+    }
+
+    private void smallTableTwo(int x, int y, Graphics2D g2d){
+        List<String> table = fourthList.getSmallTableTwo();
+        int _x = x+2;
+        int _y = 215;
+        for (int i = 0; i < 4; i++) {
+            for (int j = 0; j < 5; j++) {
+                String val = table.get(j) + "1";
+                drawString(val, _x, _y, g2d, new BigTableCells(110));
+                _x += 110;
+            }
+            _y += 30;
+            _x = x+2;
+        }
     }
 
     private void firstListPrint(Graphics g, PageFormat pageFormat, int pageIndex){
@@ -410,6 +484,7 @@ public class Main {
         g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
         int start = 10;
         int retreat = 35;
+        bigTable2(start, retreat, g2d);
         g2d.setFont(new Font("Times New Roman", Font.PLAIN, 8));
 
         g2d.drawString("Интервал", start, 50);
@@ -523,7 +598,7 @@ public class Main {
         g2d.drawLine(start+181, 10, start+181, 115);
         g2d.drawLine(start+362, 10, start+362, 115);
         g2d.drawLine(start + 540, 10, 550, 115);
-
+        smallTableOne(start, retreat, g2d);
         int loop = 55;
         for (int i = 0; i < 3; i++) {
             g2d.drawLine(start, loop, (int) pageFormat.getImageableWidth(), loop);
@@ -544,6 +619,7 @@ public class Main {
         g2d.drawLine(start, 185, (int)pageFormat.getImageableWidth(), 185);
         g2d.drawLine(start, 205, (int)pageFormat.getImageableWidth(), 205);
         loop=235;
+        smallTableTwo(start, retreat, g2d );
         for (int i = 0; i < 4; i++) {
             g2d.drawLine(start, loop, (int)pageFormat.getImageableWidth(), loop);
             loop += 30;

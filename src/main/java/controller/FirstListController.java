@@ -251,6 +251,8 @@ public class FirstListController {
         firstList.setSurveyor(value == null ? "" : value);
         value = line.getText();
         firstList.setLine(value == null ? "" : value);
+        value = fromTheLine.getText();
+        firstList.setFromTheLine(value);
     }
 
     @FXML

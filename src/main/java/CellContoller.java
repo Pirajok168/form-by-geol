@@ -22,8 +22,14 @@ public class CellContoller extends ListCell<LeftTabs> {
                 case Documentation -> {
                     path="tabsPrev/documentPrevItem.fxml";
                 }
-                default -> {
-                    path="tabsPrev/documentPrevItem.fxml";
+                case Table -> {
+                    path="tabsPrev/table.fxml";
+                }
+                case Akt -> {
+                    path="tabsPrev/akt.fxml";
+                }
+                case LastTable -> {
+                    path="tabsPrev/lastTable.fxml";
                 }
             }
             try {

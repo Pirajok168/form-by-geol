@@ -664,13 +664,14 @@ public class Main {
         g2d.drawString("на вынужденную остановку скважины", start+180, retreat+35);
         g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
 
-        format = "Настоящий акт составлен в том, что №  " + fourthList.getNumberAkt2() + " остановлена на глубине " + fourthList.getDepth2();
+        format = "20" + fourthList.getYear2() + " г." + fourthList.getMonth2() + " " + fourthList.getDay2() + " ";
         g2d.drawString(format, start, retreat+50);
 
-        format = "20" + fourthList.getYear2() + " г." + fourthList.getMonth2() + " " + fourthList.getDay2() + " ";
-        g2d.drawString(format, retreat+65, 365);
+        format = "Настоящий акт составлен в том, что №  " + fourthList.getNumberAkt2() + " остановлена на глубине " + fourthList.getDepth2();
+        g2d.drawString(format, start, retreat+65);
 
-        drawString(fourthList.getAkt2(), start, retreat+85, g2d, new BigTableCells(loop-110, 10,15), 10);
+
+        drawString(fourthList.getAkt2(), start, retreat+75, g2d, new BigTableCells(loop-110, 10,15), 10);
         retreat = indent + 20;
         format = "геолог " + fourthList.getGeolog2() + " бурильщик " + fourthList.getDriller2() + " бур мастер "+ fourthList.getMaster2();
         drawString(format, start, retreat, g2d , new BigTableCells(loop-110, 10, 15), 2);
@@ -696,9 +697,6 @@ public class Main {
                 }
 
 
-
-
-                
                 length2 = 10;
                 countLine = 0;
                 cellCnt = 0;

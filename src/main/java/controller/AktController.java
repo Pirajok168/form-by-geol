@@ -156,7 +156,7 @@ public class AktController {
 
         driller2.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = driller2.getText();
-            fourthList.setDriller(value == null ? "" : value);
+            fourthList.setDriller2(value == null ? "" : value);
         });
 
         master2.focusedProperty().addListener(( observable ,oldValue, newValue)->{

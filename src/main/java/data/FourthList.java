@@ -34,8 +34,11 @@ public class FourthList {
     private String table2_4_1;
     private String table2_4_2;
     private String table2_4_3;
+    private String table2_4_4;
+
 
     private String akt1;
+    private String akt2;
     private String day;
     private String day2;
     private String depth;
@@ -43,44 +46,95 @@ public class FourthList {
     private String driller;
     private String driller2;
     private String geolog;
-    private String akt2;
+    private String geolog2;
+    private String master;
+    private String master2;
+    private String month;
+    private String month2;
+    private String numberAkt;
+    private String numberAkt2;
+    private String year;
+    private String year2;
 
-    public List<String> getSmallTable(){
-        List<String> list = new ArrayList<>(Arrays.asList(table1_1_0, table1_1_1, table1_1_2, table1_2_0, table1_2_1, table1_2_2));
-        return list;
+
+    public String getAkt1() {
+        return akt1;
     }
 
-    public List<String> getSmallTableTwo(){
-        List<String> list = new ArrayList<>(Arrays.asList(
-                table2_1_0,
-        table2_1_1,
-        table2_1_2,
-        table2_1_3,
-        table2_1_4,
-        table2_2_0,
-        table2_2_1,
-        table2_2_2,
-        table2_2_3,
-        table2_2_4,
-        table2_3_0,
-        table2_3_1,
-        table2_3_2,
-        table2_3_3,
-        table2_3_4,
-        table2_4_0,
-        table2_4_1,
-        table2_4_2,
-        table2_4_3
-        ));
-        return list;
+    public String getAkt2() {
+        return akt2;
     }
 
-    public void setAkt2(String akt2) {
-        this.akt2 = akt2;
+    public String getDay() {
+        return day;
+    }
+
+    public String getDay2() {
+        return day2;
+    }
+
+    public String getDepth() {
+        return depth;
+    }
+
+    public String getDepth2() {
+        return depth2;
+    }
+
+    public String getDriller() {
+        return driller;
+    }
+
+    public String getDriller2() {
+        return driller2;
+    }
+
+    public String getGeolog() {
+        return geolog;
+    }
+
+    public String getGeolog2() {
+        return geolog2;
+    }
+
+    public String getMaster() {
+        return master;
+    }
+
+    public String getMaster2() {
+        return master2;
+    }
+
+    public String getMonth() {
+        return month;
+    }
+
+    public String getMonth2() {
+        return month2;
+    }
+
+    public String getNumberAkt() {
+        return numberAkt;
+    }
+
+    public String getNumberAkt2() {
+        return numberAkt2;
+    }
+
+    public String getYear() {
+        return year;
+    }
+
+    public String getYear2() {
+        return year2;
     }
 
     public void setAkt1(String akt1) {
         this.akt1 = akt1;
+    }
+
+    public void setAkt2(String akt2) {
+        this.akt2 = akt2;
     }
 
     public void setDay(String day) {
@@ -147,15 +201,39 @@ public class FourthList {
         this.year2 = year2;
     }
 
-    private String geolog2;
-    private String master;
-    private String master2;
-    private String month;
-    private String month2;
-    private String numberAkt;
-    private String numberAkt2;
-    private String year;
-    private String year2;
+    public List<String> getSmallTable(){
+        List<String> list = new ArrayList<>(Arrays.asList(table1_1_0, table1_1_1, table1_1_2, table1_2_0, table1_2_1, table1_2_2));
+        return list;
+    }
+
+    public List<String> getSmallTableTwo(){
+        List<String> list = new ArrayList<>(Arrays.asList(
+                table2_1_0,
+        table2_1_1,
+        table2_1_2,
+        table2_1_3,
+        table2_1_4,
+        table2_2_0,
+        table2_2_1,
+        table2_2_2,
+        table2_2_3,
+        table2_2_4,
+        table2_3_0,
+        table2_3_1,
+        table2_3_2,
+        table2_3_3,
+        table2_3_4,
+        table2_4_0,
+        table2_4_1,
+        table2_4_2,
+        table2_4_3,
+        table2_4_4
+        ));
+        return list;
+    }
+
+
+
 
     public void setTable1_1_0(String table1_1_0) {
         this.table1_1_0 = table1_1_0;
@@ -261,7 +339,7 @@ public class FourthList {
         this.table2_4_4 = table2_4_4;
     }
 
-    private String table2_4_4;
+
 
 
 }

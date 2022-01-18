@@ -69,6 +69,7 @@ public class Main {
     private int countLine = 0;
     private int length2 = 10;
     private int cellCnt = 0;
+    private int indent;
     private Map<TextAttribute, Integer> fontAttributes = new HashMap<TextAttribute, Integer>();
 
 
@@ -151,16 +152,16 @@ public class Main {
         return list;
     }
 
-    private void drawString(String value, int x, int y, Graphics2D g2d, SizeCells size){
-        FontMetrics metrics = g2d.getFontMetrics(new Font("Times New Roman", Font.PLAIN, 8));
+    private void drawString(String value, int x, int y, Graphics2D g2d, SizeCells size, int countRow){
+        FontMetrics metrics = g2d.getFontMetrics(new Font("Times New Roman", Font.PLAIN, size.getSizeTextCells()));
         int length = metrics.stringWidth(value);
-        g2d.setFont(new Font("Times New Roman", Font.PLAIN, 8));
+        g2d.setFont(new Font("Times New Roman", Font.PLAIN, size.getSizeTextCells()));
         String strs[] = value.split("\n| ");
         int i = 0;
         int _x = x-3;
         int _y = y-3;
         int maxLength = size.getSizeCells();
-        for (int j = 0; j < 4; j++) {
+        for (int j = 0; j < countRow; j++) {
             int lengthRow = 0;
             do {
                 if (i>=strs.length) break;
@@ -171,10 +172,11 @@ public class Main {
                 i++;
                 if (i>=strs.length) break;
             }while (metrics.stringWidth(strs[i]) + lengthRow < maxLength);
-
-            _y += 5;
+            if (i>=strs.length) break;
+            _y += size.defaultSize();
             lengthRow = _x;
         }
+        indent = _y;
     }
 
     private void bigTable(int x, int y, Graphics2D g2d){
@@ -187,25 +189,25 @@ public class Main {
             for (int j = 0; j < 7; j++) {
                 if (j==0){
                     String val = items.get(j) + " ";
-                    drawString(val, x2, y2, g2d, new BigTableCells(65));
+                    drawString(val, x2, y2, g2d, new BigTableCells(65),4);
                     //g2d.drawString(val, x2, y2);
                     x2+=65;
                 }else if (j==1){
                     String val = items.get(j) + " ";
-                    drawString(val, x2, y2, g2d, new BigTableCells(20));
+                    drawString(val, x2, y2, g2d, new BigTableCells(20),4);
                     //g2d.drawString(val, x2+2, y2);
                     x2 += 41;
                 }else if(j==5){
                     String val = items.get(j) + " ";
-                    drawString(val, x2, y2, g2d, new BigTableCells(220));
+                    drawString(val, x2, y2, g2d, new BigTableCells(220),4);
                     //g2d.drawString(val, x2, y2);
                     x2 += 220;
                     val = items.get(j+1) + " ";
-                    drawString(val, x2, y2, g2d, new BigTableCells(110));
+                    drawString(val, x2, y2, g2d, new BigTableCells(110),4);
                     break;
                 }else{
                     String val = items.get(j) + " ";
-                    drawString(val, x2, y2, g2d, new BigTableCells(40));
+                    drawString(val, x2, y2, g2d, new BigTableCells(40),4);
                     //g2d.drawString(val, x2, y2);
                     x2+=41;
                 }
@@ -227,26 +229,26 @@ public class Main {
             for (int j = 7; j < 18; j++) {
                 if (j==7){
                     String val = items.get(j) + " ";
-                    drawString(val, x2, y2, g2d, new BigTableCells(30));
+                    drawString(val, x2, y2, g2d, new BigTableCells(30),4);
                     x2+=33;
                 } else if(j==8) {
                     String val = items.get(j) + " ";
-                    drawString(val, x2, y2, g2d, new BigTableCells(30));
+                    drawString(val, x2, y2, g2d, new BigTableCells(30),4);
                     x2+=30;
                 }else  if(j==15){
                     String val = items.get(j) + " ";
-                    drawString(val, x2, y2, g2d, new BigTableCells(100));
+                    drawString(val, x2, y2, g2d, new BigTableCells(100),4);
                     x2+=100;
                 } else  if(j==16){
                     String val = items.get(j) + " ";
-                    drawString(val, x2, y2, g2d, new BigTableCells(60));
+                    drawString(val, x2, y2, g2d, new BigTableCells(60),4);
                     x2+=60;
                     val = items.get(j+1) + " ";
-                    drawString(val, x2, y2, g2d, new BigTableCells(80));
+                    drawString(val, x2, y2, g2d, new BigTableCells(80),4);
                 }
                 else {
                     String val = items.get(j) + " ";
-                    drawString(val, x2, y2, g2d, new BigTableCells(40));
+                    drawString(val, x2, y2, g2d, new BigTableCells(40),4);
                     x2+=40;
                 }
 
@@ -264,7 +266,7 @@ public class Main {
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 3; j++) {
                 String val = table.get(j) + "1";
-                drawString(val, _x, _y, g2d, new BigTableCells(180));
+                drawString(val, _x, _y, g2d, new BigTableCells(180),4);
                 _x += 183;
             }
             _y += 30;
@@ -279,7 +281,7 @@ public class Main {
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 5; j++) {
                 String val = table.get(j) + "1";
-                drawString(val, _x, _y, g2d, new BigTableCells(110));
+                drawString(val, _x, _y, g2d, new BigTableCells(110),4);
                 _x += 110;
             }
             _y += 30;
@@ -587,6 +589,7 @@ public class Main {
         Graphics2D g2d = (Graphics2D)g;
         g2d.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
         AffineTransform defaultAt = g2d.getTransform();
+        FontMetrics metrics = g2d.getFontMetrics(new Font("Times New Roman", Font.PLAIN, 12));
         g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
         int start = 10;
         int retreat = 35;
@@ -639,9 +642,38 @@ public class Main {
         g2d.drawString("АКТ", start+200, 340);
         g2d.drawString("на завершенную (добитую скважину)", start+180, 350);
         g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-        g2d.drawString("20__г.___________месяца_____дня", start, 365);
-        g2d.drawString("Настоящий акт составлен в том, что №________", start, 380);
-        g2d.drawString("остановлена, закрыта по контрольному замеру на глубине __________ м в связи", start, 395);
+
+        String format = "20" + fourthList.getYear() + " г." + fourthList.getMonth() + " " + fourthList.getDay() + " ";
+        g2d.drawString(format, start, 365);
+
+        format = "Настоящий акт составлен в том, что №  " + fourthList.getNumberAkt();
+        g2d.drawString(format, start, 380);
+
+        format="остановлена, закрыта по контрольному замеру на глубине  "+ fourthList.getDepth() +"  м в связи";
+        g2d.drawString(format, start, 395);
+
+        drawString(fourthList.getAkt1(), start, 415, g2d, new BigTableCells(loop-110, 10,15), 10);
+        retreat = indent + 20;
+
+        format = "геолог " + fourthList.getGeolog() + " бурильщик " + fourthList.getDriller() + " бур мастер "+ fourthList.getMaster();
+        drawString(format, start, retreat, g2d , new BigTableCells(loop-110, 10, 15), 2);
+
+
+        g2d.setFont(new Font("Times New Roman", Font.BOLD, 12));
+        g2d.drawString("АКТ", start+200, retreat+20);
+        g2d.drawString("на вынужденную остановку скважины", start+180, retreat+35);
+        g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+
+        format = "Настоящий акт составлен в том, что №  " + fourthList.getNumberAkt2() + " остановлена на глубине " + fourthList.getDepth2();
+        g2d.drawString(format, start, retreat+50);
+
+        format = "20" + fourthList.getYear2() + " г." + fourthList.getMonth2() + " " + fourthList.getDay2() + " ";
+        g2d.drawString(format, retreat+65, 365);
+
+        drawString(fourthList.getAkt2(), start, retreat+85, g2d, new BigTableCells(loop-110, 10,15), 10);
+        retreat = indent + 20;
+        format = "геолог " + fourthList.getGeolog2() + " бурильщик " + fourthList.getDriller2() + " бур мастер "+ fourthList.getMaster2();
+        drawString(format, start, retreat, g2d , new BigTableCells(loop-110, 10, 15), 2);
     }
 
     public  void printList() throws PrinterException {

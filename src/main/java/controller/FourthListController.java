@@ -95,59 +95,60 @@ public class FourthListController {
     private FourthList fourthList = Single.getFourthList();
 
     private void init(){
-        List<String> list = fourthList.downloadData;
+
         int i = 0;
-        table1_1_0.setText(list.get(i));
-        i++;
-        table1_1_1.setText(list.get(i));
-        i++;
-        table1_1_2.setText(list.get(i));
-        i++;
-        table1_2_0.setText(list.get(i));
-        i++;
-        table1_2_1.setText(list.get(i));
-        i++;
-        table1_2_2.setText(list.get(i));
-        i++;
-        table2_1_0.setText(list.get(i));
-        i++;
-        table2_1_1.setText(list.get(i));
-        i++;
-        table2_1_2.setText(list.get(i));
-        i++;
-        table2_1_3.setText(list.get(i));
-        i++;
-        table2_1_4.setText(list.get(i));
-        i++;
-        table2_2_0.setText(list.get(i));
-        i++;
-        table2_2_1.setText(list.get(i));
-        i++;
-        table2_2_2.setText(list.get(i));
-        i++;
-        table2_2_3.setText(list.get(i));
-        i++;
-        table2_2_4.setText(list.get(i));
-        i++;
-        table2_3_0.setText(list.get(i));
-        i++;
-        table2_3_1.setText(list.get(i));
-        i++;
-        table2_3_2.setText(list.get(i));
-        i++;
-        table2_3_3.setText(list.get(i));
-        i++;
-        table2_3_4.setText(list.get(i));
-        i++;
-        table2_4_0.setText(list.get(i));
-        i++;
-        table2_4_1.setText(list.get(i));
-        i++;
-        table2_4_2.setText(list.get(i));
-        i++;
-        table2_4_3.setText(list.get(i));
-        i++;
-        table2_4_4.setText(list.get(i));
+        table1_1_0.setText(fourthList.getTable1_1_0());
+
+        table1_1_1.setText(fourthList.getTable1_1_1());
+
+        table1_1_2.setText(fourthList.getTable1_1_2());
+
+        table1_2_0.setText(fourthList.getTable1_2_0());
+
+        table1_2_1.setText(fourthList.getTable1_2_1());
+
+        table1_2_2.setText(fourthList.getTable1_2_2());
+
+
+        table2_1_0.setText(fourthList.getTable2_1_0());
+
+        table2_1_1.setText(fourthList.getTable2_1_1());
+
+        table2_1_2.setText(fourthList.getTable2_1_2());
+
+        table2_1_3.setText(fourthList.getTable2_1_3());
+
+        table2_1_4.setText(fourthList.getTable2_1_4());
+
+        table2_2_0.setText(fourthList.getTable2_2_0());
+
+        table2_2_1.setText(fourthList.getTable2_2_1());
+
+        table2_2_2.setText(fourthList.getTable2_2_2());
+
+        table2_2_3.setText(fourthList.getTable2_2_3());
+
+        table2_2_4.setText(fourthList.getTable2_2_4());
+
+        table2_3_0.setText(fourthList.getTable2_3_0());
+
+        table2_3_1.setText(fourthList.getTable2_3_1());
+
+        table2_3_2.setText(fourthList.getTable2_3_2());
+
+        table2_3_3.setText(fourthList.getTable2_3_3());
+
+        table2_3_4.setText(fourthList.getTable2_3_4());
+
+        table2_4_0.setText(fourthList.getTable2_4_0());
+
+        table2_4_1.setText(fourthList.getTable2_4_1());
+
+        table2_4_2.setText(fourthList.getTable2_4_2());
+
+        table2_4_3.setText(fourthList.getTable2_4_3());
+
+        table2_4_4.setText(fourthList.getTable2_4_4());
 
         String value = table1_1_0.getText();
         fourthList.setTable1_1_0(value == null ? "" : value);

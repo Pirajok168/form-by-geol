@@ -152,50 +152,49 @@ public class FirstListController {
 
     private void initModel(){
 
-        List<String> list = firstList.saveData;
-        region.setText(list.get(0));
-        riverValley.setText(list.get(1));
-        tributary.setText(list.get(2));
-        system.setText(list.get(3));
-        typeOfPlacer.setText(list.get(4));
-        line.setText(list.get(5));
-        distanceFromTheMouth.setText(list.get(6));
-        fromTheLine.setText(list.get(7));
-        downUp.setText(list.get(8));
-        azimuth.setText(list.get(9));
-        borehole.setText(list.get(10));
-        distanceFromTheRiverbed.setText(list.get(11));
-        fromTheWell.setText(list.get(12));
-        rightLeft.setText(list.get(13));
-        start.setText(list.get(14));
-        end.setText(list.get(15));
-        altitudeMark.setText(list.get(16));
-        coordinates.setText(list.get(17));
+        region.setText(firstList.getRegion());
+        riverValley.setText(firstList.getRiverValley());
+        tributary.setText(firstList.getTributary());
+        system.setText(firstList.getSystem());
+        typeOfPlacer.setText(firstList.getTypeOfPlacer());
+        line.setText(firstList.getLine());
+        distanceFromTheMouth.setText(firstList.getDistanceFromTheMouth());
+        fromTheLine.setText(firstList.getFromTheLine());
+        downUp.setText(firstList.getDownUp());
+        azimuth.setText(firstList.getAzimuth());
+        borehole.setText(firstList.getBorehole());
+        distanceFromTheRiverbed.setText(firstList.getDistanceFromTheRiverbed());
+        fromTheWell.setText(firstList.getFromTheWell());
+        rightLeft.setText(firstList.getRightLeft());
+        start.setText(firstList.getStart());
+        end.setText(firstList.getEnd());
+        altitudeMark.setText(firstList.getAltitudeMark());
+        coordinates.setText(firstList.getCoordinates());
 
-        permafrostFrom.setText(list.get(18));
-        permafrostTo.setText(list.get(19));
-        permafrostFrom2.setText(list.get(20));
-        permafrostTo2.setText(list.get(21));
+        permafrostFrom.setText(firstList.getPermafrostFrom());
+        permafrostTo.setText(firstList.getPermafrostTo());
+        permafrostFrom2.setText(firstList.getPermafrostFrom2());
+        permafrostTo2.setText(firstList.getPermafrostTo2());
 
-        groundFrom.setText(list.get(22));
-        groundTo.setText(list.get(23));
+        groundFrom.setText(firstList.getGroundFrom());
+        groundTo.setText(firstList.getGroundTo());
 
-        groundFrom2.setText(list.get(24));
-        groundTo2.setText(list.get(25));
+        groundFrom2.setText(firstList.getGroundFrom2());
+        groundTo2.setText(firstList.getGroundTo2());
 
-        totalDepth.setText(list.get(26));
-        casingDepth.setText(list.get(27));
-        compositionRocks.setText(list.get(28));
-        passed.setText(list.get(29));
-        passedOrStopped.setText(list.get(30));
-        waterLevel.setText(list.get(31));
-        waterLevelStop.setText(list.get(32));
-        drillingDiameterM.setText(list.get(33));
-        drillingDiameterMM.setText(list.get(34));
-        drillingRig.setText(list.get(35));
-        flushing.setText(list.get(36));
-        geologist.setText(list.get(37));
-        surveyor.setText(list.get(38));
+        totalDepth.setText(firstList.getTotalDepth());
+        casingDepth.setText(firstList.getCasingDepth());
+        compositionRocks.setText(firstList.getCompositionRocks());
+        passed.setText(firstList.getPassed());
+        passedOrStopped.setText(firstList.getPassedOrStopped());
+        waterLevel.setText(firstList.getWaterLevel());
+        waterLevelStop.setText(firstList.getWaterLevelStop());
+        drillingDiameterM.setText(firstList.getDrillingDiameterM());
+        drillingDiameterMM.setText(firstList.getDrillingDiameterMM());
+        drillingRig.setText(firstList.getDrillingRig());
+        flushing.setText(firstList.getFlushing());
+        geologist.setText(firstList.getGeologist());
+        surveyor.setText(firstList.getSurveyor());
 
 
 

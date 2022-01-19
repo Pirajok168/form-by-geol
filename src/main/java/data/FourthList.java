@@ -204,8 +204,112 @@ public class FourthList {
         this.year2 = year2;
     }
 
-    public List<String> downloadData = new ArrayList<>();
+    public String getTable1_1_0() {
+        return table1_1_0;
+    }
 
+    public String getTable1_1_1() {
+        return table1_1_1;
+    }
+
+    public String getTable1_1_2() {
+        return table1_1_2;
+    }
+
+    public String getTable1_2_0() {
+        return table1_2_0;
+    }
+
+    public String getTable1_2_1() {
+        return table1_2_1;
+    }
+
+    public String getTable1_2_2() {
+        return table1_2_2;
+    }
+
+    public String getTable2_1_0() {
+        return table2_1_0;
+    }
+
+    public String getTable2_1_1() {
+        return table2_1_1;
+    }
+
+    public String getTable2_1_2() {
+        return table2_1_2;
+    }
+
+    public String getTable2_1_3() {
+        return table2_1_3;
+    }
+
+    public String getTable2_1_4() {
+        return table2_1_4;
+    }
+
+    public String getTable2_2_0() {
+        return table2_2_0;
+    }
+
+    public String getTable2_2_1() {
+        return table2_2_1;
+    }
+
+    public String getTable2_2_2() {
+        return table2_2_2;
+    }
+
+    public String getTable2_2_3() {
+        return table2_2_3;
+    }
+
+    public String getTable2_2_4() {
+        return table2_2_4;
+    }
+
+    public String getTable2_3_0() {
+        return table2_3_0;
+    }
+
+    public String getTable2_3_1() {
+        return table2_3_1;
+    }
+
+    public String getTable2_3_2() {
+        return table2_3_2;
+    }
+
+    public String getTable2_3_3() {
+        return table2_3_3;
+    }
+
+    public String getTable2_3_4() {
+        return table2_3_4;
+    }
+
+    public String getTable2_4_0() {
+        return table2_4_0;
+    }
+
+    public String getTable2_4_1() {
+        return table2_4_1;
+    }
+
+    public String getTable2_4_2() {
+        return table2_4_2;
+    }
+
+    public String getTable2_4_3() {
+        return table2_4_3;
+    }
+
+    public String getTable2_4_4() {
+        return table2_4_4;
+    }
+
+
+    public List<String> downloadData3 = new ArrayList<>();
     public FourthList(){
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -213,15 +317,103 @@ public class FourthList {
                 try {
                     String line;
                     BufferedReader bufferedReader = new BufferedReader(new FileReader("temp4.txt"));
-                    while ((line = bufferedReader.readLine()) != null ){
-                        downloadData.add(line);
-                    }
+                    line = bufferedReader.readLine();
+                    table1_1_0=line;
+                    line = bufferedReader.readLine();
+                    table1_1_1=line;
+                    line = bufferedReader.readLine();
+                    table1_1_2=line;
+                    line = bufferedReader.readLine();
+                    table1_2_0=line;
+                    line = bufferedReader.readLine();
+                    table1_2_1=line;
+                    line = bufferedReader.readLine();
+                    table1_2_2=line;
                     bufferedReader.close();
 
+
+
                     bufferedReader = new BufferedReader(new FileReader("temp5.txt"));
-                    while ((line = bufferedReader.readLine()) != null ){
-                        downloadData.add(line);
-                    }
+                    line = bufferedReader.readLine();
+                    table2_1_0=line;
+                    line = bufferedReader.readLine();
+                    table2_1_1=line;
+                    line = bufferedReader.readLine();
+                    table2_1_2=line;
+                    line = bufferedReader.readLine();
+                    table2_1_3=line;
+                    line = bufferedReader.readLine();
+                    table2_1_4=line;
+                    line = bufferedReader.readLine();
+                    table2_2_0=line;
+                    line = bufferedReader.readLine();
+                    table2_2_1=line;
+                    line = bufferedReader.readLine();
+                    table2_2_2=line;
+                    line = bufferedReader.readLine();
+                    table2_2_3=line;
+                    line = bufferedReader.readLine();
+                    table2_2_4=line;
+                    line = bufferedReader.readLine();
+                    table2_3_0=line;
+                    line = bufferedReader.readLine();
+                    table2_3_1=line;
+                    line = bufferedReader.readLine();
+                    table2_3_2=line;
+                    line = bufferedReader.readLine();
+                    table2_3_3=line;
+                    line = bufferedReader.readLine();
+                    table2_3_4=line;
+                    line = bufferedReader.readLine();
+                    table2_4_0=line;
+                    line = bufferedReader.readLine();
+                    table2_4_1=line;
+                    line = bufferedReader.readLine();
+                    table2_4_2=line;
+                    line = bufferedReader.readLine();
+                    table2_4_3=line;
+                    line = bufferedReader.readLine();
+                    table2_4_4=line;
+                    bufferedReader.close();
+
+                    bufferedReader = new BufferedReader(new FileReader("temp6.txt"));
+
+                    line = bufferedReader.readLine();
+                    year=line;
+                    line = bufferedReader.readLine();
+                    month=line;
+                    line = bufferedReader.readLine();
+                    day=line;
+                    line = bufferedReader.readLine();
+                    numberAkt=line;
+                    line = bufferedReader.readLine();
+                    depth=line;
+                    line = bufferedReader.readLine();
+                    akt1=line;
+                    line = bufferedReader.readLine();
+                    geolog=line;
+                    line = bufferedReader.readLine();
+                    driller=line;
+                    line = bufferedReader.readLine();
+                    master=line;
+                    line = bufferedReader.readLine();
+                    year2=line;
+                    line = bufferedReader.readLine();
+                    month2=line;
+                    line = bufferedReader.readLine();
+                    day2=line;
+                    line = bufferedReader.readLine();
+                    numberAkt2=line;
+                    line = bufferedReader.readLine();
+                    depth2=line;
+                    line = bufferedReader.readLine();
+                    akt2=line;
+                    line = bufferedReader.readLine();
+                    geolog2=line;
+                    line = bufferedReader.readLine();
+                    driller2=line;
+                    line = bufferedReader.readLine();
+                    master2=line;
                     bufferedReader.close();
                 }catch (IOException e){
                     e.printStackTrace();
@@ -238,26 +430,26 @@ public class FourthList {
 
     public List<String> getSmallTableTwo(){
         List<String> list = new ArrayList<>(Arrays.asList(
-                table2_1_0,
-        table2_1_1,
-        table2_1_2,
-        table2_1_3,
-        table2_1_4,
-        table2_2_0,
-        table2_2_1,
-        table2_2_2,
-        table2_2_3,
-        table2_2_4,
-        table2_3_0,
-        table2_3_1,
-        table2_3_2,
-        table2_3_3,
-        table2_3_4,
-        table2_4_0,
-        table2_4_1,
-        table2_4_2,
-        table2_4_3,
-        table2_4_4
+            table2_1_0,
+            table2_1_1,
+            table2_1_2,
+            table2_1_3,
+            table2_1_4,
+            table2_2_0,
+            table2_2_1,
+            table2_2_2,
+            table2_2_3,
+            table2_2_4,
+            table2_3_0,
+            table2_3_1,
+            table2_3_2,
+            table2_3_3,
+            table2_3_4,
+            table2_4_0,
+            table2_4_1,
+            table2_4_2,
+            table2_4_3,
+            table2_4_4
         ));
         return list;
     }

@@ -265,11 +265,13 @@ public class Main {
         List<String> table = fourthList.getSmallTable();
         int _x = x;
         int _y = y+28;
+        int m =0;
         for (int i = 0; i < 2; i++) {
             for (int j = 0; j < 3; j++) {
-                String val = table.get(j) + "1";
+                String val = table.get(m) + "1";
                 drawString(val, _x, _y, g2d, new BigTableCells(180),4);
                 _x += 183;
+                m++;
             }
             _y += 30;
             _x = x;
@@ -280,11 +282,13 @@ public class Main {
         List<String> table = fourthList.getSmallTableTwo();
         int _x = x+2;
         int _y = 215;
+        int m =0;
         for (int i = 0; i < 4; i++) {
             for (int j = 0; j < 5; j++) {
-                String val = table.get(j) + "1";
+                String val = table.get(m) + "1";
                 drawString(val, _x, _y, g2d, new BigTableCells(110),4);
                 _x += 110;
+                m++;
             }
             _y += 30;
             _x = x+2;

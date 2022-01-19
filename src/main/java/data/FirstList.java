@@ -97,8 +97,7 @@ public class FirstList {
     private String content;
     private String dressing18;
     private List<String> firstListTable = new ArrayList<String>();
-    public List<String> saveData = new ArrayList<>();
-    public List<String> saveTable = new ArrayList<>();
+
 
 
 
@@ -106,15 +105,169 @@ public class FirstList {
 
         try {
             BufferedReader bufferedReader = new BufferedReader(new FileReader("temp.txt"));
-            while ((line = bufferedReader.readLine()) != null ){
-                saveData.add(line);
-            }
+            String line="";
+
+            line = bufferedReader.readLine();
+            region=line;
+            line = bufferedReader.readLine();
+            riverValley=line;
+            line = bufferedReader.readLine();
+            tributary=line;
+            line = bufferedReader.readLine();
+            system=line;
+            line = bufferedReader.readLine();
+            typeOfPlacer=line;
+            line = bufferedReader.readLine();
+            this.line=line;
+            line = bufferedReader.readLine();
+            distanceFromTheMouth=line;
+            line = bufferedReader.readLine();
+            fromTheLine=line;
+            line = bufferedReader.readLine();
+            downUp=line;
+            line = bufferedReader.readLine();
+            azimuth=line;
+            line = bufferedReader.readLine();
+            borehole=line;
+            line = bufferedReader.readLine();
+            distanceFromTheRiverbed=line;
+            line = bufferedReader.readLine();
+            fromTheWell=line;
+            line = bufferedReader.readLine();
+            rightLeft=line;
+            line = bufferedReader.readLine();
+            start=line;
+            line = bufferedReader.readLine();
+            end=line;
+            line = bufferedReader.readLine();
+            altitudeMark=line;
+            line = bufferedReader.readLine();
+            coordinates=line;
+            line = bufferedReader.readLine();
+            permafrostFrom=line;
+            line = bufferedReader.readLine();
+            permafrostTo=line;
+            line = bufferedReader.readLine();
+            permafrostFrom2=line;
+            line = bufferedReader.readLine();
+            permafrostTo2=line;
+            line = bufferedReader.readLine();
+            groundFrom=line;
+            line = bufferedReader.readLine();
+            groundTo=line;
+            line = bufferedReader.readLine();
+            groundFrom2=line;
+            line = bufferedReader.readLine();
+            groundTo2=line;
+            line = bufferedReader.readLine();
+            totalDepth=line;
+            line = bufferedReader.readLine();
+            casingDepth=line;
+            line = bufferedReader.readLine();
+            compositionRocks=line;
+            line = bufferedReader.readLine();
+            passed=line;
+            line = bufferedReader.readLine();
+            passedOrStopped=line;
+            line = bufferedReader.readLine();
+            waterLevel=line;
+            line = bufferedReader.readLine();
+            waterLevelStop=line;
+            line = bufferedReader.readLine();
+            drillingDiameterM=line;
+            line = bufferedReader.readLine();
+            drillingDiameterMM=line;
+            line = bufferedReader.readLine();
+            drillingRig=line;
+            line = bufferedReader.readLine();
+            flushing=line;
+            line = bufferedReader.readLine();
+            geologist=line;
+            line = bufferedReader.readLine();
+            surveyor=line;
             bufferedReader.close();
 
+
+
             bufferedReader = new BufferedReader(new FileReader("temp2.txt"));
-            while ((line = bufferedReader.readLine()) != null ){
-                saveTable.add(line);
-            }
+            line = bufferedReader.readLine();
+            probaAi=line;
+            line = bufferedReader.readLine();
+            content=line;
+            line = bufferedReader.readLine();
+            dressing=line;
+            line = bufferedReader.readLine();
+            h_сh=line;
+            line = bufferedReader.readLine();
+            dressing2=line;
+            line = bufferedReader.readLine();
+            h_сh2=line;
+            line = bufferedReader.readLine();
+            dressing3=line;
+            line = bufferedReader.readLine();
+            h_сh3=line;
+            line = bufferedReader.readLine();
+            dressing4=line;
+            line = bufferedReader.readLine();
+            h_сh4=line;
+            line = bufferedReader.readLine();
+            dressing5=line;
+            line = bufferedReader.readLine();
+            h_сh5=line;
+            line = bufferedReader.readLine();
+            dressing6=line;
+            line = bufferedReader.readLine();
+            h_сh6=line;
+            line = bufferedReader.readLine();
+            dressing7=line;
+            line = bufferedReader.readLine();
+            h_сh7=line;
+            line = bufferedReader.readLine();
+            dressing8=line;
+            line = bufferedReader.readLine();
+            h_сh8=line;
+            line = bufferedReader.readLine();
+            dressing9=line;
+            line = bufferedReader.readLine();
+            h_сh9=line;
+            line = bufferedReader.readLine();
+            dressing10=line;
+            line = bufferedReader.readLine();
+            h_сh10=line;
+            line = bufferedReader.readLine();
+            dressing11=line;
+            line = bufferedReader.readLine();
+            h_сh11=line;
+            line = bufferedReader.readLine();
+            dressing12=line;
+            line = bufferedReader.readLine();
+            h_сh12=line;
+            line = bufferedReader.readLine();
+            dressing13=line;
+            line = bufferedReader.readLine();
+            h_сh13=line;
+            line = bufferedReader.readLine();
+            dressing14=line;
+            line = bufferedReader.readLine();
+            h_сh14=line;
+            line = bufferedReader.readLine();
+            dressing15=line;
+            line = bufferedReader.readLine();
+            h_сh15=line;
+            line = bufferedReader.readLine();
+            limit=line;
+            line = bufferedReader.readLine();
+            dressing16=line;
+            line = bufferedReader.readLine();
+            h_сh16=line;
+            line = bufferedReader.readLine();
+            dressing17=line;
+            line = bufferedReader.readLine();
+            h_сh17=line;
+            line = bufferedReader.readLine();
+            dressing18=line;
+            line = bufferedReader.readLine();
+            h_сh18=line;
             bufferedReader.close();
         } catch (IOException e) {
             e.printStackTrace();
@@ -172,6 +325,150 @@ public class FirstList {
                 h_сh18
         );
         return list;
+    }
+
+    public String getDressing() {
+        return dressing;
+    }
+
+    public String getDressing10() {
+        return dressing10;
+    }
+
+    public String getDressing11() {
+        return dressing11;
+    }
+
+    public String getDressing12() {
+        return dressing12;
+    }
+
+    public String getDressing13() {
+        return dressing13;
+    }
+
+    public String getDressing14() {
+        return dressing14;
+    }
+
+    public String getDressing15() {
+        return dressing15;
+    }
+
+    public String getDressing16() {
+        return dressing16;
+    }
+
+    public String getDressing17() {
+        return dressing17;
+    }
+
+    public String getDressing2() {
+        return dressing2;
+    }
+
+    public String getDressing3() {
+        return dressing3;
+    }
+
+    public String getDressing4() {
+        return dressing4;
+    }
+
+    public String getDressing5() {
+        return dressing5;
+    }
+
+    public String getDressing6() {
+        return dressing6;
+    }
+
+    public String getDressing7() {
+        return dressing7;
+    }
+
+    public String getDressing8() {
+        return dressing8;
+    }
+
+    public String getDressing9() {
+        return dressing9;
+    }
+
+    public String getH_сh() {
+        return h_сh;
+    }
+
+    public String getH_сh10() {
+        return h_сh10;
+    }
+
+    public String getH_сh11() {
+        return h_сh11;
+    }
+
+    public String getH_сh12() {
+        return h_сh12;
+    }
+
+    public String getH_сh13() {
+        return h_сh13;
+    }
+
+    public String getH_сh14() {
+        return h_сh14;
+    }
+
+    public String getH_сh15() {
+        return h_сh15;
+    }
+
+    public String getH_сh16() {
+        return h_сh16;
+    }
+
+    public String getH_сh17() {
+        return h_сh17;
+    }
+
+    public String getH_сh18() {
+        return h_сh18;
+    }
+
+    public String getH_сh2() {
+        return h_сh2;
+    }
+
+    public String getH_сh3() {
+        return h_сh3;
+    }
+
+    public String getH_сh4() {
+        return h_сh4;
+    }
+
+    public String getH_сh5() {
+        return h_сh5;
+    }
+
+    public String getH_сh6() {
+        return h_сh6;
+    }
+
+    public String getH_сh7() {
+        return h_сh7;
+    }
+
+    public String getH_сh8() {
+        return h_сh8;
+    }
+
+    public String getH_сh9() {
+        return h_сh9;
+    }
+
+    public String getDressing18() {
+        return dressing18;
     }
 
     public  List<String> getFirstListTable(boolean download){

@@ -72,43 +72,25 @@ public class AktController {
 
 
     private void init(){
-        List<String> list = fourthList.downloadData;
-        int i = 26;
-        year.setText(list.get(i));
-        i++;
-        month.setText(list.get(i));
-        i++;
-        day.setText(list.get(i));
-        i++;
-        numberAkt.setText(list.get(i));
-        i++;
-        depth.setText(list.get(i));
-        i++;
-        akt1.setText(list.get(i));
-        i++;
-        geolog.setText(list.get(i));
-        i++;
-        driller.setText(list.get(i));
-        i++;
-        master.setText(list.get(i));
-        i++;
-        year2.setText(list.get(i));
-        i++;
-        month2.setText(list.get(i));
-        i++;
-        day2.setText(list.get(i));
-        i++;
-        numberAkt2.setText(list.get(i));
-        i++;
-        depth2.setText(list.get(i));
-        i++;
-        akt2.setText(list.get(i));
-        i++;
-        geolog2.setText(list.get(i));
-        i++;
-        driller2.setText(list.get(i));
-        i++;
-        master2.setText(list.get(i));
+
+        year.setText(fourthList.getYear());
+        month.setText(fourthList.getMonth());
+        day.setText(fourthList.getDay());
+        numberAkt.setText(fourthList.getNumberAkt());
+        depth.setText(fourthList.getDepth());
+        akt1.setText(fourthList.getAkt1());
+        geolog.setText(fourthList.getGeolog());
+        driller.setText(fourthList.getDriller());
+        master.setText(fourthList.getMaster());
+        year2.setText(fourthList.getYear2());
+        month2.setText(fourthList.getMonth2());
+        day2.setText(fourthList.getDay2());
+        numberAkt2.setText(fourthList.getNumberAkt2());
+        depth2.setText(fourthList.getDepth2());
+        akt2.setText(fourthList.getAkt2());
+        geolog2.setText(fourthList.getGeolog2());
+        driller2.setText(fourthList.getDriller2());
+        master2.setText(fourthList.getMaster2());
 
         String value = year.getText();
                 fourthList.setYear(value == null ? "" : value);

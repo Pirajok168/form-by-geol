@@ -14,6 +14,7 @@ import java.util.List;
 public class SaveData implements Runnable{
     private List<String> list1 = Single.getFirstList().getFirstListForSave();
     private List<String> list2 = Single.getFirstList().getTableSave();
+    private List<String> list3 = Single.getFourthList().getSmallTable();
 
     @Override
     public void run() {
@@ -32,6 +33,15 @@ public class SaveData implements Runnable{
                 writer.write(value + "\n");
             }
             writer.close();
+
+            path = Path.of("temp4.txt");
+            writer = Files.newBufferedWriter(path, StandardOpenOption.TRUNCATE_EXISTING);
+            for (String value : list3){
+                value = value.replace("\n"," ");
+                writer.write(value + "\n");
+            }
+            writer.close();
+
 
         }catch (IOException e){
             e.printStackTrace();

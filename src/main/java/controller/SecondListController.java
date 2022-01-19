@@ -1,6 +1,7 @@
 package controller;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import View.Model;
@@ -133,12 +134,94 @@ public class SecondListController {
 
     @FXML
     private TextField probaAi;
-    private Model model = Single.getInstance().getModelFirstList();
-    private FirstList firstList = Single.getInstance().getFirstList();
+    private Model model = Single.getModelFirstList();
+    private FirstList firstList = Single.getFirstList();
 
 
 
     private void initModel(){
+        List<String> list = firstList.saveTable;
+        int i = 0;
+        probaAi.setText(list.get(i));
+        i++;
+        content.setText(list.get(i));
+        i++;
+        dressing.setText(list.get(i));
+        i++;
+        h_сh.setText(list.get(i));
+        i++;
+
+        dressing2.setText(list.get(i));
+        i++;
+        h_сh2.setText(list.get(i));
+        i++;
+        dressing3.setText(list.get(i));
+        i++;
+        h_сh3.setText(list.get(i));
+        i++;
+        dressing4.setText(list.get(i));
+        i++;
+        h_сh4.setText(list.get(i));
+        i++;
+        dressing5.setText(list.get(i));
+        i++;
+        h_сh5.setText(list.get(i));
+        i++;
+        dressing6.setText(list.get(i));
+        i++;
+        h_сh6.setText(list.get(i));
+        i++;
+        dressing7.setText(list.get(i));
+        i++;
+        h_сh7.setText(list.get(i));
+        i++;
+        dressing8.setText(list.get(i));
+        i++;
+        h_сh8.setText(list.get(i));
+        i++;
+        dressing9.setText(list.get(i));
+        i++;
+        h_сh9.setText(list.get(i));
+        i++;
+        dressing10.setText(list.get(i));
+        i++;
+        h_сh10.setText(list.get(i));
+        i++;
+        dressing11.setText(list.get(i));
+        i++;
+        h_сh11.setText(list.get(i));
+        i++;
+        dressing12.setText(list.get(i));
+        i++;
+        h_сh12.setText(list.get(i));
+        i++;
+        dressing13.setText(list.get(i));
+        i++;
+        h_сh13.setText(list.get(i));
+        i++;
+        dressing14.setText(list.get(i));
+        i++;
+        h_сh14.setText(list.get(i));
+        i++;
+        dressing15.setText(list.get(i));
+        i++;
+        h_сh15.setText(list.get(i));
+        i++;
+        limit.setText(list.get(i));
+        i++;
+        dressing16.setText(list.get(i));
+        i++;
+        h_сh16.setText(list.get(i));
+        i++;
+        dressing17.setText(list.get(i));
+        i++;
+        h_сh17.setText(list.get(i));
+        i++;
+        dressing18.setText(list.get(i));
+        i++;
+        h_сh18.setText(list.get(i));
+
+
         String value = "";
         value = probaAi.getText();
         firstList.setProbaAi(value == null ? "" : value);

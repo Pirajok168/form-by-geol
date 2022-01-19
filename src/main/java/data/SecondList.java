@@ -3,6 +3,9 @@ package data;
 import javafx.fxml.FXML;
 import javafx.scene.control.TextField;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 
 public class SecondList {
@@ -16,6 +19,22 @@ public class SecondList {
         tableRows.add(row);
     }
 
+    public SecondList(){
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    BufferedReader bufferedReader = new BufferedReader(new FileReader("temp3.txt"));
+                    while ((line = bufferedReader.readLine()) != null ){
+                        //firstList.add(line);
+                    }
+                    bufferedReader.close();
+                }catch (IOException e){
+
+                }
+            }
+        });
+    }
 
     private String data;
     private String geolog;

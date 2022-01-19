@@ -12,6 +12,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 
+import java.util.List;
 import java.util.Objects;
 
 public class FirstListController {
@@ -146,46 +147,76 @@ public class FirstListController {
 
     private Model model = Single.getModelFirstList();
     private FirstList firstList = Single.getFirstList();
-    @FXML
-    void onCllck(MouseEvent event) {
-        model.setDataFirstList(altitudeMark.getText(),  azimuth.getText(),  borehole.getText(),  casingDepth.getText(),
-                compositionRocks.getText(),  coordinates.getText(),  distanceFromTheMouth.getText(),
-                distanceFromTheRiverbed.getText(),  downUp.getText(),
-                drillingDiameterM.getText(),  drillingDiameterMM.getText(),  drillingRig.getText(),  end.getText(),
-                flushing.getText(),  fromTheLine.getText(),  fromTheWell.getText(),  geologist.getText(),  groundFrom.getText(),
-                groundFrom2.getText(),  groundTo.getText(),  groundTo2.getText(),  line.getText(),  passed.getText(),
-                passedOrStopped.getText(),  permafrostFrom.getText(),  permafrostFrom2.getText(),  permafrostTo.getText(),
-                permafrostTo2.getText(),  region.getText(),  rightLeft.getText(),  riverValley.getText(),  start.getText(),
-                surveyor.getText(),  system.getText(),  totalDepth.getText(),  tributary.getText(),  typeOfPlacer.getText(),
-                waterLevel.getText(),  waterLevelStop.getText());
-    }
 
-    public void setData() {
-        String a = altitudeMark.getText();
-        model.setDataFirstList(altitudeMark.getText(),  azimuth.getText(),  borehole.getText(),  casingDepth.getText(),
-                compositionRocks.getText(),  coordinates.getText(),  distanceFromTheMouth.getText(),
-                distanceFromTheRiverbed.getText(),  downUp.getText(),
-                drillingDiameterM.getText(),  drillingDiameterMM.getText(),  drillingRig.getText(),  end.getText(),
-                flushing.getText(),  fromTheLine.getText(),  fromTheWell.getText(),  geologist.getText(),  groundFrom.getText(),
-                groundFrom2.getText(),  groundTo.getText(),  groundTo2.getText(),  line.getText(),  passed.getText(),
-                passedOrStopped.getText(),  permafrostFrom.getText(),  permafrostFrom2.getText(),  permafrostTo.getText(),
-                permafrostTo2.getText(),  region.getText(),  rightLeft.getText(),  riverValley.getText(),  start.getText(),
-                surveyor.getText(),  system.getText(),  totalDepth.getText(),  tributary.getText(),  typeOfPlacer.getText(),
-                waterLevel.getText(),  waterLevelStop.getText());
-    }
+
 
     private void initModel(){
+
+        List<String> list = firstList.saveData;
+        region.setText(list.get(0));
+        riverValley.setText(list.get(1));
+        tributary.setText(list.get(2));
+        system.setText(list.get(3));
+        typeOfPlacer.setText(list.get(4));
+        line.setText(list.get(5));
+        distanceFromTheMouth.setText(list.get(6));
+        fromTheLine.setText(list.get(7));
+        downUp.setText(list.get(8));
+        azimuth.setText(list.get(9));
+        borehole.setText(list.get(10));
+        distanceFromTheRiverbed.setText(list.get(11));
+        fromTheWell.setText(list.get(12));
+        rightLeft.setText(list.get(13));
+        start.setText(list.get(14));
+        end.setText(list.get(15));
+        altitudeMark.setText(list.get(16));
+        coordinates.setText(list.get(17));
+
+        permafrostFrom.setText(list.get(18));
+        permafrostTo.setText(list.get(19));
+        permafrostFrom2.setText(list.get(20));
+        permafrostTo2.setText(list.get(21));
+
+        groundFrom.setText(list.get(22));
+        groundTo.setText(list.get(23));
+
+        groundFrom2.setText(list.get(24));
+        groundTo2.setText(list.get(25));
+
+        totalDepth.setText(list.get(26));
+        casingDepth.setText(list.get(27));
+        compositionRocks.setText(list.get(28));
+        passed.setText(list.get(29));
+        passedOrStopped.setText(list.get(30));
+        waterLevel.setText(list.get(31));
+        waterLevelStop.setText(list.get(32));
+        drillingDiameterM.setText(list.get(33));
+        drillingDiameterMM.setText(list.get(34));
+        drillingRig.setText(list.get(35));
+        flushing.setText(list.get(36));
+        geologist.setText(list.get(37));
+        surveyor.setText(list.get(38));
+
+
+
         String value = region.getText();
-        firstList.setRegion(value == null ? "" : value);
-         value = riverValley.getText();
-        firstList.setRiverValley(value == null ? "" : value);
-         value = tributary.getText();
-        firstList.setTributary(value == null ? "" : value);
-         value = system.getText();
-        firstList.setSystem(value == null ? "" : value);
-         value = typeOfPlacer.getText();
-        firstList.setTypeOfPlacer(value == null ? "" : value);
-         value = distanceFromTheMouth.getText();
+        firstList.setRegion(value  == null ? "" : value);
+
+        value = tributary.getText();
+        firstList.setTributary(value  == null ? "" : value);
+
+        value = system.getText();
+        firstList.setSystem(value  == null ? "" : value);
+
+        value = riverValley.getText();
+        firstList.setRiverValley(value  == null ? "" : value);
+
+        value = typeOfPlacer.getText();
+        firstList.setTypeOfPlacer(value  == null ? "" : value);
+
+
+
+        value = distanceFromTheMouth.getText();
         firstList.setDistanceFromTheMouth(value == null ? "" : value);
          value = downUp.getText();
         firstList.setDownUp(value == null ? "" : value);
@@ -258,7 +289,14 @@ public class FirstListController {
     @FXML
     void initialize(){
 
-        initModel();
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                initModel();
+            }
+        });
+        thread.start();
+
 
         line.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = line.getText();

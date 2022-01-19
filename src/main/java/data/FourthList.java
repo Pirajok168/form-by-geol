@@ -4,6 +4,9 @@ import javafx.fxml.FXML;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -199,6 +202,33 @@ public class FourthList {
 
     public void setYear2(String year2) {
         this.year2 = year2;
+    }
+
+    public List<String> downloadData = new ArrayList<>();
+
+    public FourthList(){
+        Thread thread = new Thread(new Runnable() {
+            @Override
+            public void run() {
+                try {
+                    String line;
+                    BufferedReader bufferedReader = new BufferedReader(new FileReader("temp4.txt"));
+                    while ((line = bufferedReader.readLine()) != null ){
+                        downloadData.add(line);
+                    }
+                    bufferedReader.close();
+
+                    bufferedReader = new BufferedReader(new FileReader("temp5.txt"));
+                    while ((line = bufferedReader.readLine()) != null ){
+                        downloadData.add(line);
+                    }
+                    bufferedReader.close();
+                }catch (IOException e){
+                    e.printStackTrace();
+                }
+            }
+        });
+        thread.start();
     }
 
     public List<String> getSmallTable(){

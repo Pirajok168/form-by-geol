@@ -7,6 +7,7 @@ import View.Single;
 import controller.FirstListController;
 import controller.SecondListController;
 import controller.ThirdController;
+import data.SaveData;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.collections.FXCollections;
@@ -50,6 +51,8 @@ public class MainController {
             public void handle(ActionEvent actionEvent) {
                 Main main = new Main();
                 try {
+                    Thread thread = new Thread(new SaveData());
+                    thread.start();
                     main.printList();
                 } catch (PrinterException e) {
                     e.printStackTrace();

@@ -76,7 +76,7 @@
                                           <Font size="14.0" />
                                        </font>
                                     </Text>
-                                    <TextField fx:id="riverValley" layoutX="104.0" layoutY="95.0" onMouseClicked="#onCllck" prefHeight="25.0" prefWidth="92.0" text="PLAIN" />
+                                    <TextField fx:id="riverValley" layoutX="104.0" layoutY="95.0"  prefHeight="25.0" prefWidth="92.0" text="PLAIN" />
                                     <TextField fx:id="system" layoutX="513.0" layoutY="95.0" text="PLAIN" />
                                     <TextField fx:id="tributary" layoutX="375.0" layoutY="95.0" prefHeight="25.0" prefWidth="64.0" text="PLAIN" />
                                     <Text layoutX="14.0" layoutY="170.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Тип россыпи (русловая, долинная, террасовая, увальная и др.) ">

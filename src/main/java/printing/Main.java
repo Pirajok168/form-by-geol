@@ -31,6 +31,7 @@ public class Main {
     private  List<String> data2 = new ArrayList<>();
     private  FirstList firstList =  Single.getFirstList();
     private  FirstList table = Single.getFirstList();
+
     private SecondList secondList = Single.getSecondList();
     private FourthList fourthList = Single.getFourthList();
 
@@ -54,7 +55,7 @@ public class Main {
         data.add("Скважина пройдена (добита), остановлена (недобита) на глубине#м.");
         data.add("Уровень воды в скважине (от поверхности): встречный#м, установившийся#м");
         data.add("Диаметр бурения на глубину#м#мм");
-        data.add("Буровой станок#: промывка#лотком#");
+        data.add("Буровой станок#: промывка#лотком");
         data.add("Геолог#, маркшейдер#");
 
         data2.add("Глубина выемки");
@@ -79,7 +80,7 @@ public class Main {
         fontAttributes.put(TextAttribute.UNDERLINE, TextAttribute.UNDERLINE_ON);
         FontMetrics metrics = g2d.getFontMetrics(new Font("Times New Roman", Font.PLAIN, 12));
         String nS[] = str.split("#");
-        List<String> list = firstList.getFirstList();
+        List<String> list = firstList.getFirstList(true);
         for (int i = 0; i < nS.length; i++) {
             String n = "";
             switch (flag){
@@ -131,7 +132,7 @@ public class Main {
     }
 
     private void replaceTable(int x, int y, Graphics2D g2d){
-        List<String> list = table.getFirstListTable();
+        List<String> list = table.getFirstListTable(true);
         int x2 = 220;
         int y2 = y;
         for (int i = 0; i <= 5; i++) {
@@ -295,7 +296,7 @@ public class Main {
         g2d.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
         AffineTransform defaultAt = g2d.getTransform();
         g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-        g2d.drawString("Участок "+ firstList.getFirstList().get(0) + " ", 10, 10);
+        g2d.drawString("Участок "+ firstList.getFirstList(true).get(0) + " ", 10, 10);
         System.out.println( (int) pageFormat.getImageableWidth());
         System.out.println((int)pageFormat.getImageableHeight());
         g2d.setFont(new Font("Times New Roman", Font.BOLD, 14));

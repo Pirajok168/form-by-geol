@@ -7,9 +7,9 @@ import data.SecondList;
 public class Single {
     private static Single instance;
     private static Model model = new Model();
-    private static FirstList firstList = null;
-    private static SecondList secondList = null;
-    private static FourthList fourthList = null;
+    private static FirstList firstList = new FirstList();
+    private static SecondList secondList = new SecondList();
+    private static FourthList fourthList = new FourthList();
 
     private Single(){ }
 

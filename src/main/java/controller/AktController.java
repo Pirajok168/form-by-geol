@@ -1,6 +1,7 @@
 package controller;
 
 import java.net.URL;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import View.Single;
@@ -69,8 +70,87 @@ public class AktController {
 
     private FourthList fourthList = Single.getFourthList();
 
+
+    private void init(){
+        List<String> list = fourthList.downloadData;
+        int i = 26;
+        year.setText(list.get(i));
+        i++;
+        month.setText(list.get(i));
+        i++;
+        day.setText(list.get(i));
+        i++;
+        numberAkt.setText(list.get(i));
+        i++;
+        depth.setText(list.get(i));
+        i++;
+        akt1.setText(list.get(i));
+        i++;
+        geolog.setText(list.get(i));
+        i++;
+        driller.setText(list.get(i));
+        i++;
+        master.setText(list.get(i));
+        i++;
+        year2.setText(list.get(i));
+        i++;
+        month2.setText(list.get(i));
+        i++;
+        day2.setText(list.get(i));
+        i++;
+        numberAkt2.setText(list.get(i));
+        i++;
+        depth2.setText(list.get(i));
+        i++;
+        akt2.setText(list.get(i));
+        i++;
+        geolog2.setText(list.get(i));
+        i++;
+        driller2.setText(list.get(i));
+        i++;
+        master2.setText(list.get(i));
+
+        String value = year.getText();
+                fourthList.setYear(value == null ? "" : value);
+        value = month.getText();
+                fourthList.setMonth(value == null ? "" : value);
+        value = day.getText();
+                fourthList.setDay(value == null ? "" : value);
+        value = numberAkt.getText();
+                fourthList.setNumberAkt(value == null ? "" : value);
+        value = depth.getText();
+                fourthList.setDepth(value == null ? "" : value);
+        value = akt1.getText();
+                fourthList.setAkt1(value == null ? "" : value);
+        value = geolog.getText();
+                fourthList.setGeolog(value == null ? "" : value);
+        value = driller.getText();
+                fourthList.setDriller(value == null ? "" : value);
+        value = master.getText();
+                fourthList.setMaster(value == null ? "" : value);
+        value = year2.getText();
+                fourthList.setYear2(value == null ? "" : value);
+        value = month2.getText();
+                fourthList.setMonth2(value == null ? "" : value);
+        value = day2.getText();
+                fourthList.setDay2(value == null ? "" : value);
+        value = numberAkt2.getText();
+                fourthList.setNumberAkt2(value == null ? "" : value);
+        value = depth2.getText();
+                fourthList.setDepth2(value == null ? "" : value);
+        value = akt2.getText();
+                fourthList.setAkt2(value == null ? "" : value);
+        value = geolog2.getText();
+                fourthList.setGeolog2(value == null ? "" : value);
+        value = driller2.getText();
+                fourthList.setDriller2(value == null ? "" : value);
+        value = master2.getText();
+                fourthList.setMaster2(value == null ? "" : value);
+    }
+
     @FXML
     void initialize() {
+        init();
         year.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = year.getText();
             fourthList.setYear(value == null ? "" : value);

@@ -7,8 +7,10 @@ import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 
+import java.io.*;
 import java.net.URL;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
@@ -95,6 +97,29 @@ public class FirstList {
     private String content;
     private String dressing18;
     private List<String> firstListTable = new ArrayList<String>();
+    public List<String> saveData = new ArrayList<>();
+    public List<String> saveTable = new ArrayList<>();
+
+
+
+    public FirstList(){
+
+        try {
+            BufferedReader bufferedReader = new BufferedReader(new FileReader("temp.txt"));
+            while ((line = bufferedReader.readLine()) != null ){
+                saveData.add(line);
+            }
+            bufferedReader.close();
+
+            bufferedReader = new BufferedReader(new FileReader("temp2.txt"));
+            while ((line = bufferedReader.readLine()) != null ){
+                saveTable.add(line);
+            }
+            bufferedReader.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public String getProbaAi() {
         return probaAi;
@@ -104,7 +129,55 @@ public class FirstList {
         return content;
     }
 
-    public List<String> getFirstListTable(){
+    public List<String> getTableSave(){
+        List<String> list = Arrays.asList(
+                probaAi,
+                content,
+                dressing,
+                h_сh,
+                dressing2,
+                h_сh2,
+                dressing3,
+                h_сh3,
+                dressing4,
+                h_сh4,
+                dressing5,
+                h_сh5,
+                dressing6,
+                h_сh6,
+                dressing7,
+                h_сh7,
+                dressing8,
+                h_сh8,
+                dressing9,
+                h_сh9,
+                dressing10,
+                h_сh10,
+                dressing11,
+                h_сh11,
+                dressing12,
+                h_сh12,
+                dressing13,
+                h_сh13,
+                dressing14,
+                h_сh14,
+                dressing15,
+                h_сh15,
+                limit,
+                dressing16,
+                h_сh16,
+                dressing17,
+                h_сh17,
+                dressing18,
+                h_сh18
+        );
+        return list;
+    }
+
+    public  List<String> getFirstListTable(boolean download){
+        if (!firstListTable.isEmpty()){
+            firstListTable.clear();
+        }
         firstListTable.add(dressing);
         firstListTable.add(h_сh);
         firstListTable.add(dressing2);
@@ -144,7 +217,55 @@ public class FirstList {
         return firstListTable;
     }
 
-    public List<String> getFirstList() {
+    public List<String> getFirstListForSave(){
+        List<String> list = Arrays.asList(
+                region,
+                riverValley,
+                tributary,
+                system,
+                typeOfPlacer,
+                line,
+                distanceFromTheMouth,
+                fromTheLine,
+                downUp,
+                azimuth,
+                borehole,
+                distanceFromTheRiverbed,
+                fromTheWell,
+                rightLeft,
+                start,
+                end,
+                altitudeMark,
+                coordinates,
+                permafrostFrom,
+                permafrostTo,
+                permafrostFrom2,
+                permafrostTo2,
+                groundFrom,
+                groundTo,
+                groundFrom2,
+                groundTo2,
+                totalDepth,
+                casingDepth,
+                compositionRocks,
+                passed,
+                passedOrStopped,
+                waterLevel,
+                waterLevelStop,
+                drillingDiameterM,
+                drillingDiameterMM,
+                drillingRig,
+                flushing,
+                geologist,
+                surveyor
+        );
+        return list;
+    }
+
+    public  List<String> getFirstList(boolean download) {
+       if (!firstList.isEmpty()){
+           firstList.clear();
+       }
         firstList.add(region);
         firstList.add(riverValley);
         firstList.add(tributary);
@@ -154,7 +275,6 @@ public class FirstList {
         firstList.add(distanceFromTheMouth);
         firstList.add(fromTheLine);
         firstList.add(downUp);
-        firstList.add(drillingDiameterM);
         firstList.add(azimuth);
         firstList.add(borehole);
         firstList.add(distanceFromTheRiverbed);

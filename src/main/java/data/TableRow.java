@@ -26,6 +26,29 @@ public class TableRow {
     private String _17;
     private String _18;
 
+    @Override
+    public String toString() {
+        return
+                "" + _1.replace("\n", "\\n") + '&' +
+                "" + _2.replace("\n", "\\n") + '&' +
+                "" + _3.replace("\n", "\\n") + '&' +
+                "" + _4.replace("\n", "\\n") + '&' +
+                "" + _5.replace("\n", "\\n") + '&' +
+                "" + _6.replace("\n", "\\n") + '&' +
+                "" + _7.replace("\n", "\\n") + '&' +
+                "" + _8.replace("\n", "\\n") + '&' +
+                "" + _9.replace("\n", "\\n") + '&' +
+                "" + _10.replace("\n", "\\n") + '&' +
+                "" + _11.replace("\n", "\\n") + '&' +
+                "" + _12.replace("\n", "\\n") + '&' +
+                "" + _13.replace("\n", "\\n") + '&' +
+                "" + _14.replace("\n", "\\n") + '&' +
+                "" + _15.replace("\n", "\\n") + '&' +
+                "" + _16.replace("\n", "\\n") + '&' +
+                "" + _17.replace("\n", "\\n") + '&' +
+                "" + _18.replace("\n", "\\n") + '&';
+    }
+
     public String get_18() {
         return _18;
     }
@@ -102,10 +125,11 @@ public class TableRow {
         return _17;
     }
 
-    public TableRow(int id, String _1, String _2, String _3, String _4, String _5, String _6,
+    public TableRow(){}
+
+    public TableRow(String _1, String _2, String _3, String _4, String _5, String _6,
                     String _7, String _8, String _9, String _10, String _11, String _12, String _13,
                     String _14, String _15, String _16, String _17, String _18) {
-        this.id = id;
         this._1 = _1;
         this._2 = _2;
         this._3 = _3;

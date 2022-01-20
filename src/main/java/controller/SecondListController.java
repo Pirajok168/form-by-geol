@@ -144,9 +144,9 @@ public class SecondListController {
 
         probaAi.setText(firstList.getProbaAi());
         content.setText(firstList.getContent());
-        dressing.setText(firstList.getContent());
-        h_сh.setText(firstList.getH_сh());
 
+        dressing.setText(firstList.getDressing());
+        h_сh.setText(firstList.getH_сh());
         dressing2.setText(firstList.getDressing2());
         h_сh2.setText(firstList.getH_сh2());
         dressing3.setText(firstList.getDressing3());

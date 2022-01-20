@@ -116,16 +116,19 @@ public class ThirdController {
 
     @FXML
     void addRow(ActionEvent event) {
-        TableRow tableRow = new TableRow(row,  _1.getText(),  _2.getText(),  _3.getText(),  _4.getText(),  _5.getText(),  _6.getText(),
+        TableRow tableRow = new TableRow( _1.getText(),  _2.getText(),  _3.getText(),  _4.getText(),  _5.getText(),  _6.getText(),
                  _7.getText(),  _8.getText(),  _9.getText(),  _10.getText(),  _11.getText(),  _12.getText(),  _13.getText(),
                  _14.getText(),  _15.getText(),  _16.getText(),  _17.getText(), _18.getText()
         );
         secondList.addItemRow(tableRow);
-        for (int i = 0; i < 17; i++) {
+        for (int i = 0; i < 18; i++) {
             TextArea textArea = new TextArea();
             String str =list.get(i).getText();
             textArea.setText(str);
-            textArea.setEditable(false);
+
+            textArea.focusedProperty().addListener(new FocusListener(textArea ,i , row));
+
+            //textArea.setEditable(false);
             table.add(textArea ,i ,row);
         }
         row++;
@@ -134,7 +137,7 @@ public class ThirdController {
     private List<String> transformationToString(TableRow item){
         List<String> list = new ArrayList<>(Arrays.asList(item.get_1(), item.get_2(),item.get_3(),item.get_4(),item.get_5()
                 ,item.get_6(),item.get_7(),item.get_8(),item.get_9(),item.get_10(),item.get_11(),item.get_12(),item.get_13()
-                ,item.get_14(),item.get_15(),item.get_16(),item.get_17()));
+                ,item.get_14(),item.get_15(),item.get_16(),item.get_17(), item.get_18()));
         return list;
     }
 
@@ -146,23 +149,24 @@ public class ThirdController {
        }
         for (int i = 0; i < rows.size(); i++) {
             List<String> items = transformationToString(rows.get(i));
-            for (int j = 0; j < 17; j++) {
+            System.out.println(Arrays.toString(items.toArray()));
+            for (int j = 0; j < items.size(); j++) {
                 TextArea textArea = new TextArea();
                 String str =items.get(j);
                 textArea.setText(str);
-                textArea.setEditable(false);
+                textArea.focusedProperty().addListener(new FocusListener(textArea ,j , row));
                 table.add(textArea ,j ,row);
             }
             row++;
         }
-        System.out.println("2");
+
     }
 
     @FXML
     void initialize() {
         list = new ArrayList<>(Arrays.asList(_1,_2 ,_3
                 ,_4,_5,_6,_7,_8,_9,_10
-                ,_11,_12,_13,_14,_15,_16,_17));
+                ,_11,_12,_13,_14,_15,_16,_17, _18));
 
         Thread thread = new Thread(new Runnable() {
             @Override
@@ -171,7 +175,7 @@ public class ThirdController {
             }
         });
         thread.start();
-        System.out.println("1");
+
 
         data.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = data.getText();

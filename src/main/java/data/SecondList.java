@@ -25,15 +25,40 @@ public class SecondList {
             public void run() {
                 try {
                     BufferedReader bufferedReader = new BufferedReader(new FileReader("temp3.txt"));
+
                     while ((line = bufferedReader.readLine()) != null ){
-                        //firstList.add(line);
+                        TableRow tableRow = new TableRow();
+                        String strs[] = line.split("&");
+                        tableRow.set_1(strs[0].replace("\\n", "\n"));
+                        tableRow.set_2(strs[1].replace("\\n", "\n"));
+                        tableRow.set_3(strs[2].replace("\\n", "\n"));
+                        tableRow.set_4(strs[3].replace("\\n", "\n"));
+                        tableRow.set_5(strs[4].replace("\\n", "\n"));
+                        tableRow.set_6(strs[5].replace("\\n", "\n"));
+                        tableRow.set_7(strs[6].replace("\\n", "\n"));
+                        tableRow.set_8(strs[7].replace("\\n", "\n"));
+                        tableRow.set_9(strs[8].replace("\\n", "\n"));
+                        tableRow.set_10(strs[9].replace("\\n", "\n"));
+                        tableRow.set_11(strs[10].replace("\\n", "\n"));
+                        tableRow.set_12(strs[11].replace("\\n", "\n"));
+                        tableRow.set_13(strs[12].replace("\\n", "\n"));
+                        tableRow.set_14(strs[13].replace("\\n", "\n"));
+                        tableRow.set_15(strs[14].replace("\\n", "\n"));
+                        tableRow.set_16(strs[15].replace("\\n", "\n"));
+                        tableRow.set_17(strs[16].replace("\\n", "\n"));
+                        tableRow.set_18(strs[17].replace("\\n", "\n"));
+
+                        tableRows.add(tableRow);
                     }
                     bufferedReader.close();
-                }catch (IOException e){
-
+                } catch (IOException e){
+                    e.printStackTrace();
                 }
+
+
             }
         });
+        thread.start();
     }
 
     private String data;

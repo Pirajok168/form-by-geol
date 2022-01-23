@@ -9,10 +9,7 @@ import data.TableRow;
 import javax.print.attribute.HashPrintRequestAttributeSet;
 import javax.print.attribute.PrintRequestAttributeSet;
 import javax.print.attribute.Size2DSyntax;
-import javax.print.attribute.standard.MediaPrintableArea;
-import javax.print.attribute.standard.MediaSize;
-import javax.print.attribute.standard.MediaSizeName;
-import javax.print.attribute.standard.OrientationRequested;
+import javax.print.attribute.standard.*;
 import java.awt.*;
 import java.awt.font.TextAttribute;
 import java.awt.geom.AffineTransform;
@@ -737,6 +734,7 @@ public class Main {
 
         PrintRequestAttributeSet attrs = new HashPrintRequestAttributeSet();
         attrs.add(MediaSizeName.ISO_A3);
+        //attrs.add(Sides.DUPLEX);
 
         //Ориентация
         attrs.add(OrientationRequested.LANDSCAPE);

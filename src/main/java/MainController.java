@@ -53,8 +53,8 @@ public class MainController {
                 try {
                     Thread thread = new Thread(new SaveData());
                     thread.start();
-                    main.printList();
-                } catch (PrinterException e) {
+                    main.start();
+                } catch (Exception e) {
                     e.printStackTrace();
                 }
             }

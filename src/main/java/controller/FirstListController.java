@@ -299,46 +299,46 @@ public class FirstListController {
 
         line.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = line.getText();
-            firstList.setLine(value == null ? "" : value);
+            firstList.setLine(value == null ? " " : value);
         });
 
         region.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = region.getText();
             System.out.println("сработало");
-            firstList.setRegion(value == null ? "" : value);
+            firstList.setRegion(value == null ? " " : value);
         });
 
         riverValley.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = riverValley.getText();
-            firstList.setRiverValley(value == null ? "" : value);
+            firstList.setRiverValley(value == null ? " " : value);
         });
 
         tributary.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = tributary.getText();
-            firstList.setTributary(value == null ? "" : value);
+            firstList.setTributary(value == null ? " " : value);
         });
         system.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = system.getText();
-            firstList.setSystem(value == null ? "" : value);
+            firstList.setSystem(value == null ? " " : value);
         });
         typeOfPlacer.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = typeOfPlacer.getText();
-            firstList.setTypeOfPlacer(value == null ? "" : value);
+            firstList.setTypeOfPlacer(value == null ? " " : value);
         });
 
         distanceFromTheMouth.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = distanceFromTheMouth.getText();
-            firstList.setDistanceFromTheMouth(value == null ? "" : value);
+            firstList.setDistanceFromTheMouth(value == null ? " " : value);
         });
 
         downUp.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = downUp.getText();
-            firstList.setDownUp(value == null ? "" : value);
+            firstList.setDownUp(value == null ? " " : value);
         });
 
         azimuth.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = azimuth.getText();
-            firstList.setAzimuth(value == null ? "" : value);
+            firstList.setAzimuth(value == null ? " " : value);
         });
 
         borehole.focusedProperty().addListener(( observable ,oldValue, newValue)->{
@@ -348,142 +348,142 @@ public class FirstListController {
 
         distanceFromTheRiverbed.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = distanceFromTheRiverbed.getText();
-            firstList.setDistanceFromTheRiverbed(value == null ? "" : value);
+            firstList.setDistanceFromTheRiverbed(value == null ? " " : value);
         });
 
         fromTheWell.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = fromTheWell.getText();
-            firstList.setFromTheWell(value == null ? "" : value);
+            firstList.setFromTheWell(value == null ? " " : value);
         });
 
         rightLeft.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = rightLeft.getText();
-            firstList.setRightLeft(value == null ? "" : value);
+            firstList.setRightLeft(value == null ? " " : value);
         });
 
         start.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = start.getText();
-            firstList.setStart(value == null ? "" : value);
+            firstList.setStart(value == null ? " " : value);
         });
 
         end.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = end.getText();
-            firstList.setEnd(value == null ? "" : value);
+            firstList.setEnd(value == null ? " " : value);
         });
 
         altitudeMark.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = altitudeMark.getText();
-            firstList.setAltitudeMark(value == null ? "" : value);
+            firstList.setAltitudeMark(value == null ? " " : value);
         });
 
         coordinates.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = coordinates.getText();
-            firstList.setCoordinates(value == null ? "" : value);
+            firstList.setCoordinates(value == null ? " " : value);
         });
 
         permafrostFrom.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = permafrostFrom.getText();
-            firstList.setPermafrostFrom(value == null ? "" : value);
+            firstList.setPermafrostFrom(value == null ? " " : value);
         });
 
         permafrostTo.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = permafrostTo.getText();
-            firstList.setPermafrostTo(value == null ? "" : value);
+            firstList.setPermafrostTo(value == null ? " " : value);
         });
 
         permafrostFrom2.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = permafrostFrom2.getText();
-            firstList.setPermafrostFrom2(value == null ? "" : value);
+            firstList.setPermafrostFrom2(value == null ? " " : value);
         });
 
         permafrostTo2.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = permafrostTo2.getText();
-            firstList.setPermafrostTo2(value == null ? "" : value);
+            firstList.setPermafrostTo2(value == null ? " " : value);
         });
 
         groundFrom.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = groundFrom.getText();
-            firstList.setGroundFrom(value == null ? "" : value);
+            firstList.setGroundFrom(value == null ? " " : value);
         });
 
         groundTo.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = groundTo.getText();
-            firstList.setGroundTo(value == null ? "" : value);
+            firstList.setGroundTo(value == null ? " " : value);
         });
 
         groundFrom2.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = groundFrom2.getText();
-            firstList.setGroundFrom2(value == null ? "" : value);
+            firstList.setGroundFrom2(value == null ? " " : value);
         });
 
         groundTo2.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = groundTo2.getText();
-            firstList.setGroundTo2(value == null ? "" : value);
+            firstList.setGroundTo2(value == null ? " " : value);
         });
 
         totalDepth.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = totalDepth.getText();
-            firstList.setTotalDepth(value == null ? "" : value);
+            firstList.setTotalDepth(value == null ? " " : value);
         });
 
         casingDepth.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = casingDepth.getText();
-            firstList.setCasingDepth(value == null ? "" : value);
+            firstList.setCasingDepth(value == null ? " " : value);
         });
 
         compositionRocks.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = compositionRocks.getText();
-            firstList.setCompositionRocks(value == null ? "" : value);
+            firstList.setCompositionRocks(value == null ? " " : value);
         });
 
         passed.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = passed.getText();
-            firstList.setPassed(value == null ? "" : value);
+            firstList.setPassed(value == null ? " " : value);
         });
 
         passedOrStopped.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = passedOrStopped.getText();
-            firstList.setPassedOrStopped(value == null ? "" : value);
+            firstList.setPassedOrStopped(value == null ? " " : value);
         });
 
         waterLevel.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = waterLevel.getText();
-            firstList.setWaterLevel(value == null ? "" : value);
+            firstList.setWaterLevel(value == null ? " " : value);
         });
 
         waterLevelStop.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = waterLevelStop.getText();
-            firstList.setWaterLevelStop(value == null ? "" : value);
+            firstList.setWaterLevelStop(value == null ? " " : value);
         });
 
         drillingDiameterM.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = drillingDiameterM.getText();
-            firstList.setDrillingDiameterM(value == null ? "" : value);
+            firstList.setDrillingDiameterM(value == null ? " " : value);
         });
 
         drillingDiameterMM.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = drillingDiameterMM.getText();
-            firstList.setDrillingDiameterMM(value == null ? "" : value);
+            firstList.setDrillingDiameterMM(value == null ? " " : value);
         });
 
         drillingRig.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = drillingRig.getText();
-            firstList.setDrillingRig(value == null ? "" : value);
+            firstList.setDrillingRig(value == null ? " " : value);
         });
 
         flushing.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = flushing.getText();
-            firstList.setFlushing(value == null ? "" : value);
+            firstList.setFlushing(value == null ? " " : value);
         });
 
         geologist.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = geologist.getText();
-            firstList.setGeologist(value == null ? "" : value);
+            firstList.setGeologist(value == null ? " " : value);
         });
 
         surveyor.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = surveyor.getText();
-            firstList.setSurveyor(value == null ? "" : value);
+            firstList.setSurveyor(value == null ? " " : value);
         });
 
     }

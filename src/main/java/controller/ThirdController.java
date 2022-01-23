@@ -179,22 +179,22 @@ public class ThirdController {
 
         data.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = data.getText();
-            secondList.setData(value == null ? "" : value);
+            secondList.setData(value == null ? " " : value);
         });
 
         geolog.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = geolog.getText();
-            secondList.setGeolog(value == null ? "" : value);
+            secondList.setGeolog(value == null ? " " : value);
         });
 
         line.focusedProperty().addListener(( observable ,oldValue, newValue)->{
             String value = line.getText();
-            secondList.setLine(value == null ? "" : value);
+            secondList.setLine(value == null ? " " : value);
         });
 
         well.focusedProperty().addListener(( observable ,oldValue, newValue)->{
-            String value = geolog.getText();
-            secondList.setWell(value == null ? "" : value);
+            String value = well.getText();
+            secondList.setWell(value == null ? " " : value);
         });
     }
 

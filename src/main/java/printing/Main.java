@@ -23,7 +23,7 @@ import java.util.List;
 
 
 //15 12
-public class Main {
+public class Main extends Thread{
     private  int linesPerPage = 20;
     private  List<String> data = new ArrayList<>();
     private  List<String> data2 = new ArrayList<>();
@@ -32,6 +32,15 @@ public class Main {
 
     private SecondList secondList = Single.getSecondList();
     private FourthList fourthList = Single.getFourthList();
+
+    @Override
+    public void run() {
+        try {
+            printList();
+        } catch (PrinterException e) {
+            e.printStackTrace();
+        }
+    }
 
     private void init(){
 
@@ -89,14 +98,21 @@ public class Main {
                         break;
                     }
                     try {
-                        n = list.get(countLine+1) + " ";
-                        g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-                        g2d.drawString(nS[i],  length2,  y);
-
-                        this.length2 += metrics.stringWidth(nS[i]);
-                        g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12).deriveFont(fontAttributes));
-                        g2d.drawString(n ,  length2 + 2,  y);
-                        this.length2 += metrics.stringWidth(n);
+                        n = list.get(countLine+1);
+                        if (n.equals(" ")||n.equals("")){
+                            g2d.drawString(nS[i],  length2,  y);
+                            this.length2 += metrics.stringWidth(nS[i]);
+                            g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+                            g2d.drawString("___________" ,  length2 + 2,  y);
+                            this.length2 += metrics.stringWidth("___________");
+                        }else {
+                            g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
+                            g2d.drawString(nS[i],  length2,  y);
+                            this.length2 += metrics.stringWidth(nS[i]);
+                            g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12).deriveFont(fontAttributes));
+                            g2d.drawString(n+"  " ,  length2 + 2,  y);
+                            this.length2 += metrics.stringWidth(n+"  ");
+                        }
                         countLine++;
                     } catch (Exception e) {
                         System.out.println(nS[i]);
@@ -109,13 +125,22 @@ public class Main {
                         break;
                     }
                     try {
-                        n = list.get(countLine+1) + " ";
-                        g2d.setFont(new Font("Times New Roman", Font.BOLD, 14));
-                        g2d.drawString(nS[i],  x,  y);
-                        int length = nS[i].length() * 8;
-                        g2d.setFont(new Font("Times New Roman", Font.BOLD, 14).deriveFont(fontAttributes));
-                        g2d.drawString(n ,  length+x,  y);
+                        n = list.get(countLine+1);
+                        if (n.equals(" ")||n.equals("")){
+                            g2d.setFont(new Font("Times New Roman", Font.BOLD, 14));
+                            g2d.drawString(nS[i],  x,  y);
+                            int length = nS[i].length() * 8;
+                            g2d.drawString("________" ,  length+x,  y);
+                        }else{
+                            g2d.setFont(new Font("Times New Roman", Font.BOLD, 14));
+                            g2d.drawString(nS[i],  x,  y);
+                            int length = nS[i].length() * 8;
+                            g2d.setFont(new Font("Times New Roman", Font.BOLD, 14).deriveFont(fontAttributes));
+                            g2d.drawString(n ,  length+x,  y);
+
+                        }
                         countLine++;
+
                     } catch (Exception e) {
                         System.out.println(nS[i]);
                     }
@@ -355,9 +380,9 @@ public class Main {
         g2d.drawString("Един", start+180, y+28);
         g2d.drawString("Измер", start+175, y+38);
         g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-        g2d.drawLine(start+10, y,  start+10, (int)pageFormat.getImageableHeight()-12 );
+        g2d.drawLine(start+10, y,  start+10, (int)pageFormat.getImageableHeight()-63 );
 
-        g2d.drawLine((int)pageFormat.getImageableWidth(), y,  (int)pageFormat.getImageableWidth(), (int)pageFormat.getImageableHeight()-12 );
+        g2d.drawLine((int)pageFormat.getImageableWidth(), y,  (int)pageFormat.getImageableWidth(), (int)pageFormat.getImageableHeight()-63 );
 
         g2d.drawLine(start+10, y+35, start+170, y+35);
 
@@ -386,27 +411,27 @@ public class Main {
         }
 
         int y3 =  y+35+15;
-        g2d.drawLine(start+170, y, start+170, (int)pageFormat.getImageableHeight()-12);
+        g2d.drawLine(start+170, y, start+170, (int)pageFormat.getImageableHeight()-63);
 
-        g2d.drawLine(start+210, y, start+210, (int)pageFormat.getImageableHeight()-12);
+        g2d.drawLine(start+210, y, start+210, (int)pageFormat.getImageableHeight()-63);
 
         g2d.drawString("Для раздельной", start+220, y3-35);
         g2d.drawString("добычи (на ?)", start+220, y3-20);
         g2d.drawString("шлих", start+220, y3);
         replaceTable(start+210, y3+35, g2d);
-        g2d.drawLine(start+260, y+35,start+ 260, (int)pageFormat.getImageableHeight()-12);
+        g2d.drawLine(start+260, y+35,start+ 260, (int)pageFormat.getImageableHeight()-63);
         g2d.drawString("х.ч", start+275, y3);
-        g2d.drawLine(start+310, y, start+310, (int)pageFormat.getImageableHeight()-12);
+        g2d.drawLine(start+310, y, start+310, (int)pageFormat.getImageableHeight()-63);
         g2d.drawString("Для сплошной", start+320, y3-35);
         g2d.drawString("выемки (на массу)", start+315, y3-20);
         g2d.drawString("шлих", start+320, y3);
-        g2d.drawLine(start+360, y+35, start+360, (int)pageFormat.getImageableHeight()-12);
+        g2d.drawLine(start+360, y+35, start+360, (int)pageFormat.getImageableHeight()-63);
         g2d.drawString("х.ч",start+ 375, y3);
-        g2d.drawLine(start+410, y, start+410, (int)pageFormat.getImageableHeight()-12);
+        g2d.drawLine(start+410, y, start+410, (int)pageFormat.getImageableHeight()-63);
         g2d.drawString("Для сплошной", start+420, y3-35);
         g2d.drawString("выемки (на массу)", start+420, y3-20);
         g2d.drawString("шлих", start+420, y3);
-        g2d.drawLine(start+460, y+35, start+460, (int)pageFormat.getImageableHeight()-12);
+        g2d.drawLine(start+460, y+35, start+460, (int)pageFormat.getImageableHeight()-63);
         g2d.drawString("х.ч", start+475, y3);
     }
 
@@ -471,22 +496,23 @@ public class Main {
             if (i==1){
                 g2d.drawString(i+1 + "", startC, 40 +65);
                 startC +=45;
-                g2d.drawLine(start,  55, start, (int) pageFormat.getImageableHeight());
+                g2d.drawLine(start,  55, start, (int) pageFormat.getImageableHeight()-55);
                 g2d.drawLine(start-40, 55, start+40, 55);
             }else if(i==5){
                 startC +=85;
                 g2d.drawString(i+1 + "", startC, 40 +65);
-                g2d.drawLine(start +180,  35, start +180, (int) pageFormat.getImageableHeight());
+                g2d.drawLine(start +180,  35, start +180, (int) pageFormat.getImageableHeight()-55);
                 g2d.drawString(7 + "", start +210, 40 +65);
             }else {
                 g2d.drawString(i+1 + "", startC, 40+65);
                 startC +=45;
-                g2d.drawLine(start,  35, start, (int) pageFormat.getImageableHeight());
+                g2d.drawLine(start,  35, start, (int) pageFormat.getImageableHeight()-55);
 
             }
             start += 40;
         }
-        g2d.drawString("Линия № ____________ Скважина № ________ ", 10, retreat);
+        format = "Линия №" + secondList.getLine() + "  Скважина № " + secondList.getWell();
+        g2d.drawString(format, 10, retreat);
     }
 
     private void thirdListPrint(Graphics g, PageFormat pageFormat, int pageIndex){
@@ -563,9 +589,9 @@ public class Main {
 
 
 
-        g2d.drawLine(start+30,  75-25, start+30, (int) pageFormat.getImageableHeight());
+        g2d.drawLine(start+30,  75-25, start+30, (int) pageFormat.getImageableHeight()-63);
         g2d.drawLine(start, 75-25, start+60, 75-25);
-        g2d.drawLine(start+30,  75-25, start+30, (int) pageFormat.getImageableHeight());
+        g2d.drawLine(start+30,  75-25, start+30, (int) pageFormat.getImageableHeight()-63);
         g2d.drawString("8", start+15,105-25);
         g2d.drawString("9", start+45,105-25);
         start += 60;
@@ -575,18 +601,18 @@ public class Main {
             //g2d.drawString(i+1 + "", startC, 40+65);
             if (i==7){
                 start += 60;
-                g2d.drawLine(start,  35-25, start, (int) pageFormat.getImageableHeight());
+                g2d.drawLine(start,  35-25, start, (int) pageFormat.getImageableHeight()-63);
                 start += 40;
                 startC += 60;
                 g2d.drawString(index + "", startC,105-25);
             }else if(i==8){
                 start += 20;
-                g2d.drawLine(start,  35-25, start, (int) pageFormat.getImageableHeight());
+                g2d.drawLine(start,  35-25, start, (int) pageFormat.getImageableHeight()-63);
                 start += 40;
                 startC += 80;
                 g2d.drawString(index + "", startC,105-25);
             }else {
-                g2d.drawLine(start,  35-25, start, (int) pageFormat.getImageableHeight());
+                g2d.drawLine(start,  35-25, start, (int) pageFormat.getImageableHeight()-63);
                 start += 40;
 
                 g2d.drawString(index + "", startC,105-25);

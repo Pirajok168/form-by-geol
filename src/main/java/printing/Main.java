@@ -76,7 +76,7 @@ public class Main extends Thread{
         data2.add(format);
     }
     private int countLine = 0;
-    private int length2 = 650;
+    private int length2 = 10;
     private int cellCnt = 0;
     private int indent;
     private Map<TextAttribute, Integer> fontAttributes = new HashMap<TextAttribute, Integer>();
@@ -151,12 +151,12 @@ public class Main extends Thread{
 
 
         }
-        length2 = 650;
+        length2 = 10;
     }
 
     private void replaceTable(int x, int y, Graphics2D g2d){
         List<String> list = table.getFirstListTable(true);
-        int x2 = 870;
+        int x2 = 220;
         int y2 = y;
         for (int i = 0; i <= 5; i++) {
             for (int j = 0; j <= 5; j++) {
@@ -165,7 +165,7 @@ public class Main extends Thread{
                 x2 += 50;
                 cellCnt++;
             }
-            x2 = 870;
+            x2 = 220;
             y2 += 35;
         }
     }
@@ -323,7 +323,7 @@ public class Main extends Thread{
         g2d.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
         AffineTransform defaultAt = g2d.getTransform();
         g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-        int start = 650;
+        int start = 0;
         g2d.drawString("Участок "+ firstList.getFirstList(true).get(0) + " ", start+10, 10);
         System.out.println( (int) pageFormat.getImageableWidth());
         System.out.println((int)pageFormat.getImageableHeight());
@@ -521,7 +521,7 @@ public class Main extends Thread{
         g2d.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
         AffineTransform defaultAt = g2d.getTransform();
         g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));
-        int start = 600;
+        int start = 10;
         int retreat = 10;
         bigTable2(start, retreat, g2d);
         g2d.setFont(new Font("Times New Roman", Font.PLAIN, 8));
@@ -723,11 +723,11 @@ public class Main extends Thread{
         Printable printable = new Printable() {
             @Override
             public int print(Graphics g, PageFormat pageFormat, int pageIndex) throws PrinterException {
-                if (pageIndex == 2) {
+                if (pageIndex == 4) {
                     return NO_SUCH_PAGE;
                 }
 
-                if (pageIndex==0){
+                /*if (pageIndex==0){
                     firstListPrint(g, pageFormat, pageIndex);
                     fourthListPrint(g, pageFormat, pageIndex);
                 }else if(pageIndex==1){
@@ -735,9 +735,9 @@ public class Main extends Thread{
                     countLine = 0;
                     cellCnt = 0;
                     thirdListPrint(g, pageFormat, pageIndex);
-                }
+                }*/
 
-               /* if (pageIndex == 0){
+                if (pageIndex == 0){
                     firstListPrint(g, pageFormat, pageIndex);
                 }else if (pageIndex==1){
                     secondListPrint(g,pageFormat, pageIndex);
@@ -745,10 +745,10 @@ public class Main extends Thread{
                     thirdListPrint(g, pageFormat, pageIndex);
                 }else{
                     fourthListPrint(g, pageFormat, pageIndex);
-                }*/
+                }
 
 
-                length2 = 650;
+                length2 = 10;
                 countLine = 0;
                 cellCnt = 0;
                 return PAGE_EXISTS;
@@ -759,19 +759,19 @@ public class Main extends Thread{
         pageFormat = printerJob.pageDialog(pageFormat);*/
 
         PrintRequestAttributeSet attrs = new HashPrintRequestAttributeSet();
-        attrs.add(MediaSizeName.ISO_A3);
+        attrs.add(MediaSizeName.ISO_A4);
         //attrs.add(Sides.DUPLEX);
 
         //Ориентация
-        attrs.add(OrientationRequested.LANDSCAPE);
+        //attrs.add(OrientationRequested.LANDSCAPE);
 
 
         //было - 28 и 20 20
         attrs.add(new MediaPrintableArea(
                 20,
                 20,
-                MediaSize.ISO.A3.getX( Size2DSyntax.MM )-10,
-                MediaSize.ISO.A3.getY( Size2DSyntax.MM ) -10,
+                MediaSize.ISO.A4.getX( Size2DSyntax.MM )-10,
+                MediaSize.ISO.A4.getY( Size2DSyntax.MM ) -10,
                 Size2DSyntax.MM
         ));
 

@@ -22,7 +22,7 @@ public class DecoratorWorkingOut implements DrawCut{
        /* graphics.setStroke(Color.BLUE);
         graphics.setLineWidth(1);*/
 
-        graphics.strokeLine(40,10,10,40);
+        //graphics.strokeLine(40,10,10,40);
 
 
     }

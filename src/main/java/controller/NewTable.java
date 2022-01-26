@@ -1,15 +1,16 @@
 package controller;
 
 import java.net.URL;
-import java.util.ArrayList;
-import java.util.List;
 import java.util.ResourceBundle;
 
 import draw.DecoratorWorkingOut;
 import draw.DrawCut;
 import draw.CanvasTable;
 import draw.DecoratorSludge;
-import javafx.collections.ListChangeListener;
+import draw.litho.LithoCards;
+import draw.litho.providers.impl.Лед;
+import draw.litho.providers.impl.Отработки;
+import draw.litho.providers.impl.ПесокСреднейЗернистости;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -75,11 +76,11 @@ public class NewTable {
 
     @FXML
     void onSludge(ActionEvent event) {
-        if (sludge.isSelected()){
+        if (sludge.isSelected()) {
             canvasTable = new DecoratorSludge(canvasTable, graphicsContext, canvas.getWidth(), canvas.getHeight());
             canvasTable.draw();
 
-        }else {
+        } else {
             System.out.println("uncheck");
             clearCanvas();
         }
@@ -87,31 +88,39 @@ public class NewTable {
 
     @FXML
     void onWorkingOut(ActionEvent event) {
-        if (workingOut.isSelected()){
-            canvasTable = new DecoratorWorkingOut(canvasTable,graphicsContext,canvas.getWidth(), canvas.getHeight());
+        if (workingOut.isSelected()) {
+            var r = new LithoCards();
+
+            //r.Add(new Отработки());
+           // r.Add(new Лед(10));
+           r.Add(new ПесокСреднейЗернистости());
+
+            r.Draw(canvas);
+
+            canvasTable = new DecoratorWorkingOut(canvasTable, graphicsContext, canvas.getWidth(), canvas.getHeight());
             canvasTable.draw();
-        }else {
+        } else {
             System.out.println("uncheck");
             clearCanvas();
         }
     }
 
-    private void clearCanvas(){
+    private void clearCanvas() {
         canvasTable.clear();
         for (int i = 0; i < list.size(); i++) {
-            CheckBox checkBox = (CheckBox)list.get(i);
-            String id="";
-            if(checkBox.isSelected()){
-                 id = checkBox.getId();
+            CheckBox checkBox = (CheckBox) list.get(i);
+            String id = "";
+            if (checkBox.isSelected()) {
+                id = checkBox.getId();
             }
 
-            switch (id){
-                case "sludge" ->{
+            switch (id) {
+                case "sludge" -> {
                     canvasTable = new DecoratorSludge(canvasTable, graphicsContext, canvas.getWidth(), canvas.getHeight());
                     canvasTable.draw();
                 }
-                case "workingOut" ->{
-                    canvasTable = new DecoratorWorkingOut(canvasTable,graphicsContext,canvas.getWidth(), canvas.getHeight());
+                case "workingOut" -> {
+                    canvasTable = new DecoratorWorkingOut(canvasTable, graphicsContext, canvas.getWidth(), canvas.getHeight());
                     canvasTable.draw();
                 }
                 default -> {

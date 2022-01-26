@@ -32,22 +32,13 @@
   OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 -->
 
-<?import javafx.scene.Group?>
-<?import javafx.scene.canvas.Canvas?>
-<?import javafx.scene.control.CheckBox?>
-<?import javafx.scene.control.ScrollPane?>
-<?import javafx.scene.control.SplitPane?>
-<?import javafx.scene.control.TextArea?>
-<?import javafx.scene.layout.ColumnConstraints?>
-<?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.RowConstraints?>
-<?import javafx.scene.layout.VBox?>
-<?import javafx.scene.text.Font?>
-<?import javafx.scene.text.Text?>
+<?import javafx.scene.*?>
+<?import javafx.scene.canvas.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
 
-<VBox alignment="CENTER" xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewTable">
+<VBox alignment="CENTER" xmlns="http://javafx.com/javafx/16" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.NewTable">
 
    <ScrollPane fx:id="contentPane" fitToHeight="true" fitToWidth="true">
       <content>
@@ -136,12 +127,12 @@
                                                    <Font size="14.0" />
                                                 </font>
                                              </CheckBox>
-                                             <CheckBox fx:id="sludge" layoutY="25.0" mnemonicParsing="false" onAction="#onSludge" text="Ил">
+                                             <CheckBox fx:id="sludge" layoutY="25.0" mnemonicParsing="false" onAction="#onSludge" text="Лёд">
                                                 <font>
                                                    <Font size="14.0" />
                                                 </font>
                                              </CheckBox>
-                                             <CheckBox layoutY="50.0" mnemonicParsing="false" text="Гравий">
+                                             <CheckBox fx:id="sandMP" layoutY="50.0" mnemonicParsing="false" onAction="#onSand" text="ПесокСЗ">
                                                 <font>
                                                    <Font size="14.0" />
                                                 </font>

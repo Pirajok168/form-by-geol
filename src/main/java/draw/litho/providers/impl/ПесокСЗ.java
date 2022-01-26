@@ -8,13 +8,13 @@ import draw.litho.providers.ILithoPatternProvider;
 import java.util.ArrayList;
 import java.util.List;
 
-public class ПесокСреднейЗернистости implements ILithoPatternProvider {
+public class ПесокСЗ implements ILithoPatternProvider {
 
     private int count = 10;
 
-    public ПесокСреднейЗернистости() {
+    public ПесокСЗ() {
     }
-    public ПесокСреднейЗернистости(int count) {
+    public ПесокСЗ(int count) {
         this.count = count;
     }
 

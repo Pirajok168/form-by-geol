@@ -48,6 +48,13 @@ public class LithoCards {
         UpdateCollections();
     }
 
+    public void Clear(Canvas canvas) {
+        canvas
+                .getGraphicsContext2D()
+                .clearRect(0, 0, canvas.getWidth(), canvas.getHeight());
+
+        Clear();
+    }
     public void Clear() {
         mainCollection.clear();
         UpdateCollections();
@@ -69,7 +76,7 @@ public class LithoCards {
         for (var element : lithoElements) {
             var elementRect = element.getRect();
 
-            for (int i = 0; i < 100; i++) {
+            for (int i = 0; i < 500; i++) {
                 var point = new Point(
                         random.nextInt(width - elementRect.width),
                         random.nextInt(height - elementRect.height)
@@ -83,7 +90,7 @@ public class LithoCards {
                                 .noneMatch(rectangle ->
                                         rectangle.intersects(finalElementRect)
                                 ) &&
-                        canvasRect.contains(finalElementRect)
+                                canvasRect.contains(finalElementRect)
                 ) {
                     drawnElements.add(finalElementRect);
                     element.Draw(canvas);

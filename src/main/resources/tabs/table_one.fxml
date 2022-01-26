@@ -1,0 +1,230 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!--
+  Copyright (c) 2015, 2019, Gluon and/or its affiliates.
+  All rights reserved. Use is subject to license terms.
+
+  This file is available and licensed under the following license:
+
+  Redistribution and use in source and binary forms, with or without
+  modification, are permitted provided that the following conditions
+  are met:
+
+  - Redistributions of source code must retain the above copyright
+    notice, this list of conditions and the following disclaimer.
+  - Redistributions in binary form must reproduce the above copyright
+    notice, this list of conditions and the following disclaimer in
+    the documentation and/or other materials provided with the distribution.
+  - Neither the name of Oracle Corporation nor the names of its
+    contributors may be used to endorse or promote products derived
+    from this software without specific prior written permission.
+
+  THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
+  "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
+  LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
+  A PARTICULAR PURPOSE ARE DISCLAIMED. IN NO EVENT SHALL THE COPYRIGHT
+  OWNER OR CONTRIBUTORS BE LIABLE FOR ANY DIRECT, INDIRECT, INCIDENTAL,
+  SPECIAL, EXEMPLARY, OR CONSEQUENTIAL DAMAGES (INCLUDING, BUT NOT
+  LIMITED TO, PROCUREMENT OF SUBSTITUTE GOODS OR SERVICES; LOSS OF USE,
+  DATA, OR PROFITS; OR BUSINESS INTERRUPTION) HOWEVER CAUSED AND ON ANY
+  THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
+  (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
+  OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
+-->
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Text?>
+
+<VBox xmlns="http://javafx.com/javafx/17" xmlns:fx="http://javafx.com/fxml/1" fx:controller="controller.ThirdController">
+
+    <ScrollPane fx:id="contentPane" fitToHeight="true" fitToWidth="true">
+        <content>
+            <HBox alignment="CENTER">
+                <children>
+                    <VBox fx:id="container" alignment="CENTER">
+                        <children>
+                            <Pane maxHeight="-Infinity" maxWidth="400.0" minHeight="-Infinity" minWidth="299.0" prefHeight="174.0" prefWidth="376.0" style="-fx-background-color: ffffff; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
+                                <VBox.margin>
+                                    <Insets left="20.0" right="20.0" top="20.0" />
+                                </VBox.margin>
+                                <children>
+                                    <VBox layoutX="3.0" prefHeight="200.0" prefWidth="258.0">
+                                        <children>
+                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Геолог" />
+                                            <TextField fx:id="geolog" prefHeight="25.0" prefWidth="227.0" />
+                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Дата" />
+                                            <TextField fx:id="data" />
+                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Линия" />
+                                            <TextField fx:id="line" prefHeight="25.0" prefWidth="227.0" />
+                                            <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Скважина" />
+                                            <TextField fx:id="well" />
+                                        </children>
+                                    </VBox>
+                                </children>
+                            </Pane>
+                            <Pane maxHeight="200.0" maxWidth="1200.0" minHeight="200.0" minWidth="1200.0" prefHeight="200.0" prefWidth="1200.0" style="-fx-background-color: ffffff; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
+                                <children>
+                                    <ScrollPane fitToHeight="true" maxWidth="1200.0" prefHeight="200.0">
+                                        <content>
+                                            <GridPane>
+                                                <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="166.0" minWidth="50.0" percentWidth="20.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" maxWidth="100.0" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" percentWidth="8.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" percentWidth="12.0" prefWidth="100.0" />
+                                                </columnConstraints>
+                                                <rowConstraints>
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints />
+                                                </rowConstraints>
+                                                <children>
+                                                    <TextArea fx:id="_1" prefHeight="200.0" prefWidth="200.0" text="1" GridPane.rowIndex="1" />
+                                                    <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                                                        <children>
+                                                            <TextArea fx:id="_2" prefHeight="200.0" prefWidth="200.0" promptText="от" text="2" />
+                                                            <TextArea fx:id="_3" prefHeight="200.0" prefWidth="200.0" promptText="до" text="3" />
+                                                        </children>
+                                                    </HBox>
+                                                    <TextArea fx:id="_4" prefHeight="200.0" prefWidth="200.0" text="4" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                                    <TextArea fx:id="_5" prefHeight="200.0" prefWidth="200.0" text="5" GridPane.columnIndex="3" GridPane.rowIndex="1" />
+                                                    <TextArea fx:id="_6" prefHeight="200.0" prefWidth="200.0" text="6" GridPane.columnIndex="4" GridPane.rowIndex="1" />
+                                                    <TextArea fx:id="_7" prefHeight="200.0" prefWidth="200.0" text="7" GridPane.columnIndex="5" GridPane.rowIndex="1" />
+                                                    <HBox prefHeight="100.0" prefWidth="200.0" GridPane.columnIndex="6" GridPane.rowIndex="1">
+                                                        <children>
+                                                            <TextArea fx:id="_8" prefHeight="200.0" prefWidth="200.0" promptText="от" text="8" />
+                                                            <TextArea fx:id="_9" prefHeight="200.0" prefWidth="200.0" promptText="до " text="9" />
+                                                        </children>
+                                                    </HBox>
+                                                    <TextArea fx:id="_10" prefHeight="200.0" prefWidth="200.0" text="10" GridPane.columnIndex="7" GridPane.rowIndex="1" />
+                                                    <TextArea fx:id="_11" prefHeight="200.0" prefWidth="200.0" text="11&#10;" GridPane.columnIndex="8" GridPane.rowIndex="1" />
+                                                    <TextArea fx:id="_12" prefHeight="200.0" prefWidth="200.0" text="1" GridPane.columnIndex="9" GridPane.rowIndex="1" />
+                                                    <TextArea fx:id="_13" prefHeight="200.0" prefWidth="200.0" text="13" GridPane.columnIndex="10" GridPane.rowIndex="1" />
+                                                    <TextArea fx:id="_14" prefHeight="200.0" prefWidth="200.0" text="14" GridPane.columnIndex="11" GridPane.rowIndex="1" />
+                                                    <TextArea fx:id="_15" prefHeight="200.0" prefWidth="200.0" text="15" GridPane.columnIndex="12" GridPane.rowIndex="1" />
+                                                    <TextArea fx:id="_16" prefHeight="200.0" prefWidth="200.0" text="16&#10;" GridPane.columnIndex="13" GridPane.rowIndex="1" />
+                                                    <TextArea fx:id="_17" prefHeight="200.0" prefWidth="200.0" text="17&#10;&#10;" GridPane.columnIndex="14" GridPane.rowIndex="1" />
+                                                    <TextArea fx:id="_18" prefHeight="200.0" prefWidth="200.0" text="18&#10;" GridPane.columnIndex="15" GridPane.rowIndex="1" />
+                                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Месяц, число, смена, бурильщик, прромывальщик, геолог" textAlignment="CENTER" wrappingWidth="97.69140625" />
+                                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Пройдено, м" textAlignment="CENTER" wrappingWidth="100.72265625" GridPane.columnIndex="1" />
+                                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Диаметр бурения. мм Длина оейса. м" textAlignment="CENTER" wrappingWidth="97.5859375" GridPane.columnIndex="2" />
+                                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Литолический разрез" textAlignment="CENTER" wrappingWidth="101.279296875" GridPane.columnIndex="3" />
+                                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Описание разреза (название пород, &lt;&gt;, &lt;&gt;, размеры, петрограф состав, &lt;&gt;, глинистость, каменистость, &lt;&gt;,характеристика шлихов, их минералогический состав и пр ). Отметка о мерзлоте, лединистости (%), &lt;&gt; и &lt;&gt;, уровень воды)" textAlignment="CENTER" wrappingWidth="400.44921875" GridPane.columnIndex="4" />
+                                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Категория пород по &lt;&gt;" textAlignment="CENTER" wrappingWidth="98.79296875" GridPane.columnIndex="5" />
+                                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Интервал опробования" textAlignment="CENTER" wrappingWidth="98.658203125" GridPane.columnIndex="6" />
+                                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Номер пробы" textAlignment="CENTER" wrappingWidth="100.068359375" GridPane.columnIndex="7" />
+                                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Полевое определение     (ПС, ЗН, вес Au)" textAlignment="CENTER" wrappingWidth="99.982421875" GridPane.columnIndex="9" />
+                                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Вес мелкого золота мг" textAlignment="CENTER" wrappingWidth="99.984375" GridPane.columnIndex="10" />
+                                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Число и вес маородков мг" textAlignment="CENTER" wrappingWidth="99.68359375" GridPane.columnIndex="11" />
+                                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Общий вес золота в пробе мг" textAlignment="CENTER" wrappingWidth="99.818359375" GridPane.columnIndex="12" />
+                                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Характеристики золота" textAlignment="CENTER" wrappingWidth="160.95703125" GridPane.columnIndex="13" />
+                                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Среднее содержание золота по интервалу опробования мг/м^3 Шлих" textAlignment="CENTER" wrappingWidth="101.380859375" GridPane.columnIndex="14" />
+                                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Расчет Средних показателей по пласту. Мощность интервалы, м. Верт запас по интервалу, мг/м^3. Срежнезвеш. содержание по пласту, мг/м^3. Вертик. запас по пласа, мг/м^3" textAlignment="CENTER" wrappingWidth="231.3671875" GridPane.columnIndex="15" />
+                                                    <Text strokeType="OUTSIDE" strokeWidth="0.0" text="Обём пробы" textAlignment="CENTER" wrappingWidth="100.13671875" GridPane.columnIndex="8" />
+
+                                                </children>
+                                            </GridPane>
+                                        </content>
+                                    </ScrollPane>
+                                </children>
+                                <VBox.margin>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="10.0" />
+                                </VBox.margin>
+                            </Pane>
+                            <Button mnemonicParsing="false" onAction="#addRow" text="Добавить " />
+                            <Pane fx:id="firstList" maxHeight="700.0" maxWidth="1500.0" minHeight="700.0" minWidth="1500.0" prefHeight="700.0" prefWidth="1500.0" style="-fx-background-color: ffffff; -fx-effect: dropshadow(three-pass-box, rgba(0,0,0,0.8), 10, 0, 0, 0);">
+                                <VBox.margin>
+                                    <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                                </VBox.margin>
+                                <children>
+                                    <ScrollPane fitToHeight="true" fitToWidth="true" maxHeight="700.0" minHeight="700.0" prefHeight="700.0" prefWidth="1500.0">
+                                        <content>
+                                            <GridPane fx:id="table" gridLinesVisible="true">
+                                                <columnConstraints>
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="5.0" percentWidth="3.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="5.0" percentWidth="3.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="50.0" percentWidth="20.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="5.0" percentWidth="3.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="5.0" percentWidth="3.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="20.0" percentWidth="8.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                                    <ColumnConstraints hgrow="SOMETIMES" minWidth="20.0" percentWidth="10.0" prefWidth="100.0" />
+                                                </columnConstraints>
+                                                <rowConstraints>
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                    <RowConstraints minHeight="70.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                                </rowConstraints>
+                                            </GridPane>
+                                        </content>
+                                    </ScrollPane>
+                                </children>
+                            </Pane>
+                        </children>
+                    </VBox>
+                </children>
+            </HBox>
+        </content>
+    </ScrollPane>
+
+</VBox>

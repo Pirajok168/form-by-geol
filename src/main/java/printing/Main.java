@@ -518,6 +518,7 @@ public class Main extends Thread{
     private void thirdListPrint(Graphics g, PageFormat pageFormat, int pageIndex){
 
         Graphics2D g2d = (Graphics2D)g;
+
         g2d.translate(pageFormat.getImageableX(), pageFormat.getImageableY());
         AffineTransform defaultAt = g2d.getTransform();
         g2d.setFont(new Font("Times New Roman", Font.PLAIN, 12));

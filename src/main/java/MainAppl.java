@@ -18,7 +18,7 @@ public class MainAppl extends Application {
         Single.getInstance();
         Parent root = FXMLLoader.load(getClass().getResource("main.fxml"));
         stage.setTitle("My app");
-        stage.setScene(new Scene(root, 700,700));
+        stage.setScene(new Scene(root, 1800,1000));
         stage.show();
     }
 }

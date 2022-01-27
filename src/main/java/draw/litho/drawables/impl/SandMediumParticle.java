@@ -1,46 +1,33 @@
 package draw.litho.drawables.impl;
 
 import draw.litho.drawables.ILithoElement;
+import draw.litho.util.LithoElement;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 import java.awt.*;
 
-public class SandMediumParticle implements ILithoElement {
+public class SandMediumParticle extends LithoElement {
 
-    private final Rectangle rect = new Rectangle(10, 10);
+    public SandMediumParticle(){
+        rectangle = new Rectangle(10, 10);
+    }
 
     @Override
-    public void Draw(Canvas canvas) {
+    protected void Draw(GraphicsContext gc, Rectangle canvasRect) {
         var radius = 2;
-        var x = rect.x;
-        var y = rect.y;
-        var height = rect.height;
-        var width = rect.width;
+        var x = rectangle.x;
+        var y = rectangle.y;
+        var height = rectangle.height;
+        var width = rectangle.width;
 
-        var gc = canvas.getGraphicsContext2D();
-        SetupGraphicContext(gc);
-
+        gc.setFill(Color.BLACK);
         gc.fillOval(
                 x + width/2f - radius/2f,
                 y + height/2f - radius/2f,
                 radius,
                 radius
         );
-    }
-
-    @Override
-    public void setPoint(Point point) {
-        rect.setLocation(point);
-    }
-
-    @Override
-    public Rectangle getRect() {
-        return new Rectangle(rect);
-    }
-
-    private void SetupGraphicContext(GraphicsContext gc) {
-        gc.setFill(Color.BLACK);
     }
 }

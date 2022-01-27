@@ -1,37 +1,27 @@
 package draw.litho.drawables.impl;
 
 import draw.litho.drawables.ILithoElement;
+import draw.litho.util.LithoElement;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 
 import java.awt.*;
 
-public class Ice implements ILithoElement {
+public class Ice extends LithoElement {
 
-    private final Rectangle rect = new Rectangle(40, 20);
-
-    @Override
-    public void setPoint(Point point) {
-        rect.setLocation(point);
+    public Ice(){
+        rectangle = new Rectangle(40, 20);
     }
 
     @Override
-    public Rectangle getRect() {
-        return new Rectangle(rect);
-    }
-
-    @Override
-    public void Draw(Canvas canvas) {
+    protected void Draw(GraphicsContext gc, Rectangle canvasRect) {
         var margin = 5;
 
-        var x = rect.x;
-        var y = rect.y;
-        var height = rect.height - margin * 2;
-        var width = rect.width - margin * 2;
-
-        var gc = canvas.getGraphicsContext2D();
-        SetupGraphicContext(gc);
+        var x = rectangle.x;
+        var y = rectangle.y;
+        var height = rectangle.height - margin * 2;
+        var width = rectangle.width - margin * 2;
 
         gc.strokeLine(
                 x + margin + width / 2f,
@@ -46,11 +36,5 @@ public class Ice implements ILithoElement {
                 x + margin + width,
                 y + margin + height
         );
-    }
-
-    private void SetupGraphicContext(GraphicsContext gc) {
-        gc.setFill(Color.WHITE);
-        gc.setStroke(Color.BLACK);
-        gc.setLineWidth(1);
     }
 }

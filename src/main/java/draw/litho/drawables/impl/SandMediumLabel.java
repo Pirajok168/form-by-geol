@@ -4,6 +4,7 @@ import com.sun.javafx.tk.Toolkit;
 import draw.litho.drawables.ILithoDrawable;
 import draw.litho.drawables.ILithoPattern;
 import draw.litho.util.DrawingOrder;
+import draw.litho.util.LithoPattern;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -14,33 +15,31 @@ import javafx.scene.text.TextAlignment;
 
 import java.awt.*;
 
-public class SandMediumLabel implements ILithoPattern {
+public class SandMediumLabel extends LithoPattern {
     @Override
-    public void Draw(Canvas canvas) {
-        var gc = canvas.getGraphicsContext2D();
-
+    protected void Draw(GraphicsContext gc, Rectangle canvasRect) {
         var symbol = 'C';
         var symbolWidth = 10;
         var symbolHeight = 3;
         var radius = 25;
 
-        var height = canvas.getHeight();
-        var width = canvas.getWidth();
+        var height = canvasRect.height;
+        var width = canvasRect.width;
 
         gc.setFill(Color.WHITE);
         gc.setStroke(Color.BLACK);
         gc.setLineWidth(1.5);
 
         gc.fillOval(
-                width / 2 - radius / 2f,
-                height / 2 - radius / 2f,
+                width / 2f - radius / 2f,
+                height / 2f - radius / 2f,
                 radius,
                 radius
         );
 
         gc.strokeOval(
-                width / 2 - radius / 2f,
-                height / 2 - radius / 2f,
+                width / 2f - radius / 2f,
+                height / 2f - radius / 2f,
                 radius,
                 radius
         );
@@ -53,8 +52,8 @@ public class SandMediumLabel implements ILithoPattern {
 
         gc.fillText(
                 String.valueOf(symbol),
-                width / 2 - symbolWidth / 2f,
-                height / 2 - symbolHeight / 2f
+                width / 2f - symbolWidth / 2f,
+                height / 2f - symbolHeight / 2f
         );
     }
 

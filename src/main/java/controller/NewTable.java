@@ -8,6 +8,7 @@ import draw.DrawCut;
 import draw.CanvasTable;
 import draw.DecoratorSludge;
 import draw.litho.LithoCards;
+import draw.litho.providers.impl.Ил;
 import draw.litho.providers.impl.Лед;
 import draw.litho.providers.impl.Отработки;
 import draw.litho.providers.impl.ПесокСЗ;
@@ -89,7 +90,9 @@ public class NewTable {
     enum LithoTypes {
         Отработки,
         Лед,
-        ПесокСЗ
+        ПесокСЗ,
+        Ил
+        //расширять прим "ил"
     }
     //endregion
 
@@ -104,8 +107,10 @@ public class NewTable {
         for (LithoTypes activeType : SelectedLithoTypes) {
             switch (activeType) {
                 case Лед -> lithoCards.Add(new Лед());
-                case ПесокСЗ -> lithoCards.Add(new ПесокСЗ());
+                case ПесокСЗ -> lithoCards.Add(new ПесокСЗ(10));
                 case Отработки -> lithoCards.Add(new Отработки());
+                case Ил -> lithoCards.Add(new Ил());
+                //расширять применение енума из сета: кейс ил -> добавить ил
             }
         }
 
@@ -127,6 +132,11 @@ public class NewTable {
     @FXML
     void onSand(ActionEvent event) {
         UpdateLithoTypesSelection(LithoTypes.ПесокСЗ, sandMP.isSelected() ? eventTypes.Add : eventTypes.Remove);
+    }
+
+    @FXML
+    void onSilt(ActionEvent event) {
+        UpdateLithoTypesSelection(LithoTypes.Ил, /*todo добавить кобмобокс для Ила, а то сейчас тригер работает по флагу песка*/ sandMP.isSelected() ? eventTypes.Add : eventTypes.Remove);
     }
     //endregion
 

@@ -8,10 +8,7 @@ import draw.DrawCut;
 import draw.CanvasTable;
 import draw.DecoratorSludge;
 import draw.litho.LithoCards;
-import draw.litho.providers.impl.Ил;
-import draw.litho.providers.impl.Лед;
-import draw.litho.providers.impl.Отработки;
-import draw.litho.providers.impl.ПесокСЗ;
+import draw.litho.providers.impl.*;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -91,7 +88,10 @@ public class NewTable {
         Отработки,
         Лед,
         ПесокСЗ,
-        Ил
+        Ил,
+        Гравий,
+        Галька,
+        Валун
         //расширять прим "ил"
     }
     //endregion
@@ -110,6 +110,9 @@ public class NewTable {
                 case ПесокСЗ -> lithoCards.Add(new ПесокСЗ(10));
                 case Отработки -> lithoCards.Add(new Отработки());
                 case Ил -> lithoCards.Add(new Ил());
+                case Галька -> lithoCards.Add(new Галька());
+                case Гравий -> lithoCards.Add(new Гравий());
+                case Валун -> lithoCards.Add(new Валун());
                 //расширять применение енума из сета: кейс ил -> добавить ил
             }
         }

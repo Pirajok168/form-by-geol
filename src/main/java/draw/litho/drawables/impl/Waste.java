@@ -1,11 +1,7 @@
 package draw.litho.drawables.impl;
 
-import draw.litho.drawables.ILithoPattern;
-import draw.litho.util.DrawingOrder;
-import draw.litho.util.LithoPattern;
-import javafx.scene.canvas.Canvas;
+import draw.litho.drawables.LithoPattern;
 import javafx.scene.canvas.GraphicsContext;
-import javafx.scene.paint.Color;
 
 import java.awt.*;
 

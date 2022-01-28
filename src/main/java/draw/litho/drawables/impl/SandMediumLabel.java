@@ -1,16 +1,11 @@
 package draw.litho.drawables.impl;
 
-import com.sun.javafx.tk.Toolkit;
-import draw.litho.drawables.ILithoDrawable;
-import draw.litho.drawables.ILithoPattern;
 import draw.litho.util.DrawingOrder;
-import draw.litho.util.LithoPattern;
+import draw.litho.drawables.LithoPattern;
 import javafx.geometry.VPos;
-import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
-import javafx.scene.text.Text;
 import javafx.scene.text.TextAlignment;
 
 import java.awt.*;

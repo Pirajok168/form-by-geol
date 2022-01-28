@@ -1,6 +1,7 @@
-package draw.litho.util;
+package draw.litho.drawables;
 
-import draw.litho.drawables.ILithoElement;
+import draw.litho.drawables.ILithoPattern;
+import draw.litho.util.DrawingOrder;
 import javafx.geometry.VPos;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.canvas.GraphicsContext;
@@ -10,26 +11,7 @@ import javafx.scene.text.TextAlignment;
 
 import java.awt.*;
 
-public abstract class LithoElement implements ILithoElement {
-
-    protected Rectangle rectangle;
-
-    @Override
-    public void setPoint(Point point) {
-        if (rectangle == null)
-            throw new RectangleNotImplementedException(this.getClass());
-
-        rectangle.setLocation(point);
-    }
-
-    @Override
-    public Rectangle getRect() {
-        if (rectangle == null)
-            throw new RectangleNotImplementedException(this.getClass());
-
-        return new Rectangle(rectangle);
-    }
-
+public abstract class LithoPattern implements ILithoPattern {
     protected abstract void Draw(GraphicsContext gc, Rectangle canvasRect);
 
     @Override
@@ -40,12 +22,16 @@ public abstract class LithoElement implements ILithoElement {
     }
 
     private void SetupGraphicContext(GraphicsContext gc){
-        gc.setFill(Color.WHITE);
+        gc.setFill(javafx.scene.paint.Color.WHITE);
         gc.setStroke(Color.BLACK);
         gc.setLineWidth(1);
         gc.setTextAlign(TextAlignment.LEFT);
         gc.setTextBaseline(VPos.BASELINE);
         gc.setFont(Font.getDefault());
     }
-}
 
+    @Override
+    public DrawingOrder GetDrawingOrder() {
+        return DrawingOrder.BEFORE;
+    }
+}

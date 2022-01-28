@@ -1,8 +1,6 @@
 package draw.litho.drawables.impl;
 
-import draw.litho.drawables.ILithoElement;
-import draw.litho.util.LithoElement;
-import javafx.scene.canvas.Canvas;
+import draw.litho.drawables.LithoElement;
 import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.paint.Color;
 

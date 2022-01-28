@@ -29,6 +29,11 @@ public class LithoCardsCore {
     private List<ILithoPattern> lithoPatterns = new ArrayList<>();
     private List<ILithoElement> lithoElements = new ArrayList<>();
 
+    private void ClearCollections() {
+        lithoElements.clear();
+        lithoPatterns.clear();
+    }
+
     private void UpdateCollections() {
         lithoElements = new ArrayList<>(mainCollection
                 .stream()
@@ -84,8 +89,10 @@ public class LithoCardsCore {
     }
 
     public void Clear() {
-        mainCollection.clear();
-        UpdateCollections();
+        if (!mainCollection.isEmpty()) {
+            mainCollection.clear();
+            ClearCollections();
+        }
     }
 
     private void DrawAllPatterns(Canvas canvas, DrawingOrder order) {

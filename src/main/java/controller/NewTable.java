@@ -3,11 +3,13 @@ package controller;
 import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.*;
+import java.util.regex.Pattern;
 
 import draw.DrawCut;
 import draw.CanvasTable;
 import draw.litho.LithoCards;
 import draw.litho.LithoCardsCore;
+import draw.litho.LithoCardsRegEx;
 import draw.litho.providers.ILithoPatternProvider;
 import draw.litho.providers.impl.*;
 import draw.litho.util.EventTypes;
@@ -78,6 +80,13 @@ public class NewTable {
     //region Обработка литологических разреов
 
     LithoCards lithoCards = new LithoCards();
+
+    /*
+    LithoCardsRegEx lithoCardsRegEx = new LithoCardsRegEx.Builder()
+            .Register(new Валун(), Pattern.compile("f\\.a.+"))
+            .Register(new Галька(), Pattern.compile(""))
+            .Build();
+    */
 
     //region Перехват нажатий CheckBox
     @FXML

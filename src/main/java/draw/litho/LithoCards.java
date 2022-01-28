@@ -19,6 +19,7 @@ public class LithoCards extends LithoCardsCore {
             case Remove -> SelectedLithoProviders.remove(lithoProviderClass);
         }
         try {
+            Clear();
             for (var lithoProvider : SelectedLithoProviders)
                 Add(lithoProvider.getDeclaredConstructor().newInstance());
         } catch (NoSuchMethodException | InvocationTargetException | InstantiationException | IllegalAccessException ex) {

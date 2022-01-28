@@ -1,14 +1,16 @@
 package controller;
 
+import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.*;
 
-import draw.DecoratorWorkingOut;
 import draw.DrawCut;
 import draw.CanvasTable;
-import draw.DecoratorSludge;
 import draw.litho.LithoCards;
+import draw.litho.LithoCardsCore;
+import draw.litho.providers.ILithoPatternProvider;
 import draw.litho.providers.impl.*;
+import draw.litho.util.EventTypes;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -76,70 +78,26 @@ public class NewTable {
     //region Обработка литологических разреов
 
     LithoCards lithoCards = new LithoCards();
-    Set<LithoTypes> SelectedLithoTypes = new HashSet<>();
-
-    //region Описание событий
-    enum eventTypes {
-        Add,
-        Remove
-    }
-
-    enum LithoTypes {
-        Отработки,
-        Лед,
-        ПесокСЗ,
-        Ил,
-        Гравий,
-        Галька,
-        Валун
-        //расширять прим "ил"
-    }
-    //endregion
-
-    //region Обновление выделенных типов
-    void UpdateLithoTypesSelection(LithoTypes lithoType, eventTypes eventType) {
-        switch (eventType) {
-            case Add -> SelectedLithoTypes.add(lithoType);
-            case Remove -> SelectedLithoTypes.remove(lithoType);
-        }
-
-        lithoCards.Clear(canvas);
-        for (LithoTypes activeType : SelectedLithoTypes) {
-            switch (activeType) {
-                case Лед -> lithoCards.Add(new Лед());
-                case ПесокСЗ -> lithoCards.Add(new ПесокСЗ(10));
-                case Отработки -> lithoCards.Add(new Отработки());
-                case Ил -> lithoCards.Add(new Ил());
-                case Галька -> lithoCards.Add(new Галька());
-                case Гравий -> lithoCards.Add(new Гравий());
-                case Валун -> lithoCards.Add(new Валун());
-                //расширять применение енума из сета: кейс ил -> добавить ил
-            }
-        }
-
-        lithoCards.Draw(canvas);
-    }
-    //endregion
 
     //region Перехват нажатий CheckBox
     @FXML
     void onWorkingOut(ActionEvent event) {
-        UpdateLithoTypesSelection(LithoTypes.Отработки, workingOut.isSelected() ? eventTypes.Add : eventTypes.Remove);
+        lithoCards.UpdateAndDraw(canvas, Отработки.class, workingOut.isSelected() ? EventTypes.Add : EventTypes.Remove);
     }
 
     @FXML
     void onSludge(ActionEvent event) {
-        UpdateLithoTypesSelection(LithoTypes.Лед, sludge.isSelected() ? eventTypes.Add : eventTypes.Remove);
+        lithoCards.UpdateAndDraw(canvas, Лед.class, sludge.isSelected() ? EventTypes.Add : EventTypes.Remove);
     }
 
     @FXML
     void onSand(ActionEvent event) {
-        UpdateLithoTypesSelection(LithoTypes.ПесокСЗ, sandMP.isSelected() ? eventTypes.Add : eventTypes.Remove);
+        lithoCards.UpdateAndDraw(canvas, ПесокСЗ.class, sandMP.isSelected() ? EventTypes.Add : EventTypes.Remove);
     }
 
     @FXML
     void onSilt(ActionEvent event) {
-        UpdateLithoTypesSelection(LithoTypes.Ил, /*todo добавить кобмобокс для Ила, а то сейчас тригер работает по флагу песка*/ sandMP.isSelected() ? eventTypes.Add : eventTypes.Remove);
+        lithoCards.UpdateAndDraw(canvas, Ил.class, /*todo добавить кобмобокс для Ила, а то сейчас тригер работает по флагу песка*/ sandMP.isSelected() ? EventTypes.Add : EventTypes.Remove);
     }
     //endregion
 

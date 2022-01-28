@@ -11,6 +11,7 @@ import org.jetbrains.annotations.NotNull;
 import java.awt.*;
 import java.util.*;
 import java.util.List;
+import java.util.stream.Collectors;
 
 //Главный класс обработчик
 public class LithoCards {
@@ -34,7 +35,33 @@ public class LithoCards {
                 .filter(iLithoDrawable -> iLithoDrawable instanceof ILithoElement)
                 .map(iLithoDrawable -> (ILithoElement) iLithoDrawable)
                 .toList());
-        Collections.shuffle(lithoElements, random);
+
+        var groupedElements = new ArrayList<>(lithoElements
+                .stream()
+                .collect(Collectors
+                        .groupingBy(ILithoElement::getClass))
+                .values()
+                .stream()
+                .map(iLithoElements -> iLithoElements
+                        .stream()
+                        .findFirst())
+                .filter(Optional::isPresent)
+                .map(Optional::get)
+                .sorted((o1, o2) -> {
+                    var o1Rect = o1.getRect();
+                    var o2Rect = o2.getRect();
+                    return o1Rect.height * o1Rect.width > o2Rect.height * o2Rect.width ? 1 : 0;
+                })
+                .toList());
+
+        var subtractedElements = new ArrayList<>(lithoElements
+                .stream()
+                .filter(iLithoElement -> !groupedElements.contains(iLithoElement))
+                .toList());
+
+        Collections.shuffle(subtractedElements, random);
+        groupedElements.addAll(subtractedElements);
+        lithoElements = groupedElements;
 
         lithoPatterns = mainCollection
                 .stream()
@@ -55,22 +82,25 @@ public class LithoCards {
 
         Clear();
     }
+
     public void Clear() {
         mainCollection.clear();
         UpdateCollections();
     }
 
-    public void Draw(Canvas canvas) {
-        var height = (int) canvas.getHeight();
-        var width = (int) canvas.getWidth();
-        var canvasRect = new Rectangle(width, height);
-
+    private void DrawAllPatterns(Canvas canvas, DrawingOrder order) {
         lithoPatterns
                 .stream()
                 .filter(pattern ->
-                        pattern.GetDrawingOrder() == DrawingOrder.BEFORE)
+                        pattern.GetDrawingOrder() == order)
                 .forEach(pattern ->
                         pattern.Draw(canvas));
+    }
+
+    private void DrawAllElements(Canvas canvas) {
+        var height = (int) canvas.getHeight();
+        var width = (int) canvas.getWidth();
+        var canvasRect = new Rectangle(width, height);
 
         var drawnElements = new Stack<Rectangle>();
         for (var element : lithoElements) {
@@ -98,12 +128,11 @@ public class LithoCards {
                 }
             }
         }
+    }
 
-        lithoPatterns
-                .stream()
-                .filter(pattern ->
-                        pattern.GetDrawingOrder() == DrawingOrder.AFTER)
-                .forEach(pattern ->
-                        pattern.Draw(canvas));
+    public void Draw(Canvas canvas) {
+        DrawAllPatterns(canvas, DrawingOrder.BEFORE);
+        DrawAllElements(canvas);
+        DrawAllPatterns(canvas, DrawingOrder.AFTER);
     }
 }

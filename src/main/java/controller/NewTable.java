@@ -91,17 +91,17 @@ public class NewTable {
     //region Перехват нажатий CheckBox
     @FXML
     void onWorkingOut(ActionEvent event) {
-        lithoCards.UpdateAndDraw(canvas, Отработки.class, workingOut.isSelected() ? EventTypes.Add : EventTypes.Remove);
+        lithoCards.UpdateAndDraw(canvas, Глина.class, workingOut.isSelected() ? EventTypes.Add : EventTypes.Remove);
     }
 
     @FXML
     void onSludge(ActionEvent event) {
-        lithoCards.UpdateAndDraw(canvas, Лед.class, sludge.isSelected() ? EventTypes.Add : EventTypes.Remove);
+        lithoCards.UpdateAndDraw(canvas, Глыба.class, sludge.isSelected() ? EventTypes.Add : EventTypes.Remove);
     }
 
     @FXML
     void onSand(ActionEvent event) {
-        lithoCards.UpdateAndDraw(canvas, ПесокСЗ.class, sandMP.isSelected() ? EventTypes.Add : EventTypes.Remove);
+        lithoCards.UpdateAndDraw(canvas, Дресва.class, sandMP.isSelected() ? EventTypes.Add : EventTypes.Remove);
     }
 
     @FXML

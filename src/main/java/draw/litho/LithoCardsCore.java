@@ -11,7 +11,10 @@ import org.jetbrains.annotations.NotNull;
 import java.awt.*;
 import java.util.*;
 import java.util.List;
+import java.util.function.Function;
+import java.util.function.Predicate;
 import java.util.stream.Collectors;
+import java.util.stream.Stream;
 
 //Главный класс обработчик
 public class LithoCardsCore {
@@ -34,45 +37,45 @@ public class LithoCardsCore {
         lithoPatterns.clear();
     }
 
-    private void UpdateCollections() {
-        lithoElements = new ArrayList<>(mainCollection
+    private Stream<ILithoElement> GetElements() {
+        return mainCollection
                 .stream()
-                .filter(iLithoDrawable -> iLithoDrawable instanceof ILithoElement)
-                .map(iLithoDrawable -> (ILithoElement) iLithoDrawable)
-                .toList());
+                .filter(drawable -> drawable instanceof ILithoElement)
+                .map(drawable -> (ILithoElement) drawable);
+    }
 
-        var groupedElements = new ArrayList<>(lithoElements
+    private Stream<ILithoPattern> GetPatterns() {
+        return mainCollection
                 .stream()
-                .collect(Collectors
-                        .groupingBy(ILithoElement::getClass))
-                .values()
-                .stream()
-                .map(iLithoElements -> iLithoElements
-                        .stream()
-                        .findFirst())
-                .filter(Optional::isPresent)
-                .map(Optional::get)
+                .filter(drawable -> drawable instanceof ILithoPattern)
+                .map(drawable -> (ILithoPattern) drawable);
+    }
+
+    private Collection<ILithoElement> GetDistinctElements() {
+        return GetElements()
                 .sorted((o1, o2) -> {
                     var o1Rect = o1.getRect();
                     var o2Rect = o2.getRect();
                     return o1Rect.height * o1Rect.width > o2Rect.height * o2Rect.width ? 1 : 0;
                 })
-                .toList());
+                .collect(Collectors.toMap(
+                        ILithoElement::getClass,
+                        Function.identity(),
+                        (iLithoElement, iLithoElement2) -> iLithoElement))
+                .values();
+    }
 
-        var subtractedElements = new ArrayList<>(lithoElements
-                .stream()
-                .filter(iLithoElement -> !groupedElements.contains(iLithoElement))
-                .toList());
+    private void UpdateCollections() {
+        lithoPatterns.clear();
+        lithoPatterns.addAll(GetPatterns().toList());
 
-        Collections.shuffle(subtractedElements, random);
-        groupedElements.addAll(subtractedElements);
-        lithoElements = groupedElements;
+        lithoElements.clear();
+        lithoElements.addAll(GetElements().toList());
 
-        lithoPatterns = mainCollection
-                .stream()
-                .filter(iLithoDrawable -> iLithoDrawable instanceof ILithoPattern)
-                .map(iLithoDrawable -> (ILithoPattern) iLithoDrawable)
-                .toList();
+        var distinct = GetDistinctElements();
+        lithoElements.removeAll(distinct);
+        Collections.shuffle(lithoElements, random);
+        lithoElements.addAll(0, distinct);
     }
 
     public void Add(@NotNull ILithoPatternProvider pattern) {

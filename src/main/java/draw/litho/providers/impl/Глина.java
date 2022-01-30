@@ -1,0 +1,12 @@
+package draw.litho.providers.impl;
+
+import draw.litho.drawables.ILithoDrawable;
+import draw.litho.drawables.impl.Clay;
+import draw.litho.providers.SimplePatternProvider;
+
+public class Глина extends SimplePatternProvider {
+    @Override
+    protected ILithoDrawable ProvideDrawable() {
+        return new Clay();
+    }
+}

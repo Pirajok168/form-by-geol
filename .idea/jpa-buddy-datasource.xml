@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="JpbDataSourceConfig">
+    <data-sources>
+      <data-source id="09025c77-6cfa-47a5-ab8a-a8923c7b437e" name="form-by-geol" url="jdbc:mysql://localhost/form-by-geol?useSSL=false&amp;allowMultiQueries=true&amp;serverTimezone=UTC" driverClass="com.mysql.cj.jdbc.Driver" />
+    </data-sources>
+    <data-source-infos>
+      <data-source-info id="09025c77-6cfa-47a5-ab8a-a8923c7b437e" persistence-unit-name="Default" />
+      <data-source-info id="09025c77-6cfa-47a5-ab8a-a8923c7b437e" persistence-unit-name="test" />
+    </data-source-infos>
+  </component>
+</project>

@@ -1,24 +1,14 @@
 package controller;
 
-import java.lang.reflect.InvocationTargetException;
 import java.net.URL;
 import java.util.*;
-import java.util.regex.Pattern;
 
-import draw.DrawCut;
-import draw.CanvasTable;
 import draw.litho.LithoCards;
-import draw.litho.LithoCardsCore;
-import draw.litho.LithoCardsRegEx;
-import draw.litho.providers.ILithoPatternProvider;
 import draw.litho.providers.impl.*;
 import draw.litho.util.EventTypes;
-import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.Group;
-import javafx.scene.Node;
-import javafx.scene.canvas.GraphicsContext;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.ScrollPane;
 import javafx.scene.control.TextArea;
@@ -70,10 +60,6 @@ public class NewTable {
     @FXML
     private CheckBox workingOut;
 
-    private ObservableList<Node> list;
-    private GraphicsContext graphicsContext;
-    private DrawCut canvasTable;
-
     @FXML
     private Group groupCheckBox;
 
@@ -111,13 +97,4 @@ public class NewTable {
     //endregion
 
     //endregion
-
-    @FXML
-    void initialize() {
-        graphicsContext = canvas.getGraphicsContext2D();
-        canvasTable = new CanvasTable();
-        list = groupCheckBox.getChildren();
-
-    }
-
 }

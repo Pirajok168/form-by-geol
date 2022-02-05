@@ -1,6 +1,7 @@
 import java.awt.print.PrinterException;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Objects;
 
 import View.Model;
 import View.Single;
@@ -36,17 +37,12 @@ public class MainController {
     @FXML
     private MenuItem printing;
 
+    //private final Model model = Single.getModelFirstList();
+    //private final FirstListController firstListController = new FirstListController();
+    //private final SecondListController secondListController = new SecondListController();
+    //private final ThirdController thirdController = new ThirdController();
 
-
-
-    private Model model = Single.getInstance().getModelFirstList();
-    private FirstListController firstListController = new FirstListController();
-    private SecondListController secondListController = new SecondListController();
-    private ThirdController thirdController = new ThirdController();
-
-    private ObservableList<LeftTabs> leftTabsList = FXCollections.observableArrayList(Arrays.asList(LeftTabs.Documentation
-            , LeftTabs.Result, LeftTabs.Table, LeftTabs.LastTable, LeftTabs.Akt ));
-
+    private final ObservableList<LeftTabs> leftTabsList = FXCollections.observableArrayList(Arrays.asList(LeftTabs.Documentation, LeftTabs.Result, LeftTabs.Table, LeftTabs.LastTable, LeftTabs.Akt ));
 
     @FXML
     private TextField borehole;
@@ -75,12 +71,7 @@ public class MainController {
         listBorehole.setItems(books);
         TextField textField = new TextField();
 
-        button.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                books.add(textField.getText());
-            }
-        });
+        button.setOnAction(actionEvent -> books.add(textField.getText()));
 
         textField.setPromptText("Введите номер скважины");
 
@@ -96,52 +87,41 @@ public class MainController {
         listLines.getPanes().add(titledPane);
     }
 
-
-
-
     @FXML
-    void initialize(){
-        printing.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent actionEvent) {
-                Main main = new Main();
-                try {
-                    Thread thread = new Thread(new SaveData());
-                    thread.start();
-                    main.start();
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
+    void initialize() {
+        printing.setOnAction(actionEvent -> {
+            Main main = new Main();
+            try {
+                Thread thread = new Thread(new SaveData());
+                thread.start();
+                main.start();
+            } catch (Exception e) {
+                e.printStackTrace();
             }
         });
 
-        listView.setCellFactory((a)-> new CellContoller());
+        listView.setCellFactory((a) -> new CellContoller());
 
         listView.setItems(leftTabsList);
 
         listView.getSelectionModel().selectedItemProperty().addListener((observableValue, oldVal, newVal) -> {
-            String path = "";
+            String path = switch (newVal) {
+                case Result -> "tabs/second.fxml";
+                case Documentation -> "tabs/sample.fxml";
+                case Table -> "tabs/third.fxml";
+                case Akt -> "tabs/fourth_akt_1.fxml";
+                case LastTable -> "tabs/fourth.fxml";
+            };
 
-            switch (newVal){
-                case Result:
-                    path="tabs/second.fxml";
-                    break;
-                case Documentation:
-                    path="tabs/sample.fxml";
-                    break;
-                case Table:
-                    path="tabs/third.fxml";
-                    break;
-                case Akt:
-                    path="tabs/fourth_akt_1.fxml";
-                    break;
-                case LastTable:
-                    path="tabs/fourth.fxml";
-                    break;
-            }
-            Parent newRoot = null;
+            Parent newRoot;
+
             try {
-                newRoot = FXMLLoader.load(getClass().getResource(path));
+                newRoot = FXMLLoader.load(
+                        Objects.requireNonNull(
+                                getClass().getResource(path)
+                        )
+                );
+
                 contentPane.setContent(newRoot);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -150,8 +130,6 @@ public class MainController {
         listView.getSelectionModel().select(0);
 
     }
-
-
 
 
 }

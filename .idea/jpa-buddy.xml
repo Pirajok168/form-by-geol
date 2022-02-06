@@ -4,7 +4,7 @@
     <option name="flywayDirectory" value="db\migration" />
     <option name="defaultUnitInitialized" value="true" />
     <option name="sourceModelValue" value="Default" />
-    <option name="targetDbValue" value="09025c77-6cfa-47a5-ab8a-a8923c7b437e" />
+    <option name="targetDbValue" value="efd9bf8c-ef96-40cb-bed1-4de3ce963761" />
     <option name="newEntityIdType" value="Integer" />
     <option name="newEntityIdStrategy" value="Identity" />
   </component>

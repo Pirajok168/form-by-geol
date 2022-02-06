@@ -55,7 +55,9 @@ public class CalculationResults {
     private String h_сh7;
     private String h_сh8;
     private String h_сh9;
+    @Column(name = "`limit`")
     private String limit;
+    @Column(name = "prob_ai")
     private String probAi;
     private String content;
     private String dressing18;

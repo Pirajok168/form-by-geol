@@ -26,13 +26,13 @@ public class LithologicalSection {
     @Column(name = "id", nullable = false)
     private Integer id;
 
-    @Column(name = "desc")
+    @Column(name = "`desc`")
     private String desc;
 
-    @Column(name = "from")
+    @Column(name = "`from`")
     private String from;
 
-    @Column(name = "to")
+    @Column(name = "`to`")
     private String to;
 
     @Column(name = "drilling_dimensions")

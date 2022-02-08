@@ -23,8 +23,8 @@ public class DrillingLine {
     @Column(name = "title")
     private String title;
 
-    @Lob
-    @Column(name = "description")
+    //@Lob
+    @Column(name = "description",length = 10000)
     private String description;
 
     @OneToMany(mappedBy = "drillingLine", cascade = CascadeType.REMOVE, orphanRemoval = true)

@@ -26,8 +26,8 @@ public class Borehole {
     @Column(name = "title")
     private String title;
 
-    @Lob
-    @Column(name = "description")
+    //@Lob
+    @Column(name = "description",length = 10000)
     private String description;
 
    /* @ManyToOne(optional = false)

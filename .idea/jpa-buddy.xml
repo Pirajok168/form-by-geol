@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="JpaBuddyIdeaProjectConfig" ddlActionDbType="mysql">
-    <option name="flywayDirectory" value="db\migration" />
+  <component name="JpaBuddyIdeaProjectConfig" ddlActionDbType="mysql" isDiffGenerationLicenceAccepted="true">
+    <option name="flywayDirectory" value="db/migration" />
     <option name="defaultUnitInitialized" value="true" />
     <option name="sourceModelValue" value="Default" />
-    <option name="targetDbValue" value="efd9bf8c-ef96-40cb-bed1-4de3ce963761" />
+    <option name="targetDbValue" value="ae5c30ef-1930-4631-a030-2607819efd7d" />
     <option name="newEntityIdType" value="Integer" />
     <option name="newEntityIdStrategy" value="Identity" />
   </component>

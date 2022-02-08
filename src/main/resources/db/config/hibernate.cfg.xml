@@ -4,15 +4,15 @@
         "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
     <session-factory>
-        <property name="hibernate.dialect">org.hibernate.dialect.MySQLDialect</property>
-        <property name="connection.url">jdbc:mysql://localhost/form-by-geol</property>
-        <property name="connection.driver_class">com.mysql.cj.jdbc.Driver</property>
-        <property name="connection.username">root</property>
-        <property name="connection.password">1234</property>
-
-        <!--Для тестов-->
         <property name="show_sql">true</property>
         <property name="format_sql">true</property>
+        <property name="dialect">org.sqlite.hibernate.dialect.SQLiteDialect</property>
+        <property name="connection.driver_class">org.sqlite.JDBC</property>
+        <property name="connection.url">jdbc:sqlite:formByGeol.db</property>
+        <property name="connection.username"/>
+        <property name="connection.password"/>
+
+        <property name="hibernate.hbm2ddl.auto">update</property>
 
         <mapping class="data.entities.Borehole"/>
         <mapping class="data.entities.DrillingLine"/>

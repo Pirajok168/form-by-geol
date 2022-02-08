@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DdlMappings">
+    <mapping uuid="eb6fcab9-cde2-42b9-889c-b6640f1001dc" name="FormByGeol.db Mapping">
+      <data-sources db="a28dd93d-3b13-4e63-ad10-b36c5c23894f" ddl="a12ce094-0f2e-42ea-a80d-19e4136385c2" />
+    </mapping>
+  </component>
+</project>

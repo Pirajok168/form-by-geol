@@ -1,9 +1,7 @@
 package data.entities.documentation;
 
 import data.entities.Borehole;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
@@ -18,6 +16,9 @@ import java.util.*;
 @Setter
 @ToString
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "lithological_section")
 public class LithologicalSection {
     @Id

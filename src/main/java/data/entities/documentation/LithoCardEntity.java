@@ -2,9 +2,7 @@ package data.entities.documentation;
 
 import data.util.LithoCardClassTypeConverter;
 import draw.litho.drawables.ILithoDrawable;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
@@ -19,6 +17,9 @@ import java.util.Objects;
 @Setter
 @ToString
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "litho_card_entity")
 public class LithoCardEntity {
     @Id

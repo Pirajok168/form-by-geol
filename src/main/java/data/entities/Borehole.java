@@ -1,9 +1,7 @@
 package data.entities;
 
 import data.entities.documentation.*;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+import lombok.*;
 import org.hibernate.Hibernate;
 
 import javax.persistence.*;
@@ -15,6 +13,9 @@ import java.util.Set;
 @Setter
 @ToString
 @Entity
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
 @Table(name = "borehole")
 public class Borehole {
     @Id
@@ -22,13 +23,16 @@ public class Borehole {
     @Column(name = "id", nullable = false)
     private Integer id;
 
+    @Column(name = "title")
+    private String title;
+
     @Lob
     @Column(name = "description")
     private String description;
 
-    @ManyToOne(optional = false)
-    @JoinColumn(name = "drilling_line_id", nullable = false, unique = true)
-    private DrillingLine drillingLine;
+   /* @ManyToOne(optional = false)
+    @JoinColumn(name = "drilling_line_id", nullable = false)
+    private DrillingLine drillingLine;*/
 
     @OneToOne(orphanRemoval = true)
     @JoinColumn(name = "summary_id")
@@ -57,6 +61,10 @@ public class Borehole {
     @OneToOne(orphanRemoval = true)
     @JoinColumn(name = "shutdown_act_id")
     private ShutdownAct shutdownAct;
+
+    @ManyToOne(cascade = CascadeType.DETACH, optional = false)
+    @JoinColumn(name = "drilling_line_id", nullable = false)
+    private DrillingLine drillingLine;
 
     //region equals and hash code
     @Override

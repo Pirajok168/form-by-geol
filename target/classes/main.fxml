@@ -73,8 +73,8 @@
                      <children>
                         <HBox alignment="CENTER" prefHeight="88.0" prefWidth="243.0">
                            <children>
-                              <TextField fx:id="line" prefHeight="25.0" prefWidth="167.0" promptText="Введите номер линии" />
-                              <Button fx:id="btnAddLine" mnemonicParsing="false" onAction="#addLine" prefHeight="47.0" prefWidth="80.0" text="Добавить линию" textAlignment="CENTER" wrapText="true" />
+                              <TextField fx:id="drillingLine" prefHeight="25.0" prefWidth="167.0" promptText="Введите номер линии" />
+                              <Button fx:id="btnAddLine" disable="true" mnemonicParsing="false" onAction="#addLine" prefHeight="47.0" prefWidth="80.0" text="Добавить линию" textAlignment="CENTER" wrapText="true" />
                            </children>
                         </HBox>
                      </children>

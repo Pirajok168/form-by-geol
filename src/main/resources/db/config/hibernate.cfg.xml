@@ -10,6 +10,9 @@
         <property name="connection.username">root</property>
         <property name="connection.password">1234</property>
 
+        <!--Для тестов-->
+        <property name="show_sql">true</property>
+
         <mapping class="data.entities.Borehole"/>
         <mapping class="data.entities.DrillingLine"/>
         <mapping class="data.entities.documentation.CalculationResults"/>

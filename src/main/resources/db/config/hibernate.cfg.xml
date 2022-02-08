@@ -12,6 +12,7 @@
 
         <!--Для тестов-->
         <property name="show_sql">true</property>
+        <property name="format_sql">true</property>
 
         <mapping class="data.entities.Borehole"/>
         <mapping class="data.entities.DrillingLine"/>

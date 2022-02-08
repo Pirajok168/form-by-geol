@@ -1,7 +1,5 @@
 import java.io.IOException;
-import java.util.ArrayList;
 import java.util.Arrays;
-import java.util.HashSet;
 import java.util.Objects;
 import java.util.function.Consumer;
 
@@ -25,9 +23,9 @@ import printing.Main;
 
 public class MainController {
 
-
     @FXML
     private ScrollPane contentPane;
+
     @FXML
     private ListView<LeftTabs> listView;
 
@@ -40,12 +38,6 @@ public class MainController {
     //private final ThirdController thirdController = new ThirdController();
 
     private final ObservableList<LeftTabs> leftTabsList = FXCollections.observableArrayList(Arrays.asList(LeftTabs.Documentation, LeftTabs.Result, LeftTabs.Table, LeftTabs.LastTable, LeftTabs.Akt));
-
-    @FXML
-    private TextField borehole;
-
-    @FXML
-    private Button btnAddBorehole;
 
     @FXML
     private Button btnAddLine;
@@ -74,23 +66,24 @@ public class MainController {
                 .selectedIndexProperty()
                 .addListener((observableValue, oldNum, newNum) -> {
                     try (var session = HibernateSessionFactory.getSession()) {
-                        var transaction = session.beginTransaction();
-                        var boreholesQuerry = session.createQuery("from Borehole where drillingLine = :dl", Borehole.class);
-                        boreholesQuerry.setParameter("dl", drillingLine);
-                        event.accept(boreholesQuerry.list().get(newNum.intValue()));
+                        session.beginTransaction();
+                        var boreholesQuery = session.createQuery("from Borehole where drillingLine = :dl", Borehole.class);
+                        boreholesQuery.setParameter("dl", drillingLine);
+
+                        event.accept(boreholesQuery.list().get(newNum.intValue()));
                     }
                 });
 
-        TextField boreholeTitile = new TextField();
-        boreholeTitile.setPromptText("Введите номер скважины");
+        TextField boreholeTitle = new TextField();
+        boreholeTitle.setPromptText("Введите номер скважины");
 
         Button addBoreholeButton = new Button("Добавить скважину");
         addBoreholeButton.setDisable(true);
         addBoreholeButton
                 .setOnAction(actionEvent -> {
 
-                    var newBoreHoleTitle = boreholeTitile.getText();
-                    boreholeTitile.clear();
+                    var newBoreHoleTitle = boreholeTitle.getText();
+                    boreholeTitle.clear();
 
                     try (var session = HibernateSessionFactory.getSession()) {
                         var transaction = session.beginTransaction();
@@ -100,11 +93,11 @@ public class MainController {
                                 .title(newBoreHoleTitle)
                                 .build());
 
-                        var getNewDLQuerry = session.createQuery("from Borehole where drillingLine = :drillingLine and title = :title order by id desc", Borehole.class);
-                        getNewDLQuerry.setParameter("drillingLine", drillingLine);
-                        getNewDLQuerry.setParameter("title", newBoreHoleTitle);
+                        var getNewDLQQuery = session.createQuery("from Borehole where drillingLine = :drillingLine and title = :title order by id desc", Borehole.class);
+                        getNewDLQQuery.setParameter("drillingLine", drillingLine);
+                        getNewDLQQuery.setParameter("title", newBoreHoleTitle);
 
-                        var newBoreholeAttached = getNewDLQuerry.list().get(0);
+                        var newBoreholeAttached = getNewDLQQuery.list().get(0);
                         transaction.commit();
 
                         boreholesList
@@ -113,14 +106,10 @@ public class MainController {
                     }
                 });
 
-        boreholeTitile.textProperty().addListener((observableValue, oldVal, newVal) -> {
-            if (newVal.isBlank() || newVal.isEmpty())
-                addBoreholeButton.setDisable(true);
-            else
-                addBoreholeButton.setDisable(false);
-        });
+        boreholeTitle.textProperty().addListener((observableValue, oldVal, newVal) ->
+                addBoreholeButton.setDisable(newVal.isBlank() || newVal.isEmpty()));
 
-        HBox boreholeAddFuncView = new HBox(boreholeTitile, addBoreholeButton);
+        HBox boreholeAddFuncView = new HBox(boreholeTitle, addBoreholeButton);
         boreholeAddFuncView.setAlignment(Pos.CENTER);
 
         VBox existBoreholesCollectionView = new VBox(boreholeAddFuncView, boreholesList);
@@ -152,10 +141,10 @@ public class MainController {
                     .title(drillingLine.getText())
                     .build());
 
-            var getNewDLQuerry = session.createQuery("from DrillingLine where title = :title order by id desc", DrillingLine.class);
-            getNewDLQuerry.setParameter("title", drillingLine.getText());
+            var getNewDLQQuery = session.createQuery("from DrillingLine where title = :title order by id desc", DrillingLine.class);
+            getNewDLQQuery.setParameter("title", drillingLine.getText());
 
-            var newDrillingLineAttached = getNewDLQuerry.list().get(0);
+            var newDrillingLineAttached = getNewDLQQuery.list().get(0);
             transaction.commit();
 
             createElement(newDrillingLineAttached);
@@ -166,12 +155,9 @@ public class MainController {
     @FXML
     void initialize() {
 
-        drillingLine.textProperty().addListener((observableValue, oldVal, newVal) -> {
-            if (newVal.isBlank() || newVal.isEmpty())
-                btnAddLine.setDisable(true);
-            else
-                btnAddLine.setDisable(false);
-        });
+        drillingLine.textProperty().addListener((observableValue, oldVal, newVal) ->
+                btnAddLine.setDisable(newVal.isBlank() || newVal.isEmpty()));
+
         try (var session = HibernateSessionFactory.getSession()) {
             session.beginTransaction();
             session

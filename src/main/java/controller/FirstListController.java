@@ -1,19 +1,20 @@
 package controller;
 
-import View.Model;
-import View.Single;
+import data.entities.Borehole;
+import data.entities.documentation.Summary;
+import data.util.HibernateSessionFactory;
+import globals.Globals;
 import data.FirstList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.Pane;
 import javafx.scene.layout.VBox;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import org.jetbrains.annotations.NotNull;
 
-import java.util.List;
 import java.util.Objects;
+import java.util.function.Consumer;
 
 public class FirstListController {
     @FXML
@@ -145,347 +146,369 @@ public class FirstListController {
     @FXML
     private Color x4;
 
-    private Model model = Single.getModelFirstList();
-    private FirstList firstList = Single.getFirstList();
+    private final Globals globals = Globals.instance();
 
+    private void setupSummary(@NotNull Summary summary) {
+        region.setText(summary.getRegion());
+        riverValley.setText(summary.getRiverValley());
+        tributary.setText(summary.getTributary());
+        system.setText(summary.getSystem());
+        typeOfPlacer.setText(summary.getTypeOfPlacer());
+        line.setText(summary.getLine());
+        distanceFromTheMouth.setText(summary.getDistanceFromTheMouth());
+        fromTheLine.setText(summary.getFromTheLine());
+        downUp.setText(summary.getDownUp());
+        azimuth.setText(summary.getAzimuth());
+        borehole.setText(summary.getBorehole());
+        distanceFromTheRiverbed.setText(summary.getDistanceFromTheRiverbed());
+        fromTheWell.setText(summary.getFromTheWell());
+        rightLeft.setText(summary.getRightLeft());
+        start.setText(summary.getStart());
+        end.setText(summary.getEnd());
+        altitudeMark.setText(summary.getAltitudeMark());
+        coordinates.setText(summary.getCoordinates());
 
+        permafrostFrom.setText(summary.getPermafrostFrom());
+        permafrostTo.setText(summary.getPermafrostTo());
+        permafrostFrom2.setText(summary.getPermafrostFrom2());
+        permafrostTo2.setText(summary.getPermafrostTo2());
 
-    private void initModel(){
+        groundFrom.setText(summary.getGroundFrom());
+        groundTo.setText(summary.getGroundTo());
 
-        region.setText(firstList.getRegion());
-        riverValley.setText(firstList.getRiverValley());
-        tributary.setText(firstList.getTributary());
-        system.setText(firstList.getSystem());
-        typeOfPlacer.setText(firstList.getTypeOfPlacer());
-        line.setText(firstList.getLine());
-        distanceFromTheMouth.setText(firstList.getDistanceFromTheMouth());
-        fromTheLine.setText(firstList.getFromTheLine());
-        downUp.setText(firstList.getDownUp());
-        azimuth.setText(firstList.getAzimuth());
-        borehole.setText(firstList.getBorehole());
-        distanceFromTheRiverbed.setText(firstList.getDistanceFromTheRiverbed());
-        fromTheWell.setText(firstList.getFromTheWell());
-        rightLeft.setText(firstList.getRightLeft());
-        start.setText(firstList.getStart());
-        end.setText(firstList.getEnd());
-        altitudeMark.setText(firstList.getAltitudeMark());
-        coordinates.setText(firstList.getCoordinates());
+        groundFrom2.setText(summary.getGroundFrom2());
+        groundTo2.setText(summary.getGroundTo2());
 
-        permafrostFrom.setText(firstList.getPermafrostFrom());
-        permafrostTo.setText(firstList.getPermafrostTo());
-        permafrostFrom2.setText(firstList.getPermafrostFrom2());
-        permafrostTo2.setText(firstList.getPermafrostTo2());
+        totalDepth.setText(summary.getTotalDepth());
+        casingDepth.setText(summary.getCasingDepth());
+        compositionRocks.setText(summary.getCompositionRocks());
+        passed.setText(summary.getPassed());
+        passedOrStopped.setText(summary.getPassedOrStopped());
+        waterLevel.setText(summary.getWaterLevel());
+        waterLevelStop.setText(summary.getWaterLevelStop());
 
-        groundFrom.setText(firstList.getGroundFrom());
-        groundTo.setText(firstList.getGroundTo());
+        drillingDiameterM.setText(summary.getDrillingDiameterM());
+        drillingDiameterMM.setText(summary.getDrillingDiameterMM());
+        drillingRig.setText(summary.getDrillingRig());
+        flushing.setText(summary.getFlushing());
+        geologist.setText(summary.getGeologist());
+        surveyor.setText(summary.getSurveyor());
+    }
 
-        groundFrom2.setText(firstList.getGroundFrom2());
-        groundTo2.setText(firstList.getGroundTo2());
+    private void initModel() {
+        if (globals.getCurrentBorehole() != null)
+            try (var session = HibernateSessionFactory.getSession()) {
+                var transaction = session.beginTransaction();
+                var currentBorehole = globals.getCurrentBorehole();
 
-        totalDepth.setText(firstList.getTotalDepth());
-        casingDepth.setText(firstList.getCasingDepth());
-        compositionRocks.setText(firstList.getCompositionRocks());
-        passed.setText(firstList.getPassed());
-        passedOrStopped.setText(firstList.getPassedOrStopped());
-        waterLevel.setText(firstList.getWaterLevel());
-        waterLevelStop.setText(firstList.getWaterLevelStop());
-        drillingDiameterM.setText(firstList.getDrillingDiameterM());
-        drillingDiameterMM.setText(firstList.getDrillingDiameterMM());
-        drillingRig.setText(firstList.getDrillingRig());
-        flushing.setText(firstList.getFlushing());
-        geologist.setText(firstList.getGeologist());
-        surveyor.setText(firstList.getSurveyor());
+                var summary = currentBorehole.getSummary();
+                setupSummary(Objects.requireNonNullElseGet(summary, Summary::new));
 
-
-
+                transaction.commit();
+            }
+/*
         String value = region.getText();
-        firstList.setRegion(value  == null ? "" : value);
+        firstList.setRegion(value == null ? "" : value);
 
         value = tributary.getText();
-        firstList.setTributary(value  == null ? "" : value);
+        firstList.setTributary(value == null ? "" : value);
 
         value = system.getText();
-        firstList.setSystem(value  == null ? "" : value);
+        firstList.setSystem(value == null ? "" : value);
 
         value = riverValley.getText();
-        firstList.setRiverValley(value  == null ? "" : value);
+        firstList.setRiverValley(value == null ? "" : value);
 
         value = typeOfPlacer.getText();
-        firstList.setTypeOfPlacer(value  == null ? "" : value);
-
+        firstList.setTypeOfPlacer(value == null ? "" : value);
 
 
         value = distanceFromTheMouth.getText();
         firstList.setDistanceFromTheMouth(value == null ? "" : value);
-         value = downUp.getText();
+        value = downUp.getText();
         firstList.setDownUp(value == null ? "" : value);
-         value = azimuth.getText();
+        value = azimuth.getText();
         firstList.setAzimuth(value == null ? "" : value);
-         value = borehole.getText();
+        value = borehole.getText();
         firstList.setBorehole(value == null ? "" : value);
-         value = distanceFromTheRiverbed.getText();
+        value = distanceFromTheRiverbed.getText();
         firstList.setDistanceFromTheRiverbed(value == null ? "" : value);
-         value = fromTheWell.getText();
+        value = fromTheWell.getText();
         firstList.setFromTheWell(value == null ? "" : value);
-         value = rightLeft.getText();
+        value = rightLeft.getText();
         firstList.setRightLeft(value == null ? "" : value);
-         value = start.getText();
+        value = start.getText();
         firstList.setStart(value == null ? "" : value);
-         value = end.getText();
+        value = end.getText();
         firstList.setEnd(value == null ? "" : value);
-         value = altitudeMark.getText();
+        value = altitudeMark.getText();
         firstList.setAltitudeMark(value == null ? "" : value);
-         value = coordinates.getText();
+        value = coordinates.getText();
         firstList.setCoordinates(value == null ? "" : value);
-         value = permafrostFrom.getText();
+        value = permafrostFrom.getText();
         firstList.setPermafrostFrom(value == null ? "" : value);
-         value = permafrostTo.getText();
+        value = permafrostTo.getText();
         firstList.setPermafrostTo(value == null ? "" : value);
-         value = permafrostFrom2.getText();
+        value = permafrostFrom2.getText();
         firstList.setPermafrostFrom2(value == null ? "" : value);
-         value = permafrostTo2.getText();
+        value = permafrostTo2.getText();
         firstList.setPermafrostTo2(value == null ? "" : value);
-         value = groundFrom.getText();
+        value = groundFrom.getText();
         firstList.setGroundFrom(value == null ? "" : value);
-         value = groundTo.getText();
+        value = groundTo.getText();
         firstList.setGroundTo(value == null ? "" : value);
-         value = groundFrom2.getText();
+        value = groundFrom2.getText();
         firstList.setGroundFrom2(value == null ? "" : value);
-         value = groundTo2.getText();
+        value = groundTo2.getText();
         firstList.setGroundTo2(value == null ? "" : value);
-         value = totalDepth.getText();
+        value = totalDepth.getText();
         firstList.setTotalDepth(value == null ? "" : value);
-         value = casingDepth.getText();
+        value = casingDepth.getText();
         firstList.setCasingDepth(value == null ? "" : value);
-         value = compositionRocks.getText();
+        value = compositionRocks.getText();
         firstList.setCompositionRocks(value == null ? "" : value);
-         value = passed.getText();
+        value = passed.getText();
         firstList.setPassed(value == null ? "" : value);
-         value = passedOrStopped.getText();
+        value = passedOrStopped.getText();
         firstList.setPassedOrStopped(value == null ? "" : value);
-         value = waterLevel.getText();
+        value = waterLevel.getText();
         firstList.setWaterLevel(value == null ? "" : value);
-         value = waterLevelStop.getText();
+        value = waterLevelStop.getText();
         firstList.setWaterLevelStop(value == null ? "" : value);
-         value = drillingDiameterM.getText();
+        value = drillingDiameterM.getText();
         firstList.setDrillingDiameterM(value == null ? "" : value);
-         value = drillingDiameterMM.getText();
+        value = drillingDiameterMM.getText();
         firstList.setDrillingDiameterMM(value == null ? "" : value);
-         value = drillingRig.getText();
+        value = drillingRig.getText();
         firstList.setDrillingRig(value == null ? "" : value);
-         value = flushing.getText();
+        value = flushing.getText();
         firstList.setFlushing(value == null ? "" : value);
-         value = geologist.getText();
+        value = geologist.getText();
         firstList.setGeologist(value == null ? "" : value);
-         value = surveyor.getText();
+        value = surveyor.getText();
         firstList.setSurveyor(value == null ? "" : value);
         value = line.getText();
         firstList.setLine(value == null ? "" : value);
         value = fromTheLine.getText();
-        firstList.setFromTheLine(value);
+        firstList.setFromTheLine(value);*/
     }
+
+    private void updateValue(@NotNull Consumer<Summary> summaryConsumer) {
+        if (globals.getCurrentBorehole() == null) return;
+
+        try (var session = HibernateSessionFactory.getSession()) {
+            var transaction = session.beginTransaction();
+            var borehole = globals.getCurrentBorehole();
+            session.refresh(borehole);
+
+            var summary = borehole.getSummary();
+            if (summary == null) {
+                summary = new Summary();
+                borehole.setSummary(summary);
+            }
+
+            summaryConsumer.accept(summary);
+            session.update(borehole);
+
+            transaction.commit();
+        }
+    }
+
 
     @FXML
-    void initialize(){
+    void initialize() {
+        //new Thread(this::initModel).start();
+        initModel();
+        globals.addBoreholeListener(borehole1 -> initModel());
 
-        Thread thread = new Thread(new Runnable() {
-            @Override
-            public void run() {
-                initModel();
-            }
-        });
-        thread.start();
-
-
-        line.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        line.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = line.getText();
-            firstList.setLine(value == null ? " " : value);
+            updateValue(summary -> summary.setLine(value == null ? " " : value));
         });
 
-        region.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        region.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = region.getText();
             System.out.println("сработало");
-            firstList.setRegion(value == null ? " " : value);
+            updateValue(summary -> summary.setRegion(value == null ? " " : value));
         });
 
-        riverValley.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        riverValley.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = riverValley.getText();
-            firstList.setRiverValley(value == null ? " " : value);
+            updateValue(summary -> summary.setRiverValley(value == null ? " " : value));
         });
 
-        tributary.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        tributary.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = tributary.getText();
-            firstList.setTributary(value == null ? " " : value);
+            updateValue(summary -> summary.setTributary(value == null ? " " : value));
         });
-        system.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        system.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = system.getText();
-            firstList.setSystem(value == null ? " " : value);
+            updateValue(summary -> summary.setSystem(value == null ? " " : value));
         });
-        typeOfPlacer.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        typeOfPlacer.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = typeOfPlacer.getText();
-            firstList.setTypeOfPlacer(value == null ? " " : value);
+            updateValue(summary -> summary.setTypeOfPlacer(value == null ? " " : value));
         });
 
-        distanceFromTheMouth.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        distanceFromTheMouth.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = distanceFromTheMouth.getText();
-            firstList.setDistanceFromTheMouth(value == null ? " " : value);
+            updateValue(summary -> summary.setDistanceFromTheMouth(value == null ? " " : value));
         });
 
-        downUp.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        downUp.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = downUp.getText();
-            firstList.setDownUp(value == null ? " " : value);
+            updateValue(summary -> summary.setDownUp(value == null ? " " : value));
         });
 
-        azimuth.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        azimuth.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = azimuth.getText();
-            firstList.setAzimuth(value == null ? " " : value);
+            updateValue(summary -> summary.setAzimuth(value == null ? " " : value));
         });
 
-        borehole.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        borehole.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = borehole.getText();
-            firstList.setBorehole(value == null ? "" : value);
+            updateValue(summary -> summary.setBorehole(value == null ? "" : value));
         });
 
-        distanceFromTheRiverbed.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        distanceFromTheRiverbed.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = distanceFromTheRiverbed.getText();
-            firstList.setDistanceFromTheRiverbed(value == null ? " " : value);
+            updateValue(summary -> summary.setDistanceFromTheRiverbed(value == null ? " " : value));
         });
 
-        fromTheWell.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        fromTheWell.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = fromTheWell.getText();
-            firstList.setFromTheWell(value == null ? " " : value);
+            updateValue(summary -> summary.setFromTheWell(value == null ? " " : value));
         });
 
-        rightLeft.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        rightLeft.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = rightLeft.getText();
-            firstList.setRightLeft(value == null ? " " : value);
+            updateValue(summary -> summary.setRightLeft(value == null ? " " : value));
         });
 
-        start.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        start.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = start.getText();
-            firstList.setStart(value == null ? " " : value);
+            updateValue(summary -> summary.setStart(value == null ? " " : value));
         });
 
-        end.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        end.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = end.getText();
-            firstList.setEnd(value == null ? " " : value);
+            updateValue(summary -> summary.setEnd(value == null ? " " : value));
         });
 
-        altitudeMark.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        altitudeMark.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = altitudeMark.getText();
-            firstList.setAltitudeMark(value == null ? " " : value);
+            updateValue(summary -> summary.setAltitudeMark(value == null ? " " : value));
         });
 
-        coordinates.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        coordinates.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = coordinates.getText();
-            firstList.setCoordinates(value == null ? " " : value);
+            updateValue(summary -> summary.setCoordinates(value == null ? " " : value));
         });
 
-        permafrostFrom.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        permafrostFrom.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = permafrostFrom.getText();
-            firstList.setPermafrostFrom(value == null ? " " : value);
+            updateValue(summary -> summary.setPermafrostFrom(value == null ? " " : value));
         });
 
-        permafrostTo.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        permafrostTo.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = permafrostTo.getText();
-            firstList.setPermafrostTo(value == null ? " " : value);
+            updateValue(summary -> summary.setPermafrostTo(value == null ? " " : value));
         });
 
-        permafrostFrom2.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        permafrostFrom2.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = permafrostFrom2.getText();
-            firstList.setPermafrostFrom2(value == null ? " " : value);
+            updateValue(summary -> summary.setPermafrostFrom2(value == null ? " " : value));
         });
 
-        permafrostTo2.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        permafrostTo2.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = permafrostTo2.getText();
-            firstList.setPermafrostTo2(value == null ? " " : value);
+            updateValue(summary -> summary.setPermafrostTo2(value == null ? " " : value));
         });
 
-        groundFrom.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        groundFrom.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = groundFrom.getText();
-            firstList.setGroundFrom(value == null ? " " : value);
+            updateValue(summary -> summary.setGroundFrom(value == null ? " " : value));
         });
 
-        groundTo.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        groundTo.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = groundTo.getText();
-            firstList.setGroundTo(value == null ? " " : value);
+            updateValue(summary -> summary.setGroundTo(value == null ? " " : value));
         });
 
-        groundFrom2.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        groundFrom2.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = groundFrom2.getText();
-            firstList.setGroundFrom2(value == null ? " " : value);
+            updateValue(summary -> summary.setGroundFrom2(value == null ? " " : value));
         });
 
-        groundTo2.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        groundTo2.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = groundTo2.getText();
-            firstList.setGroundTo2(value == null ? " " : value);
+            updateValue(summary -> summary.setGroundTo2(value == null ? " " : value));
         });
 
-        totalDepth.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        totalDepth.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = totalDepth.getText();
-            firstList.setTotalDepth(value == null ? " " : value);
+            updateValue(summary -> summary.setTotalDepth(value == null ? " " : value));
         });
 
-        casingDepth.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        casingDepth.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = casingDepth.getText();
-            firstList.setCasingDepth(value == null ? " " : value);
+            updateValue(summary -> summary.setCasingDepth(value == null ? " " : value));
         });
 
-        compositionRocks.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        compositionRocks.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = compositionRocks.getText();
-            firstList.setCompositionRocks(value == null ? " " : value);
+            updateValue(summary -> summary.setCompositionRocks(value == null ? " " : value));
         });
 
-        passed.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        passed.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = passed.getText();
-            firstList.setPassed(value == null ? " " : value);
+            updateValue(summary -> summary.setPassed(value == null ? " " : value));
         });
 
-        passedOrStopped.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        passedOrStopped.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = passedOrStopped.getText();
-            firstList.setPassedOrStopped(value == null ? " " : value);
+            updateValue(summary -> summary.setPassedOrStopped(value == null ? " " : value));
         });
 
-        waterLevel.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        waterLevel.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = waterLevel.getText();
-            firstList.setWaterLevel(value == null ? " " : value);
+            updateValue(summary -> summary.setWaterLevel(value == null ? " " : value));
         });
 
-        waterLevelStop.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        waterLevelStop.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = waterLevelStop.getText();
-            firstList.setWaterLevelStop(value == null ? " " : value);
+            updateValue(summary -> summary.setWaterLevelStop(value == null ? " " : value));
         });
 
-        drillingDiameterM.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        drillingDiameterM.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = drillingDiameterM.getText();
-            firstList.setDrillingDiameterM(value == null ? " " : value);
+            updateValue(summary -> summary.setDrillingDiameterM(value == null ? " " : value));
         });
 
-        drillingDiameterMM.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        drillingDiameterMM.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = drillingDiameterMM.getText();
-            firstList.setDrillingDiameterMM(value == null ? " " : value);
+            updateValue(summary -> summary.setDrillingDiameterMM(value == null ? " " : value));
         });
 
-        drillingRig.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        drillingRig.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = drillingRig.getText();
-            firstList.setDrillingRig(value == null ? " " : value);
+            updateValue(summary -> summary.setDrillingRig(value == null ? " " : value));
         });
 
-        flushing.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        flushing.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = flushing.getText();
-            firstList.setFlushing(value == null ? " " : value);
+            updateValue(summary -> summary.setFlushing(value == null ? " " : value));
         });
 
-        geologist.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        geologist.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = geologist.getText();
-            firstList.setGeologist(value == null ? " " : value);
+            updateValue(summary -> summary.setGeologist(value == null ? " " : value));
         });
 
-        surveyor.focusedProperty().addListener(( observable ,oldValue, newValue)->{
+        surveyor.focusedProperty().addListener((observable, oldValue, newValue) -> {
             String value = surveyor.getText();
-            firstList.setSurveyor(value == null ? " " : value);
+            updateValue(summary -> summary.setSurveyor(value == null ? " " : value));
         });
 
     }
-
 }

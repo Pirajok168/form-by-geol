@@ -6,11 +6,9 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.ResourceBundle;
 
-import View.Single;
+import globals.Globals;
 import data.SecondList;
 import data.TableRow;
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.ScrollPane;
@@ -108,7 +106,7 @@ public class ThirdController {
     @FXML
     private GridPane table;
 
-    private SecondList secondList = Single.getSecondList();
+    private SecondList secondList = Globals.getSecondList();
 
     private int row = 0;
 

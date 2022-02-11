@@ -7,6 +7,7 @@ import data.SaveData;
 import data.entities.Borehole;
 import data.entities.DrillingLine;
 import data.util.HibernateSessionFactory;
+import globals.Globals;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
@@ -123,12 +124,7 @@ public class MainController {
     }
 
     private void createElement(DrillingLine drillingLine) {
-        createElement(drillingLine, bh -> {
-            var alert = new Alert(Alert.AlertType.INFORMATION);
-            alert.setTitle(String.format("Буровая линия: %s", bh.getTitle()));
-            alert.setHeaderText(bh.toString());
-            alert.showAndWait();
-        });
+        createElement(drillingLine, bh -> Globals.instance().setCurrentBorehole(bh));
     }
 
     @FXML

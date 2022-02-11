@@ -34,11 +34,11 @@ public class Borehole {
     @JoinColumn(name = "drilling_line_id", nullable = false)
     private DrillingLine drillingLine;*/
 
-    @OneToOne(orphanRemoval = true)
+    @OneToOne(orphanRemoval = true, cascade = CascadeType.ALL)
     @JoinColumn(name = "summary_id")
     private Summary summary;
 
-    @OneToOne(orphanRemoval = true)
+    @OneToOne(orphanRemoval = true, cascade = CascadeType.ALL)
     @JoinColumn(name = "calculation_results_id")
     private CalculationResults calculationResults;
 
@@ -46,19 +46,19 @@ public class Borehole {
     @ToString.Exclude
     private Set<LithologicalSection> lithologicalSections = new LinkedHashSet<>();
 
-    @OneToOne(orphanRemoval = true)
+    @OneToOne(orphanRemoval = true, cascade = CascadeType.ALL)
     @JoinColumn(name = "control_table_id")
     private ControlTable controlTable;
 
-    @OneToOne(orphanRemoval = true)
+    @OneToOne(orphanRemoval = true, cascade = CascadeType.ALL)
     @JoinColumn(name = "nuggets_characteristics_id")
     private NuggetsCharacteristics nuggetsCharacteristics;
 
-    @OneToOne(orphanRemoval = true)
+    @OneToOne(orphanRemoval = true, cascade = CascadeType.ALL)
     @JoinColumn(name = "completed_act_id")
     private CompletedAct completedAct;
 
-    @OneToOne(orphanRemoval = true)
+    @OneToOne(orphanRemoval = true, cascade = CascadeType.ALL)
     @JoinColumn(name = "shutdown_act_id")
     private ShutdownAct shutdownAct;
 

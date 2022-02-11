@@ -1,13 +1,10 @@
 package controller;
 
-import View.Single;
-import data.SecondList;
+import globals.Globals;
 import data.TableRow;
 import javafx.beans.value.ChangeListener;
 import javafx.beans.value.ObservableValue;
 import javafx.scene.control.TextArea;
-
-import javax.swing.event.ChangeEvent;
 
 import java.util.List;
 
@@ -16,7 +13,7 @@ public class FocusListener implements ChangeListener<Boolean>{
     private TextArea text;
     private int column;
     private int row;
-    private List<TableRow> secondList = Single.getSecondList().getTableRows();
+    private List<TableRow> secondList = Globals.getSecondList().getTableRows();
 
     public FocusListener(TextArea text, int column, int row){
         this.text = text;

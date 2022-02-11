@@ -1,24 +1,20 @@
 package data;
 
-import View.Single;
+import globals.Globals;
 
 import java.io.BufferedWriter;
-import java.io.File;
-import java.io.FileWriter;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.List;
 
 public class SaveData implements Runnable{
-    private List<String> list1 = Single.getFirstList().getFirstListForSave();
-    private List<String> list2 = Single.getFirstList().getTableSave();
-    private List<String> list3 = Single.getFourthList().getSmallTable();
-    private List<TableRow> list4 = Single.getSecondList().getTableRows();
-    private List<String> list5 = Single.getFourthList().getSmallTableTwo();
+    private List<String> list1 = Globals.getFirstList().getFirstListForSave();
+    private List<String> list2 = Globals.getFirstList().getTableSave();
+    private List<String> list3 = Globals.getFourthList().getSmallTable();
+    private List<TableRow> list4 = Globals.getSecondList().getTableRows();
+    private List<String> list5 = Globals.getFourthList().getSmallTableTwo();
 
 
 

@@ -1,6 +1,6 @@
 package printing;
 
-import View.Single;
+import globals.Globals;
 import data.FirstList;
 import data.FourthList;
 import data.SecondList;
@@ -27,11 +27,11 @@ public class Main extends Thread{
     private  int linesPerPage = 20;
     private  List<String> data = new ArrayList<>();
     private  List<String> data2 = new ArrayList<>();
-    private  FirstList firstList =  Single.getFirstList();
-    private  FirstList table = Single.getFirstList();
+    private  FirstList firstList =  Globals.getFirstList();
+    private  FirstList table = Globals.getFirstList();
 
-    private SecondList secondList = Single.getSecondList();
-    private FourthList fourthList = Single.getFourthList();
+    private SecondList secondList = Globals.getSecondList();
+    private FourthList fourthList = Globals.getFourthList();
 
     @Override
     public void run() {
